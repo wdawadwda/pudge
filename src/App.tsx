@@ -1,5 +1,6 @@
 import "./App.styles.css";
+import { AppRouter } from "./router/appRouter";
 
 export const App = () => {
-  return <h1>Getting started</h1>;
+  return <AppRouter />;
 };
