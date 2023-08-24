@@ -1,0 +1,8 @@
+@mixin flexCenter {
+  align-items: center;
+  justify-content: center;
+}
+@mixin blockCenter {
+  margin: 0 auto;
+}
+
