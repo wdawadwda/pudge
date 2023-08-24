@@ -1,13 +1,6 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
-import { NotFoundPage } from "~/pages/NotFound/NotFoundPage";
-
-export const routerSchema = createBrowserRouter([
-  {
-    path: "*",
-    element: <NotFoundPage />,
-  },
-]);
+import { routerSchema } from "./routerSchema";
 
 export const AppRouter = () => {
   return <RouterProvider router={routerSchema} />;
