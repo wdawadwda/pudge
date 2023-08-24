@@ -1,0 +1,9 @@
+import { configureStore } from "@reduxjs/toolkit";
+
+import { rootReducer } from "./rootReduser";
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(),
+  devTools: import.meta.env.DEV,
+});
