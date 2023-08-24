@@ -5,4 +5,35 @@
 @mixin blockCenter {
   margin: 0 auto;
 }
+@mixin Container {
+  width: var(--pudge-max-content-width);
+}
 
+// Цвет
+@mixin MenuGradient {
+  background: linear-gradient(to bottom, 
+    var(--pudge--bg-color) 0%, 
+    var(--pudge--bg-color-second) 40%, 
+    var(--pudge--bg-color-second2) 100%
+  );
+}
+
+@mixin ReversMenuGradient {
+  background: linear-gradient(to bottom, 
+    var(--pudge--bg-color-second2) 0%, 
+    var(--pudge--bg-color-second) 40%, 
+    var(--pudge--bg-color) 100%
+  );
+}
+
+
+
+// Текст
+@mixin Roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+@mixin RobotoSlabBlack {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 900;
+}
