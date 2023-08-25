@@ -1,0 +1,35 @@
+@import '~/mixins.scss';
+
+.social{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  .socialLink{
+    display: block;
+    width: 50px;
+    height: 50px;
+    fill: var(--pudge--text-color);
+    margin-bottom: 20px;
+    svg{
+      display: flex;
+      @include flexCenter;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .social{
+    column-gap: 10px;
+    .socialLink{
+      width: 40px;
+      height: 40px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .social{
+    margin-right: 10px;
+  }
+}

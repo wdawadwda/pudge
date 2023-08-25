@@ -7,17 +7,19 @@
   > svg {
     font-size: 25vh;
     stroke-width: 25px;
-    fill: var(--pudge--bg-color)
+    stroke: var(--pudge--text-color);
   }
   > h2 {
     display: flex;
     @include flexCenter;
     font-size: 15vh;
     margin: 0px;
+    color: var(--pudge--text-color);
   }
   & h3 {
     @extend h2;
     text-align: center;
     font-size: 10vh;
+    color: var(--pudge--text-color);
   }
 }
