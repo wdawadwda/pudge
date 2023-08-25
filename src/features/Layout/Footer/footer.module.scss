@@ -1,0 +1,39 @@
+@import '~/mixins.scss';
+
+.containeFooter {
+  @include ReversMenuGradient;
+  padding: 75px 0;
+  & .footerContent {
+    @include Container;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo{
+  img{
+    height: 150px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .containeFooter {
+    padding: 50px 0;
+  }
+  .logo{
+    img{
+      height: 100px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .containeFooter {
+    padding: 25px 0;
+  }
+  .logo{
+    margin-left: 10px;
+  }
+}

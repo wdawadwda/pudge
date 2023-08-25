@@ -1,0 +1,38 @@
+@import '~/mixins.scss';
+
+.footerNav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 20px;
+  
+  .link {
+    margin: 0 15px 0 0;
+    padding-bottom: 3px;
+    text-decoration: none;
+    transition: color 0.5s linear;
+    position: relative;
+    border-bottom: solid 1px transparent;
+    
+    &:hover {
+      color: var(--pudge--text-second-color);
+      border-bottom-color: var(--pudge--text-second-color);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .footerNav {
+    gap: 15px;
+    .link {
+      margin: 0 15px 0 25px;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .footerNav {
+    display: none;
+  }
+}

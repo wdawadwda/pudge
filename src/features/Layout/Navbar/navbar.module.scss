@@ -1,0 +1,109 @@
+@import '~/mixins.scss';
+
+.containerNavbar {
+  padding: 25px 0;
+  @include MenuGradient;
+}
+.navbarContent{
+  margin: 0 auto;
+  @include Container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logoWrapper{
+  display: flex;
+  cursor: pointer;
+}
+
+.logo{
+  height: 75px;
+  margin-right: 10px;
+}
+
+.logoText{
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  height: 75px;
+  @include flexCenter;
+  @include RobotoSlabBlack;
+  line-height: 25px;
+  font-size: 20px;
+  color: var(--pudge--text-second-color);
+  span:last-child {
+    color :var(--pudge--text-color);
+  }
+}
+
+.nav{
+  color: var(--pudge--text-color);
+  line-height: 20px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 10px;
+  a{
+    margin-right: 15px;
+    padding-bottom: 3px;
+    text-decoration: none;
+    transition: color 0.5s linear, border-bottom 0.1s linear; 
+    &:hover, .activeNavLink{
+      color: var(--pudge--text-second-color);
+      border-bottom: solid 2px var(--pudge--text-second-color);
+    }
+  }
+}
+
+.moreLinksWrapper {
+  position: relative;
+}
+
+.moreLinks {
+  cursor: pointer;
+
+}
+
+.moreLinksDropdown {
+  position: absolute;
+  top: 120%;
+  right: 20%;
+  @include MenuGradient;
+  z-index: 1;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s linear, max-height 0.5s linear, visibility 0s 0.5s;
+}
+
+.moreLinksWrapper:hover .moreLinksDropdown {
+  visibility: visible;
+  opacity: 1;
+  max-height: 300px;
+  transition-delay: 0s;
+}
+
+.moreLinksDropdown a {
+  display: block;
+  padding: 25px 50px;
+  font-size: 18px;
+  text-decoration: none;
+  margin: 0;
+  :hover{
+    border-top: 2px solid var(--pudge--text-second-color);
+  }
+}
+
+.burger{
+  color: var(--pudge--text-color);
+  font-size: 50px;
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav{
+    display: none;
+  }
+  .burger{
+    display: block;
+  }
+}
