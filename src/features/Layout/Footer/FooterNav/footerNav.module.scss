@@ -13,7 +13,7 @@
     transition: color 0.5s linear;
     position: relative;
     border-bottom: solid 1px transparent;
-    
+    text-align: center;
     &:hover {
       color: var(--pudge--text-second-color);
       border-bottom-color: var(--pudge--text-second-color);

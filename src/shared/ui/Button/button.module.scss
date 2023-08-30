@@ -1,0 +1,40 @@
+@import '~/mixins.scss';
+
+.btn {
+  display: flex;
+  @include flexCenter;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 24px;
+  margin: 0;
+  height: 56px;
+  padding: 20px;
+  border: none;
+  gap: 11px;
+  border-radius: 10px;
+  transition: linear 0.5s;
+}
+
+.icon {
+  display: flex;
+  @include flexCenter;
+  height: 24px;
+  width: 24px;
+}
+
+.primary {
+  background-color: var(--pudge--bg-color-second3);
+  border: 1px solid var(--pudge--bg-color-second3);
+  color: var(--pudge--text-second2-color);
+  &:hover:not(:disabled) {
+    background-color: inherit;
+    color: var(--pudge--text-second-color);
+    border-radius: 50px;
+  }
+  &:disabled {
+    background-color: var(--pudge--bg-disabled-color);
+    border: 1px solid var(--pudge--bg-disabled-color);
+    color: var(--pudge--text-color);
+    cursor: not-allowed;
+  }
+}

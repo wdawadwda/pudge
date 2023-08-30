@@ -1,4 +1,4 @@
-import "./App.styles.css";
+import "./App.styles.scss";
 import { AppRouter } from "./router/appRouter";
 
 export const App = () => {
