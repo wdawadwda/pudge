@@ -1,0 +1,73 @@
+@import '~/mixins.scss';
+
+.intro{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  @include flexCenter;
+  .fixedImage {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .introContent{
+    @include Container;
+    h1{
+      text-align: center;
+      font-size: var(--pudge--text-title-size);
+      margin-bottom: 100px;
+      @include RobotoSlabBlack;
+      color: var(--pudge--text-second-color);
+    }
+    span{
+      display: block;
+      width: 100%;
+      flex: 1;
+      text-align: center;
+      font-size: var(--pudge--text-subtitle-size);
+      font-weight: 500;
+      color: var(--pudge--text-color);
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .intro{
+    .introContent{
+      h1{
+        font-size: 50px;
+        margin-bottom: 50px;
+        color: var(--pudge--text-second-color);
+      }
+      span{
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media (max-height: 550px) {
+  .intro{
+    .introContent{
+      h1{
+        font-size: 25px;
+        margin-bottom: 25px;
+        color: var(--pudge--text-second-color);
+      }
+      span{
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
