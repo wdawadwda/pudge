@@ -1,12 +1,13 @@
 import { useState } from "react";
 
+import classNames from "classnames";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { type Swiper as SwiperType } from "swiper/types";
-
 import "swiper/css";
 
-import Style from "./homeClub.module.scss";
+import Style from "./clubSlider.module.scss";
+import Styles from "../pageSections.module.scss";
 
 const clubData = [
   {
@@ -39,7 +40,7 @@ const clubData = [
   },
 ];
 
-export const HomeClub = () => {
+export const ClubSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (swiper: SwiperType) => {
@@ -54,8 +55,18 @@ export const HomeClub = () => {
   };
 
   return (
-    <div className={Style.clubContainer}>
-      <div className={Style.clubContent}>
+    <div
+      className={`${classNames({
+        [Style.clubContainer]: true,
+        [Styles.Container]: true,
+      })}`}
+    >
+      <div
+        className={`${classNames({
+          [Style.clubContent]: true,
+          [Styles.Content]: true,
+        })}`}
+      >
         <h2>Наши клубы:</h2>
         <div className={Style.sliderContainer}>
           <Swiper

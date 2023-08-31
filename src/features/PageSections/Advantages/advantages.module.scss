@@ -1,0 +1,37 @@
+@import '~/mixins.scss';
+
+.advantagesContainer {
+  --pudge-svg-size: 100px;
+
+  background-color: var(--pudge--bg-color);
+  .advantagesContent {
+    .itemWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      @include flexCenter;
+      .advantagesItem{
+        border: 1px solid var(--pudge--text-second3-color);
+        border-radius: 15px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px 25px 10px;
+        width: 200px;
+        height: 200px;
+        svg{
+          margin: 0 auto 25px auto;
+          width: var(--pudge-svg-size);
+          height: var(--pudge-svg-size);
+          color: var(--pudge--text-second-color);
+        }
+        h3{
+          text-align: center;
+          line-height: 25px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+
