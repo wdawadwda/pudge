@@ -1,4 +1,11 @@
-import { faChair, faSteam, faGlobe, faKeyboard, faTv, faGamepad, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChair,
+  faGlobe,
+  faKeyboard,
+  faTv,
+  faGamepad,
+  faTrophy,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
