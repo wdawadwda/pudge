@@ -6,6 +6,9 @@
 :root {
   --pudge-max-content-width: 1200px;
 
+  --pudge-padding-container-content: 100px;
+  --pudge-margin-title-content: 50px;
+
   /*! BG */
   --pudge--bg-color: black;
   --pudge--bg-color-second: #1a1a1a;
@@ -79,7 +82,6 @@ a {
   background-color: var(--pudge--bg-color-second3);
   color: var(--pudge--bg-color-second3);
 }
-
 
 @media (max-width: 1300px) {
   :root {

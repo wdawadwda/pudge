@@ -1,0 +1,20 @@
+@import '~/mixins.scss';
+
+.Container{
+  display: flex;
+  display: flex;
+  @include flexCenter;
+  width: 100%;
+  padding: var(--pudge-padding-container-content) 0 0 0;
+  .Content{
+    @include Container;
+    h2{
+      text-transform: uppercase;
+      @include RobotoSlabBlack;
+      font-size: var(--pudge--text-title-second-size);
+      color: var(--pudge--text-second-color);
+      text-align: center;
+      margin-bottom: var(--pudge-margin-title-content);
+    }
+  }
+}

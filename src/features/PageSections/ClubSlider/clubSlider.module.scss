@@ -1,29 +1,8 @@
 @import '~/mixins.scss';
 
 .clubContainer{
-  --pudge-padding-container-content: 100px;
-  --pudge-margin-title-content: 50px;
-}
-
-.clubContainer{
-  display: flex;
   background-color: var(--pudge--bg-color);
-  display: flex;
-  @include flexCenter;
-  width: 100%;
-  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
-  background-color: var(--pudge--bg-color);
-  .clubContent{
-    @include Container;
-    h2{
-      text-transform: uppercase;
-      @include RobotoSlabBlack;
-      font-size: var(--pudge--text-title-second-size);
-      color: var(--pudge--text-second-color);
-      text-align: center;
-      margin-bottom: var(--pudge-margin-title-content);
-    }
-  }
+  padding-bottom: var(--pudge-padding-container-content);
 }
 
 .sliderContainer{
