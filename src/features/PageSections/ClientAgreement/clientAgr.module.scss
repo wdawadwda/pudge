@@ -1,0 +1,15 @@
+@import '~/mixins.scss';
+
+.clientAgrContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .clientAgrContent{
+    h1{
+      text-align: center;
+      font-size: var(--pudge--text-title-second-size);
+      margin-bottom: 100px;
+      @include RobotoSlabBlack;
+      color: var(--pudge--text-second-color);
+    }
+  }
+}

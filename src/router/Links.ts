@@ -10,7 +10,7 @@ export const links = {
   clubs: "/clubs",
   rules: "/rules",
   hostingEvent: "/hosting-an-event",
-  userAgreement: "/user-agreement",
+  ClientAgreement: "/client-agreement",
 };
 
 export const socialLinks = {

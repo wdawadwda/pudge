@@ -16,7 +16,7 @@
     text-align: center;
     &:hover {
       color: var(--pudge--text-second-color);
-      border-bottom-color: var(--pudge--text-second-color);
+      border-bottom: 1px solid var(--pudge--text-second-color);
     }
   }
 }
