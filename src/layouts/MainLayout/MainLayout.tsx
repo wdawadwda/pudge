@@ -10,11 +10,11 @@ export const MainLayout = () => {
   return (
     <div className={layoutStyles.container}>
       <Navbar />
-      <NeonStrip />
+      <NeonStrip color={"green"} />
       <main>
         <Outlet />
       </main>
-      <NeonStrip />
+      <NeonStrip color={"green"} />
       <Footer />
     </div>
   );
