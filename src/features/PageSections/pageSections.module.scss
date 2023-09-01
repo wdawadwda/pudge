@@ -5,7 +5,6 @@
   display: flex;
   @include flexCenter;
   width: 100%;
-  padding: var(--pudge-padding-container-content) 0 0 0;
   .Content{
     @include Container;
     h2{
