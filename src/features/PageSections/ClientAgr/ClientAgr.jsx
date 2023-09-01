@@ -1,6 +1,7 @@
+import classNames from "classnames";
+
 import Style from "./clientAgr.module.scss";
 import Styles from "../pageSections.module.scss";
-import classNames from "classnames";
 
 export const ClientAgr = () => {
   return (
