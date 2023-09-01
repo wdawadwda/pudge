@@ -46,7 +46,7 @@
     margin-right: 15px;
     padding-bottom: 3px;
     text-decoration: none;
-    transition: color 0.5s linear, border-bottom 0.1s linear; 
+    transition: color 0.3s linear;
     &:hover, .activeNavLink{
       color: var(--pudge--text-second-color);
       border-bottom: solid 2px var(--pudge--text-second-color);

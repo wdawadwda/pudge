@@ -1,44 +1,17 @@
 import { useState } from "react";
 
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { type Swiper as SwiperType } from "swiper/types";
 import "swiper/css";
 
-import Style from "./clubSlider.module.scss";
-import Styles from "../pageSections.module.scss";
+import { links } from "~/router/Links";
 
-const clubData = [
-  {
-    id: 1,
-    map: "https://yandex.ru/map-widget/v1/?um=constructor%3A56627afdec56a94cd3bcfdf5aa75fac61fb2ba70c7ce93b7ac36f3d62a171941&amp;source=constructor",
-    name: "Маяк Минска",
-    address: "УЛ.МСТИСЛАВЦА 8",
-    phone: "+375 (44)784-49-12",
-  },
-  {
-    id: 2,
-    map: "https://yandex.ru/map-widget/v1/?um=constructor%3A56627afdec56a94cd3bcfdf5aa75fac61fb2ba70c7ce93b7ac36f3d62a171941&amp;source=constructor",
-    name: "Центр",
-    address: "УЛ.СВЕРДЛОВА 2",
-    phone: "+375 (44)513-83-74",
-  },
-  {
-    id: 3,
-    map: "https://yandex.ru/map-widget/v1/?um=constructor%3A56627afdec56a94cd3bcfdf5aa75fac61fb2ba70c7ce93b7ac36f3d62a171941&amp;source=constructor",
-    name: "Петровщина",
-    address: "ПР.ДЗЕРЖИНСКОГО 69-2",
-    phone: "+375(29)119-73-21",
-  },
-  {
-    id: 4,
-    map: "https://yandex.ru/map-widget/v1/?um=constructor%3A56627afdec56a94cd3bcfdf5aa75fac61fb2ba70c7ce93b7ac36f3d62a171941&amp;source=constructor",
-    name: "ОТКРЫТИЕ СКОРО",
-    address: "-",
-    phone: "-",
-  },
-];
+import Style from "./clubSlider.module.scss";
+import { clubData } from "./sliderContent.const";
+import Styles from "../pageSections.module.scss";
 
 export const ClubSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -83,14 +56,18 @@ export const ClubSlider = () => {
           >
             {clubData.map((club) => (
               <SwiperSlide key={club.id}>
-                <div className={Style.slideContent}>
+                <Link
+                  to={`${links.clubs}/${club.id}`}
+                  className={Style.slideContent}
+                >
                   <div className={Style.textWrapper}>
                     <h3>{club.name}</h3>
                     <p>{club.address}</p>
-                    <a href={`tel:${club.phone}`}>{club.phone}</a>
+                    <span>{club.phone}</span>
                   </div>
-                  <iframe src={club.map}></iframe>
-                </div>
+                  {/* <iframe src={club.map}></iframe> */}
+                  <img src={club.img} alt="" />
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>

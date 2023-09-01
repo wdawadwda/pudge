@@ -2,7 +2,7 @@
 
 .clubContainer{
   background-color: var(--pudge--bg-color);
-  padding-bottom: var(--pudge-padding-container-content);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
 }
 
 .sliderContainer{
@@ -10,6 +10,12 @@
   .slideContent{
     display: flex;
     iframe{
+      width: 55%;
+      height: 50vh;
+      height: 50dvh;
+      border-radius: 30px;
+    }
+    img{
       width: 55%;
       height: 50vh;
       height: 50dvh;
@@ -37,7 +43,7 @@
 @media (max-width: 700px) {
   .sliderContainer{
     .slideContent{
-      iframe{
+      iframe, img{
         display: none;
       }
       .textWrapper{
