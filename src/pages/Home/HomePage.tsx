@@ -7,6 +7,7 @@ export const HomePage = () => {
   return (
     <>
       <HomeIntro />
+      <NeonStrip />
       <Advantages />
       <NeonStrip />
       <ClubSlider />
