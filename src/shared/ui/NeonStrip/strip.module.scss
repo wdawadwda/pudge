@@ -28,7 +28,6 @@
 .bottomBlur {
   height: 10px;
   width: 100%;
-  background-color: var(--pudge--text-second-color);
   filter: blur(5px);
   position: absolute;
   animation: blurAnimation 4s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
@@ -45,5 +44,11 @@
 .greenStrip {
   height: 5px;
   width: 100%;
+}
+.yellow{
+  background-color: var(--pudge--bg-color-second4);
+}
+
+.green{
   background-color: var(--pudge--text-second-color);
 }
