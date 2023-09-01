@@ -1,4 +1,4 @@
-import { ClientAgr } from "~/features/PageSections/ClientAgreement/ClientAgr";
+import { ClientAgr } from "~/features/PageSections/ClientAgr/ClientAgr";
 
 export const ClientAgreement = () => {
   return (
