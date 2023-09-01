@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { MainLayout } from "~/layouts/MainLayout/MainLayout";
+import { ClientAgreement } from "~/pages/ClientAgreement/ClientAgreement";
 import { HomePage } from "~/pages/Home/HomePage";
 import { NotFoundPage } from "~/pages/NotFound/NotFoundPage";
+import { Rules } from "~/pages/Rules/Rules";
 
 import { links } from "./Links";
 
@@ -14,6 +16,14 @@ export const routerSchema = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: links.ClientAgreement,
+        element: <ClientAgreement />,
+      },
+      {
+        path: links.rules,
+        element: <Rules />,
       },
       {
         path: "*",
