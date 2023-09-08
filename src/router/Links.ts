@@ -18,4 +18,5 @@ export const socialLinks = {
   telegram: "",
   vk: "https://vk.com/pudgecyberclub",
   mail: "mailto:example@example.com",
+  tiktok: "https://www.tiktok.com/@pudge_cyber_club?_t=8epOCODmLQM&_r=1",
 };

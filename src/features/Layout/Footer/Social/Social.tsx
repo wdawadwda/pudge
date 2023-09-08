@@ -9,7 +9,12 @@ export const Social = () => {
       {socialLinksData.map((linkData, index) => {
         const IconComponent = linkData.icon;
         return (
-          <Link key={index} to={linkData.to} className={Style.socialLink}>
+          <Link
+            target="_blank"
+            key={index}
+            to={linkData.to}
+            className={Style.socialLink}
+          >
             <IconComponent />
           </Link>
         );
