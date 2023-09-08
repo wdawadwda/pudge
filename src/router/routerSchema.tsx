@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { MainLayout } from "~/layouts/MainLayout/MainLayout";
 import { ClientAgreement } from "~/pages/ClientAgreement/ClientAgreement";
+import { Clubs } from "~/pages/Clubs/Clubs";
 import { HomePage } from "~/pages/Home/HomePage";
 import { NotFoundPage } from "~/pages/NotFound/NotFoundPage";
 import { Rules } from "~/pages/Rules/Rules";
@@ -18,12 +19,16 @@ export const routerSchema = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: links.ClientAgreement,
+        path: links.clientAgreement,
         element: <ClientAgreement />,
       },
       {
         path: links.rules,
         element: <Rules />,
+      },
+      {
+        path: links.clubs,
+        element: <Clubs />,
       },
       {
         path: "*",

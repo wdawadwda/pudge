@@ -1,8 +1,7 @@
 import { links } from "~/router/Links";
 
 export const footerNavSchema = [
-  { to: links.ClientAgreement, label: "Пользовательское соглашение" },
-
+  { to: links.clientAgreement, label: "Пользовательское соглашение" },
   { to: links.rules, label: "Правила клубов" },
   { to: links.hostingEvent, label: "Мероприятия" },
   { to: links.price, label: "Цены" },

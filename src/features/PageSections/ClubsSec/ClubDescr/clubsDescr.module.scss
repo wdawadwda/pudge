@@ -1,0 +1,13 @@
+@import '~/mixins.scss';
+
+.ClubsDescrSectionContent{
+  margin-top: 50px;
+  h3{
+    margin: 50px 0 50px 0;
+    width: 100%;
+    display: flex;
+    @include flexCenter;
+    font-size: var(--pudge--text-subtitle-size);
+    color: var(--pudge--text-second-color);
+  }
+}
