@@ -1,0 +1,19 @@
+@import '~/mixins.scss';
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  button {
+    width: 150px;
+    padding: 35px;
+    font-size: 20px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+  .activeTab {
+    background-color: inherit;
+    color: var(--pudge--text-second-color);
+    border-radius: 50px;
+  }  
+}
