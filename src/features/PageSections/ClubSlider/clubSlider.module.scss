@@ -29,12 +29,16 @@
       font-size: var(--pudge--text-subtitle-size);
       text-align: center;
       margin-right: 15px;
+      cursor: default;
       h3{
         font-size: var(--pudge--text-title-second-size);
         color: var(--pudge--text-second-color);
       }
       p{
         color: #BEBE0B;
+      }
+      a{
+        margin-top: 25px;
       }
     }
   }

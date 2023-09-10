@@ -10,7 +10,7 @@
     margin: 0 15px 0 0;
     padding-bottom: 3px;
     text-decoration: none;
-    transition: color 0.3s linear;
+    transition: color var(--pudge-transition-text) linear;
     position: relative;
     border-bottom: solid 1px transparent;
     text-align: center;
