@@ -7,13 +7,31 @@
   width: 100%;
   .Content{
     @include Container;
-    h2{
+    h2, .linkClub{
       text-transform: uppercase;
       @include RobotoSlabBlack;
       font-size: var(--pudge--text-title-second-size);
       color: var(--pudge--text-second-color);
       text-align: center;
       margin-bottom: var(--pudge-margin-title-content);
+      a{
+        transition: color var(--pudge-transition-text) linear;
+      }
+    }
+  }
+}
+
+.Container{
+  .Content{
+    .linkClub{
+      display: block;
+      width: 100%;
+      margin-bottom: 50px;
+      a{
+        &:hover{
+          color: var(--pudge--text-second3-color)!important;
+        }
+      }
     }
   }
 }

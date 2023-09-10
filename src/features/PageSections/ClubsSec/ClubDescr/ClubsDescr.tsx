@@ -4,19 +4,12 @@ import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 
 import Style from "./clubsDescr.module.scss";
 import { ComputerSpecsClubs } from "./ComputerSpecs/ComputerSpecsClubs";
+import { Location } from "./Location/Location";
 import { Price } from "./Price/Price";
+import { type TypeClubData } from "../../ClubSlider/sliderContent.const";
 import Styles from "../../pageSections.module.scss";
-import { type ComputerSpecs } from "../ClubSec.util";
 
-export const ClubsDescr = ({
-  title,
-  imgPrice,
-  computerSpecs,
-}: {
-  title: string;
-  imgPrice: string;
-  computerSpecs: ComputerSpecs;
-}) => {
+export const ClubsDescr = ({ data }: { data: TypeClubData }) => {
   return (
     <>
       <div
@@ -25,12 +18,15 @@ export const ClubsDescr = ({
           [Styles.Content]: true,
         })}`}
       >
-        <Price title={title} img={imgPrice} />
+        <NeonStrip color="yellow" />
+        <Location location={data.map} />
+        <NeonStrip color="yellow" />
+        <Price title={data.name} img={data.priceImg} />
         <NeonStrip color="yellow" />
         <ComputerSpecsClubs
-          title={title}
-          comf={computerSpecs.comfort}
-          vip={computerSpecs.vip}
+          title={data.name}
+          comf={data.computerSpecs.comfort}
+          vip={data.computerSpecs.vip}
         />
         <NeonStrip color="yellow" />
       </div>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -8,6 +10,7 @@ import { type Swiper as SwiperType } from "swiper/types";
 import "swiper/css";
 
 import { links } from "~/router/Links";
+import { Button } from "~/shared/ui/Button/Buttons";
 
 import Style from "./clubSlider.module.scss";
 import { clubData } from "./sliderContent.const";
@@ -40,12 +43,20 @@ export const ClubSlider = () => {
           [Styles.Content]: true,
         })}`}
       >
-        <h2>Наши клубы:</h2>
+        <div className={Styles.linkClub}>
+          <Link to={links.clubs}>
+            Наши клубы{" "}
+            <span>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </span>
+          </Link>
+        </div>
+
         <div className={Style.sliderContainer}>
           <Swiper
-            speed={1000}
+            speed={2500}
             autoplay={{
-              delay: 5000,
+              delay: 7000,
               disableOnInteraction: false,
             }}
             pagination={pagination}
@@ -56,15 +67,23 @@ export const ClubSlider = () => {
           >
             {clubData.map((club) => (
               <SwiperSlide key={club.id}>
-                <Link to={`${links.clubs}`} className={Style.slideContent}>
+                <div className={Style.slideContent}>
                   <div className={Style.textWrapper}>
                     <h3>{club.name}</h3>
                     <p>{club.address}</p>
                     <span>{club.phone}</span>
+                    <Link to={`#`}>
+                      <Button
+                        appearance={"primary"}
+                        onClick={() => console.warn(club.id)}
+                      >
+                        Забронировать
+                      </Button>
+                    </Link>
                   </div>
                   {/* <iframe src={club.map}></iframe> */}
                   <img src={club.img} alt="" />
-                </Link>
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

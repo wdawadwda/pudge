@@ -24,7 +24,7 @@
 
 .primary {
   background-color: var(--pudge--bg-color-second3);
-  border: 1px solid var(--pudge--bg-color-second3);
+  border: 2px solid var(--pudge--bg-color-second3);
   color: var(--pudge--text-second2-color);
   &:hover:not(:disabled) {
     background-color: inherit;
@@ -33,7 +33,7 @@
   }
   &:disabled {
     background-color: var(--pudge--bg-disabled-color);
-    border: 1px solid var(--pudge--bg-disabled-color);
+    border: 2px solid var(--pudge--bg-disabled-color);
     color: var(--pudge--text-color);
     cursor: not-allowed;
   }
