@@ -56,10 +56,7 @@ export const ClubSlider = () => {
           >
             {clubData.map((club) => (
               <SwiperSlide key={club.id}>
-                <Link
-                  to={`${links.clubs}/${club.id}`}
-                  className={Style.slideContent}
-                >
+                <Link to={`${links.clubs}`} className={Style.slideContent}>
                   <div className={Style.textWrapper}>
                     <h3>{club.name}</h3>
                     <p>{club.address}</p>
