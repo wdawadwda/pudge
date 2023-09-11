@@ -12,11 +12,11 @@
     text-decoration: none;
     transition: color var(--pudge-transition-text) linear;
     position: relative;
-    border-bottom: solid 1px transparent;
+    border-bottom: solid 2px transparent;
     text-align: center;
     &:hover {
       color: var(--pudge--text-second-color);
-      border-bottom: 1px solid var(--pudge--text-second-color);
+      border-bottom: 2px solid var(--pudge--text-second-color);
     }
   }
 }

@@ -5,14 +5,20 @@
   display: flex;
   flex-direction: column;
   padding: var(--pudge-margin-title-content) 0 var(--pudge-margin-title-content) 0;
+  margin: var(--pudge-margin-title-content) 0 var(--pudge-margin-title-content) 0;
+  stroke: var(--pudge--text-second-color);
+  color: var(--pudge--text-second-color);
   > svg {
     font-size: 25vh;
     stroke-width: 25px;
-    stroke: var(--pudge--text-color);
+    stroke: var(--pudge--text-second-color);
+    padding-bottom: 25px;
   }
   > h2 {
     display: flex;
+    padding-top: 25px;
     @include flexCenter;
+    text-align: center;
     font-size: 15vh;
     margin: 0px;
     color: var(--pudge--text-color);
@@ -21,6 +27,6 @@
     @extend h2;
     text-align: center;
     font-size: 10vh;
-    color: var(--pudge--text-color);
+    color: var(--pudge--text-second3-color);
   }
 }

@@ -59,7 +59,7 @@ a {
 
 .active{
   color: var(--pudge--text-second-color);
-  border-bottom: solid 2px var(--pudge--text-second-color);
+  border-bottom: solid 2px var(--pudge--text-second-color)!important;
 }
 
 // Свайпер
