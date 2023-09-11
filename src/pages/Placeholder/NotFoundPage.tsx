@@ -1,7 +1,7 @@
 import { faFaceFrown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Style from "./notFounde.module.scss";
+import Style from "./placeholder.module.scss";
 
 export const NotFoundPage = () => {
   return (
