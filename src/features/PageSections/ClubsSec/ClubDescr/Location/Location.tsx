@@ -1,5 +1,7 @@
 import classNames from "classnames";
 
+import { Expand } from "~/shared/ui/Expand/Expand";
+
 import Style from "./location.module.scss";
 import Styles from "../../../pageSections.module.scss";
 
@@ -12,7 +14,9 @@ export const Location = ({ location }: { location: string }) => {
           [Styles.Content]: true,
         })}`}
       >
-        <iframe src={location}></iframe>
+        <Expand titleExpand={`Как нас найти`}>
+          <iframe src={location}></iframe>
+        </Expand>
       </div>
     </>
   );
