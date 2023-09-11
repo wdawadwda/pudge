@@ -19,9 +19,9 @@ export const ClubsDescr = ({ data }: { data: TypeClubData }) => {
         })}`}
       >
         <NeonStrip color="yellow" />
-        <Location location={data.map} />
-        <NeonStrip color="yellow" />
         <Price title={data.name} img={data.priceImg} />
+        <NeonStrip color="yellow" />
+        <Location location={data.map} />
         <NeonStrip color="yellow" />
         <ComputerSpecsClubs
           title={data.name}
