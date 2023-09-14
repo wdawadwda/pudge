@@ -10,6 +10,11 @@ export interface TypeClubData {
     comfort: string;
     vip: string;
   };
+  quantityСomputers: {
+    comfort: number;
+    vip: number;
+    ps: number;
+  };
 }
 export const clubData: TypeClubData[] = [
   {
@@ -26,6 +31,11 @@ export const clubData: TypeClubData[] = [
         "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
       vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
     },
+    quantityСomputers: {
+      comfort: 15,
+      vip: 10,
+      ps: 5,
+    },
   },
   {
     id: 2,
@@ -40,6 +50,11 @@ export const clubData: TypeClubData[] = [
       comfort:
         "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
       vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+    },
+    quantityСomputers: {
+      comfort: 25,
+      vip: 5,
+      ps: 1,
     },
   },
   {
@@ -56,6 +71,11 @@ export const clubData: TypeClubData[] = [
         "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
       vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
     },
+    quantityСomputers: {
+      comfort: 1,
+      vip: 15,
+      ps: 0,
+    },
   },
   {
     id: 4,
@@ -70,6 +90,11 @@ export const clubData: TypeClubData[] = [
       comfort:
         "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
       vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+    },
+    quantityСomputers: {
+      comfort: 35,
+      vip: 7,
+      ps: 1,
     },
   },
 ];

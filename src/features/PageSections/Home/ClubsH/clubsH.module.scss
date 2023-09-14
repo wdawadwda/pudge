@@ -1,0 +1,115 @@
+@import '~/mixins.scss';
+
+.ClubsHContainer {
+  --pudge-svg-size: 100px;
+
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .ClubsHContent {
+    .itemWrapper{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      &__item{
+        position: relative;
+        border: 2px solid var(--pudge--bg-color-second4);
+        border-radius: 15px;
+        display: flex;
+        @include flexCenter;
+        flex-direction: column;
+        width: 100%;
+        transition: var(--pudge-transition-text) linear;
+        h3{
+          text-align: center;
+          font-size: var(--pudge--text-normal-size2);
+          padding: 25px;
+          color: var(--pudge--text-color);
+          transition: var(--pudge-transition-text) linear;
+        }
+        p{
+          text-align: center;
+          margin: 0;
+          padding: 0 25px 10px 25px;
+          color: var(--pudge--text-color);
+          font-size: var(--pudge--text-normal-size);
+          transition: var(--pudge-transition-text) linear;
+        }
+        ul{
+          margin: 0;
+          padding: 25px;
+          color: var(--pudge--text-color);
+          transition: var(--pudge-transition-text) linear;
+          list-style: none;
+          font-size: var(--pudge--text-normal-size);
+          li{
+            padding-top: 10px;
+            color: var(--pudge--text-color);
+            transition: var(--pudge-transition-text) linear;
+            strong{
+              color: var(--pudge--text-color);
+              transition: var(--pudge-transition-text) linear;
+            }
+            &::before {
+              content: "•";
+              margin-right: 10px;
+              color: var(--pudge--text-alert-color);
+              font-size: var(--pudge--text-normal-size);
+            }
+            &:hover {
+              color: var(--pudge--text-second3-color);
+              strong{
+                color: var(--pudge--text-alert-color);
+              }
+            }
+          }
+        }
+        button{
+          margin-bottom: 25px;
+        }
+        &:hover {
+          border: 2px solid var(--pudge--bg-color-second3);
+          h3{
+            color: var(--pudge--text-second-color);
+          }
+          p:first-of-type {
+            color: var(--pudge--text-second3-color);
+          }
+          ul{
+            color: var(--pudge--text-second-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .ClubsHContainer {
+    .ClubsHContent {
+      .itemWrapper{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .ClubsHContainer {
+    .ClubsHContent {
+      .itemWrapper{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .ClubsHContainer {
+    .ClubsHContent {
+      .itemWrapper{
+      }
+    }
+  }
+}
+

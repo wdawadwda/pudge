@@ -13,7 +13,7 @@
     svg{
       display: flex;
       @include flexCenter;
-      transition: fill var(--pudge-transition-social) linear;
+      transition: fill var(--pudge-transition-second) linear;
       &:hover {
         fill: var(--pudge--text-second-color);
       }

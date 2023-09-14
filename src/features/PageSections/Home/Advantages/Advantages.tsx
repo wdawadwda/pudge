@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
 import Style from "./advantages.module.scss";
-import Styles from "../pageSections.module.scss";
+import Styles from "../../pageSections.module.scss";
 
 export const Advantages = () => {
   return (
@@ -30,7 +30,7 @@ export const Advantages = () => {
         <div className={Style.itemWrapper}>
           <div className={Style.advantagesItem}>
             <FontAwesomeIcon icon={faTv} />
-            <h3>МОЩНЫЕ И ГРАМОТНО НАСТРОЕННЫЕ ИГРОВЫЕ ПК</h3>
+            <h3>МОЩНЫЕ ИГРОВЫЕ ПК и консоли</h3>
           </div>
           <div className={Style.advantagesItem}>
             <FontAwesomeIcon icon={faChair} />
