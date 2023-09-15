@@ -67,6 +67,7 @@
           margin-bottom: 25px;
         }
         &:hover {
+          background-color: var(--pudge--bg-color-second);
           border: 2px solid var(--pudge--bg-color-second3);
           h3{
             color: var(--pudge--text-second-color);
