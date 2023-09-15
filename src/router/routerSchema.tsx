@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "~/layouts/MainLayout/MainLayout";
 import { AboutUs } from "~/pages/AboutUs/AboutUs";
 import { ClientAgreement } from "~/pages/ClientAgreement/ClientAgreement";
-import { Clubs } from "~/pages/Clubs/Clubs";
 import { HomePage } from "~/pages/Home/HomePage";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
 import { Placeholder } from "~/pages/Placeholder/Placeholder";
@@ -28,14 +27,14 @@ export const routerSchema = createBrowserRouter([
         path: links.rules,
         element: <Rules />,
       },
-      {
-        path: links.clubs,
-        element: <Clubs />,
-      },
-      {
-        path: links.price,
-        element: <Clubs />,
-      },
+      // {
+      //   path: links.clubs,
+      //   element: <Clubs />,
+      // },
+      // {
+      //   path: links.price,
+      //   element: <Clubs />,
+      // },
       {
         path: links.about,
         element: <AboutUs />,
