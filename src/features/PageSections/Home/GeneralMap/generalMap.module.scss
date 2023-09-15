@@ -1,0 +1,13 @@
+@import '~/mixins.scss';
+
+.MapContainer {
+  --pudge-svg-size: 100px;
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .MapContent {
+    iframe{
+      width: 100%;
+      height: 560px;
+    }
+  }
+}

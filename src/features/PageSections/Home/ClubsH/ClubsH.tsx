@@ -25,6 +25,7 @@ export const ClubsH = () => {
         <div className={Style.itemWrapper}>
           {clubData.map((club, index) => (
             <Link to="#" className={Style.itemWrapper__item} key={index}>
+              <img src={club.img} alt="" />
               <h3>{`${club.name}:`}</h3>
               <p>{club.address}</p>
               <p>{club.phone}</p>

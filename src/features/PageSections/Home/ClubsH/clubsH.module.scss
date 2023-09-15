@@ -2,7 +2,6 @@
 
 .ClubsHContainer {
   --pudge-svg-size: 100px;
-
   background-color: var(--pudge--bg-color);
   padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
   .ClubsHContent {
@@ -19,6 +18,13 @@
         flex-direction: column;
         width: 100%;
         transition: var(--pudge-transition-text) linear;
+        img{
+          width: 100%;
+          height: 250px;
+          border-radius: 15px 15px 0 0;
+          border-bottom: 2px solid var(--pudge--bg-color-second4);
+          transition: var(--pudge-transition-text) linear;
+        }
         h3{
           text-align: center;
           font-size: var(--pudge--text-normal-size2);
@@ -67,7 +73,11 @@
           margin-bottom: 25px;
         }
         &:hover {
+          background-color: var(--pudge--bg-color-second);
           border: 2px solid var(--pudge--bg-color-second3);
+          img {
+            border-bottom-color: var(--pudge--bg-color-second3);
+          }
           h3{
             color: var(--pudge--text-second-color);
           }
@@ -103,13 +113,3 @@
     }
   }
 }
-
-@media (max-width: 400px) {
-  .ClubsHContainer {
-    .ClubsHContent {
-      .itemWrapper{
-      }
-    }
-  }
-}
-

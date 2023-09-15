@@ -1,7 +1,8 @@
 import { HomeIntro } from "~/features/Home/Intro/Intro";
+import { Partners } from "~/features/Home/Partners/Partners";
 import { Advantages } from "~/features/PageSections/Home/Advantages/Advantages";
 import { ClubsH } from "~/features/PageSections/Home/ClubsH/ClubsH";
-// import { ClubSlider } from "~/features/PageSections/ClubSlider/ClubSlider";
+import { GeneralMap } from "~/features/PageSections/Home/GeneralMap/GeneralMap";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 
 export const HomePage = () => {
@@ -12,7 +13,10 @@ export const HomePage = () => {
       <ClubsH />
       <NeonStrip color={"yellow"} />
       <Advantages />
-      {/* <ClubSlider /> */}
+      <NeonStrip color={"yellow"} />
+      <GeneralMap />
+      <NeonStrip color={"yellow"} />
+      <Partners />
     </>
   );
 };
