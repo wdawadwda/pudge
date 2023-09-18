@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 import { clubData } from "~/entities/const/clubsContent.const";
+import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
 
 import Style from "./clubsH.module.scss";
@@ -24,7 +25,11 @@ export const ClubsH = () => {
         <h2>Наши клубы:</h2>
         <div className={Style.itemWrapper}>
           {clubData.map((club, index) => (
-            <Link to="#" className={Style.itemWrapper__item} key={index}>
+            <Link
+              to={`${links.clubs}/${club.id}`}
+              className={Style.itemWrapper__item}
+              key={index}
+            >
               <img src={club.img} alt="" />
               <h3>{`${club.name}:`}</h3>
               <p>{club.address}</p>

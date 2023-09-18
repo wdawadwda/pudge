@@ -1,0 +1,6 @@
+@import '~/mixins.scss';
+
+.ClubsDetailContainer{
+  background-color: var(--pudge--bg-color);
+  padding: 0 0 var(--pudge-padding-container-content) 0;
+}

@@ -1,0 +1,49 @@
+@import '~/mixins.scss';
+
+.ClubsContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .ClubsSectionContent{
+    h1{
+      text-align: center;
+      font-size: var(--pudge--text-title-second-size);
+      margin-bottom: 50px;
+      @include RobotoSlabBlack;
+      color: var(--pudge--text-second-color);
+    }
+  }
+}
+
+.navClubs{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding-bottom: 50px;
+  a{
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--pudge--text-color);
+    line-height: 20px;
+    font-size: 22px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    transition: color var(--pudge-transition-text) linear;
+    &:hover{
+      color: var(--pudge--text-second-color);
+      border-bottom: solid 2px var(--pudge--text-second-color);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .navClubs{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .navClubs{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
