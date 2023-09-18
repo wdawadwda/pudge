@@ -1,0 +1,10 @@
+@import '~/mixins.scss';
+
+.PriceSectionContent{
+  background-color: var(--pudge--bg-color);
+  img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+  }
+}

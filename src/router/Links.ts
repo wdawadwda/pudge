@@ -8,6 +8,7 @@ export const links = {
   news: "/news",
   contacts: "/contacts",
   clubs: "/clubs",
+  club: "/clubs/:id",
   rules: "/rules",
   hostingEvent: "/hosting-an-event",
   clientAgreement: "/client-agreement",

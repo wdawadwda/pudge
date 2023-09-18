@@ -16,6 +16,7 @@ export interface TypeClubData {
     ps: number;
   };
 }
+
 export const clubData: TypeClubData[] = [
   {
     id: 1,

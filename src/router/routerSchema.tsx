@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import { ClubsDetail } from "~/features/PageSections/Clubs/ClubsDetail";
+import { ClubsLayout } from "~/layouts/ClubsLayout/ClubsLayout";
 import { MainLayout } from "~/layouts/MainLayout/MainLayout";
 import { AboutUs } from "~/pages/AboutUs/AboutUs";
 import { ClientAgreement } from "~/pages/ClientAgreement/ClientAgreement";
@@ -27,14 +29,16 @@ export const routerSchema = createBrowserRouter([
         path: links.rules,
         element: <Rules />,
       },
-      // {
-      //   path: links.clubs,
-      //   element: <Clubs />,
-      // },
-      // {
-      //   path: links.price,
-      //   element: <Clubs />,
-      // },
+      {
+        path: links.clubs,
+        element: <ClubsLayout />,
+        children: [
+          {
+            path: links.club,
+            element: <ClubsDetail />,
+          },
+        ],
+      },
       {
         path: links.about,
         element: <AboutUs />,
@@ -60,7 +64,6 @@ export const routerSchema = createBrowserRouter([
         path: links.games,
         element: <Placeholder />,
       },
-
       {
         path: "*",
         element: <NotFoundPage />,
