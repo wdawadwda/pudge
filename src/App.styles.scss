@@ -69,6 +69,10 @@ a {
   border-bottom: solid 2px var(--pudge--text-second-color)!important;
 }
 
+.disable-scroll{
+  overflow: hidden;
+}
+
 // Свайпер
 
 .swiper-pagination {
