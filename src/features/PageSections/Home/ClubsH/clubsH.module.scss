@@ -16,7 +16,7 @@
         display: flex;
         @include flexCenter;
         flex-direction: column;
-        width: 100%;
+        width: 98%;
         transition: var(--pudge-transition-text) linear;
         img{
           width: 100%;
@@ -39,6 +39,7 @@
           color: var(--pudge--text-color);
           font-size: var(--pudge--text-normal-size);
           transition: var(--pudge-transition-text) linear;
+          min-height: 56px;
         }
         ul{
           margin: 0;
