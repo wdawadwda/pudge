@@ -26,6 +26,7 @@
   background-color: var(--pudge--bg-color-second3);
   border: 2px solid var(--pudge--bg-color-second3);
   color: var(--pudge--text-second2-color);
+  transition: var(--pudge-transition-text) linear;
   &:hover:not(:disabled) {
     background-color: inherit;
     color: var(--pudge--text-second-color);
@@ -36,5 +37,16 @@
     border: 2px solid var(--pudge--bg-disabled-color);
     color: var(--pudge--text-color);
     cursor: not-allowed;
+  }
+  svg{
+    width: 24px;
+    fill: var(--pudge--text-second2-color);
+    transition: var(--pudge-transition-text) linear;
+    &:hover{
+      fill: var(--pudge--text-second-color);
+    }
+  }
+  &:hover svg {
+    fill: var(--pudge--text-second-color);
   }
 }

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import pudgeBG from "~/assets/bg/pudgeBG.png";
-import { Modal } from "~/features/Modal/modal";
+import { Modal } from "~/features/Modal/Modal";
 import { Button } from "~/shared/ui/Button/Buttons";
 import { selectIsShowModal } from "~/store/modal/modal.selectors";
 import { modalActions } from "~/store/modal/modal.slice";
@@ -33,7 +33,7 @@ export const HomeIntro = () => {
           Забронировать место сейчас
         </Button>
       </div>
-      {isShowModal && <Modal />}
+      {isShowModal && <Modal type={"book"} />}
     </div>
   );
 };

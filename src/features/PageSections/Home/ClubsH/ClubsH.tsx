@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { clubData } from "~/entities/const/clubsContent.const";
-import { Modal } from "~/features/Modal/modal";
+import { Modal } from "~/features/Modal/Modal";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
 import { selectIsShowModal } from "~/store/modal/modal.selectors";
@@ -81,7 +81,7 @@ export const ClubsH = () => {
           ))}
         </div>
       </div>
-      {isShowModal && <Modal />}
+      {isShowModal && <Modal type={"book"} />}
     </div>
   );
 };

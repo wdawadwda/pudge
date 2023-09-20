@@ -4,8 +4,10 @@ import { selectIsShowModal } from "~/store/modal/modal.selectors";
 import { modalActions } from "~/store/modal/modal.slice";
 
 import Style from "./modal.module.scss";
+import { type ModalProperties } from "./modal.type";
+import { ModalBook } from "./ModalBook/ModalBook";
 
-export const Modal = () => {
+export const Modal = ({ type }: ModalProperties) => {
   const dispatch = useDispatch();
   const isShowModal = useSelector(selectIsShowModal);
 
@@ -16,14 +18,7 @@ export const Modal = () => {
   return (
     <>
       {isShowModal && (
-        <div className={Style.modal}>
-          <div className={Style.content}>
-            <button className={Style.closeButton} onClick={toggleModal}>
-              Закрыть
-            </button>
-            <p>Дополнительный контент модального окна</p>
-          </div>
-        </div>
+        <div className={Style.modal}>{type === "book" && <ModalBook />}</div>
       )}
       {isShowModal && <div className={Style.blur} onClick={toggleModal}></div>}
     </>

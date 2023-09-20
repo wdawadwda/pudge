@@ -3,10 +3,38 @@
 .togleTitle{
   cursor: pointer;
   margin-bottom: 15px;
+  color: var(--pudge--text-color);
+  &:hover{
+    color: var(--pudge--text-second3-color);
+  }
+  &:hover span{
+    color: var(--pudge--text-second-color);
+  }
   span{
     margin-left: 10px;
+    color: var(--pudge--text-color);
+    &:hover{
+      color: var(--pudge--text-second-color);
+    }
+  }
+  .expandedSvg{
+    color: var(--pudge--text-second-color);
+    &:hover{
+      color: var(--pudge--text-second3-color);
+    }
   }
 }
+
+.expandedText{
+  color: var(--pudge--text-second3-color);
+  &:hover{
+    color: var(--pudge--text-second-color);
+  }
+  &:hover span{
+    color: var(--pudge--text-second3-color);
+  }
+}
+
 .child{
   width: 100%;
   height: auto;

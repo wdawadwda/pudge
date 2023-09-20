@@ -18,9 +18,14 @@ export const Expand = ({
   };
   return (
     <>
-      <h3 className={Style.togleTitle} onClick={toggleExpand}>
+      <h3
+        className={`${Style.togleTitle} ${
+          isExpanded ? Style.expandedText : ""
+        }`}
+        onClick={toggleExpand}
+      >
         {`${titleExpand}`}
-        <span>
+        <span className={`${isExpanded ? Style.expandedSvg : ""}`}>
           {isExpanded ? (
             <FontAwesomeIcon icon={faArrowRight} />
           ) : (
