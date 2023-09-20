@@ -18,6 +18,7 @@
   overflow: auto;
   position: fixed;
   z-index: 11;
+  opacity: 0;
   width: var(--pudge-max-content-width);
   height: 75vh;
   height: 75dvh;
@@ -26,4 +27,5 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: 1s linear;
 }
