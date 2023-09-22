@@ -4,6 +4,4 @@ export interface TabsProperties {
   handleTabClick: (tab: FormState) => void;
 }
 
-export const tabs = [" ", " "];
-
-export type FormState = (typeof tabs)[number];
+export type FormState = string[number];

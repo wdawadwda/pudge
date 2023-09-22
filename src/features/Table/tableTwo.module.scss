@@ -1,0 +1,34 @@
+@import '~/mixins.scss';
+
+.TableSpecContent{
+  table{
+    width: 100%;
+  }
+  tbody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    tr{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      th, td{
+        min-height: 50px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--pudge--bg-color2);
+        padding: 10px;
+        display: flex;
+        @include flexCenter;
+      }
+      th{
+        color: var(--pudge--text-alert-color);
+        font-size: var(--pudge--text-normal-size2);
+      }
+      td{
+        color: var(--pudge--text-second-color);
+        font-size: var(--pudge--text-normal-size);
+      }
+    }
+  }
+}

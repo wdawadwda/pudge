@@ -2,13 +2,11 @@
 
 .ComputerSpecsClubsContent{
   background-color: var(--pudge--bg-color);
-  div{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: start;
-    img{
-      margin-bottom: 50px;
+  >div{
+    >div{
+      button{
+        text-transform: uppercase;
+      }
     }
   }
 }
