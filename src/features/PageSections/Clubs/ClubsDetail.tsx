@@ -32,7 +32,10 @@ export const ClubsDetail = () => {
         {selectedClub ? (
           <div>
             <h2>{`${selectedClub.name}:`}</h2>
-            <Price title={selectedClub.name} img={selectedClub.priceImg} />
+            <Price
+              title={selectedClub.name}
+              data={selectedClub.priceData} /*img={selectedClub.priceImg}*/
+            />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Location location={selectedClub.map} />
             <NeonStrip color="yellow" marginBottom="50px" />
