@@ -1,0 +1,108 @@
+@import '~/mixins.scss';
+
+.TableContainer{
+  padding-bottom: 25px;
+  strong{
+    cursor: default;
+  }
+}
+
+.TableContent{
+  table{
+    width: 100%;
+    margin: var(--pudge-margin-title-content) 0 0 0;
+  }
+  tr{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid var(--pudge--bg-color2);
+    td{
+      max-width: 100%;
+      width: 33.3%;
+      display: flex;
+      height: 100%;
+    }
+  }
+  thead{
+    font-size: var(--pudge--text-subtitle-size);
+    font-weight: 500;
+    tr{
+      display: flex;
+      @include flexCenter;
+      margin-bottom: var(--pudge-margin-title-content);
+      border: none;
+      span{
+        color: var(--pudge--text-second3-color);
+        transition: var(--pudge-transition-text) linear; 
+      }
+      strong{
+        color: var(--pudge--text-alert-color);
+        transition: var(--pudge-transition-text) linear; 
+        text-transform: uppercase;
+      }
+    }
+    &:hover {
+      span {
+        color: var(--pudge--text-alert-color);
+      }
+      strong{
+        color: var(--pudge--text-second3-color);
+      }
+    }
+  }
+  tbody{
+    font-size: var(--pudge--text-normal-size);
+    font-weight: 400;
+    :last-child{
+      border: none;
+    }
+    tr{
+      padding: 25px 0 25px 0;
+    }
+  }
+  tbody{
+    tr{
+      :first-child{
+        color: var(--pudge--text-second-color);
+        justify-content: start;
+        align-items: center;
+      }
+      :nth-child(2){
+        color: var(--pudge--text-second3-color);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      :nth-child(3){
+        color: var(--pudge--text-second3-color);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      :nth-child(4){
+        color: var(--pudge--text-second3-color);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      :nth-child(5){
+        color: var(--pudge--text-second3-color);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+    }
+  }
+  h3{
+    margin-top: 25px;
+  }
+  ul{
+    margin: 0 0 50px 0;
+  } 
+  
+}

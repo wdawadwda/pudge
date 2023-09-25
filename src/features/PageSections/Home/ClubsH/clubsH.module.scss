@@ -24,6 +24,7 @@
           border-radius: 15px 15px 0 0;
           border-bottom: 2px solid var(--pudge--bg-color-second4);
           transition: var(--pudge-transition-text) linear;
+          cursor: pointer;
         }
         h3{
           text-align: center;
@@ -31,6 +32,7 @@
           padding: 25px;
           color: var(--pudge--text-color);
           transition: var(--pudge-transition-text) linear;
+          cursor: pointer;
         }
         p{
           text-align: center;
@@ -40,6 +42,7 @@
           font-size: var(--pudge--text-normal-size);
           transition: var(--pudge-transition-text) linear;
           min-height: 56px;
+          cursor: pointer;
         }
         ul{
           margin: 0;
@@ -48,10 +51,12 @@
           transition: var(--pudge-transition-text) linear;
           list-style: none;
           font-size: var(--pudge--text-normal-size);
+          cursor: default;
           li{
             padding-top: 10px;
             color: var(--pudge--text-color);
             transition: var(--pudge-transition-text) linear;
+            cursor: default;
             strong{
               color: var(--pudge--text-color);
               transition: var(--pudge-transition-text) linear;

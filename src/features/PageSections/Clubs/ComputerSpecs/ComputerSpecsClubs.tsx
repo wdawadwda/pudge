@@ -1,19 +1,29 @@
 import classNames from "classnames";
 
+import { type TypeClubComputerSpecs } from "~/entities/const/clubsContent.type";
 import { Expand } from "~/shared/ui/Expand/Expand";
+import { Tabs } from "~/shared/ui/Tabs/Tab";
+import { type FormState } from "~/shared/ui/Tabs/tabs.types";
+import { useTabs } from "~/shared/ui/Tabs/useTabs";
 
+import { getActiveForm } from "./computerSpecs.utils";
 import Style from "./computerSpecsClubs.module.scss";
 import Styles from "../../pageSections.module.scss";
 
 export const ComputerSpecsClubs = ({
   title,
-  comf,
-  vip,
+  сomputerData,
 }: {
   title: string;
-  comf: string;
-  vip: string;
+  сomputerData: TypeClubComputerSpecs;
 }) => {
+  const tabsName = Object.keys(сomputerData);
+  const { activeTab, handleTabClick } = useTabs<FormState>(tabsName[0]);
+  const activeForm: JSX.Element | null = getActiveForm(
+    activeTab,
+    tabsName,
+    сomputerData
+  );
   return (
     <>
       <div
@@ -23,8 +33,12 @@ export const ComputerSpecsClubs = ({
         })}`}
       >
         <Expand titleExpand={`Железо ${title}`}>
-          <img src={comf} alt="" />
-          <img src={vip} alt="" />
+          <Tabs
+            activeTab={activeTab}
+            tabs={tabsName}
+            handleTabClick={handleTabClick}
+          />
+          {activeForm}
         </Expand>
       </div>
     </>

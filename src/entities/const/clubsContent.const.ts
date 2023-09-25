@@ -1,21 +1,4 @@
-export interface TypeClubData {
-  id: number;
-  map: string;
-  img: string;
-  name: string;
-  address: string;
-  phone: string;
-  priceImg: string;
-  computerSpecs: {
-    comfort: string;
-    vip: string;
-  };
-  quantityСomputers: {
-    comfort: number;
-    vip: number;
-    ps: number;
-  };
-}
+import { type TypeClubData } from "./clubsContent.type";
 
 export const clubData: TypeClubData[] = [
   {
@@ -25,12 +8,83 @@ export const clubData: TypeClubData[] = [
     name: "Маяк Минска",
     address: "УЛ.ПЕТРА МСТИСЛАВЦА 8",
     phone: "+375 (44) 784-49-12",
-    priceImg:
-      "https://i.pinimg.com/originals/39/3e/f4/393ef43c9144200261af2dfedce3ec73.png",
+    priceData: {
+      comfort: {
+        name: "Маяк",
+        tariff: "Comfort",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "3", descr: "до 16:00" },
+            { main: "4", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "15", descr: "пн - пт" },
+            { main: "20", descr: "сб - вс" },
+          ],
+          [{ main: "Ночь+" }, { main: "20", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      vip: {
+        name: "Маяк",
+        tariff: "VIP Zone",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "4", descr: "до 16:00" },
+            { main: "5", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "17", descr: "пн - пт" },
+            { main: "22", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "22", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+    },
     computerSpecs: {
-      comfort:
-        "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
-      vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+      comfort: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3060" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire core" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud II" }],
+        [{ main: "Кресло", descr: "tunder x3 tcs" }],
+      ],
+      vip: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
     },
     quantityСomputers: {
       comfort: 15,
@@ -45,12 +99,120 @@ export const clubData: TypeClubData[] = [
     name: "Партизанская",
     address: "Пр.Партизанский,56/2 2 этаж",
     phone: "+375 (44) 522-79-19",
-    priceImg:
-      "https://i.pinimg.com/originals/39/3e/f4/393ef43c9144200261af2dfedce3ec73.png",
+    priceData: {
+      comfort: {
+        name: "Партизанская",
+        tariff: "Comfort",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "3", descr: "до 16:00" },
+            { main: "4", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "15", descr: "пн - пт" },
+            { main: "20", descr: "сб - вс" },
+          ],
+          [{ main: "Ночь+" }, { main: "20", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      vip: {
+        name: "Партизанская",
+        tariff: "VIP Zone",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "4", descr: "до 16:00" },
+            { main: "5", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "17", descr: "пн - пт" },
+            { main: "22", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "22", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      bootcamp: {
+        name: "Партизанская",
+        tariff: "Bootcamp",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "5", descr: "до 16:00" },
+            { main: "6", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "19", descr: "пн - пт" },
+            { main: "25", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "25", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "45" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 6" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+    },
     computerSpecs: {
-      comfort:
-        "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
-      vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+      comfort: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3060" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire core" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud II" }],
+        [{ main: "Кресло", descr: "tunder x3 tcs" }],
+      ],
+      vip: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
+      bootcamp: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
     },
     quantityСomputers: {
       comfort: 25,
@@ -65,12 +227,120 @@ export const clubData: TypeClubData[] = [
     name: "Площадь Ленина",
     address: "ул. Свердлова, 2",
     phone: "+375 (44) 513-83-74",
-    priceImg:
-      "https://i.pinimg.com/originals/39/3e/f4/393ef43c9144200261af2dfedce3ec73.png",
+    priceData: {
+      comfort: {
+        name: "Партизанская",
+        tariff: "Comfort",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "3", descr: "до 16:00" },
+            { main: "4", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "15", descr: "пн - пт" },
+            { main: "20", descr: "сб - вс" },
+          ],
+          [{ main: "Ночь+" }, { main: "20", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      vip: {
+        name: "Партизанская",
+        tariff: "VIP Zone",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "4", descr: "до 16:00" },
+            { main: "5", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "17", descr: "пн - пт" },
+            { main: "22", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "22", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      bootcamp: {
+        name: "Партизанская",
+        tariff: "Bootcamp",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "5", descr: "до 16:00" },
+            { main: "6", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "19", descr: "пн - пт" },
+            { main: "25", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "25", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "45" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 6" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+    },
     computerSpecs: {
-      comfort:
-        "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
-      vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+      comfort: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3060" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire core" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud II" }],
+        [{ main: "Кресло", descr: "tunder x3 tcs" }],
+      ],
+      vip: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
+      bootcamp: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
     },
     quantityСomputers: {
       comfort: 1,
@@ -85,12 +355,120 @@ export const clubData: TypeClubData[] = [
     name: "Дзержинского",
     address: "ПР.Дзержинского, 69/1",
     phone: "+375 (29) 119-73-21",
-    priceImg:
-      "https://i.pinimg.com/originals/39/3e/f4/393ef43c9144200261af2dfedce3ec73.png",
+    priceData: {
+      comfort: {
+        name: "Партизанская",
+        tariff: "Comfort",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "3", descr: "до 16:00" },
+            { main: "4", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "15", descr: "пн - пт" },
+            { main: "20", descr: "сб - вс" },
+          ],
+          [{ main: "Ночь+" }, { main: "20", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      vip: {
+        name: "Партизанская",
+        tariff: "VIP Zone",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "4", descr: "до 16:00" },
+            { main: "5", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "17", descr: "пн - пт" },
+            { main: "22", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "22", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "35" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 5" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+      bootcamp: {
+        name: "Партизанская",
+        tariff: "Bootcamp",
+        rows: [
+          [
+            { main: "1 час" },
+            { main: "5", descr: "до 16:00" },
+            { main: "6", descr: "после 16:00" },
+          ],
+          [
+            { main: "Ночь" },
+            { main: "19", descr: "пн - пт" },
+            { main: "25", descr: "сб - с" },
+          ],
+          [{ main: "Ночь+" }, { main: "25", descr: " пн - пт" }],
+          [{ main: "Безлимит" }, { main: "45" }],
+          [{ main: "Бодрое утро" }, { main: "5 ч за 6" }],
+        ],
+        description: [
+          ["Время действия тарифа Ночь: с 23:00 до 8:00"],
+          ["Время действия тарифа Ночь+: с 20:00 до 8:00"],
+          ["Время действия тарифа Безлимит: 24 часа"],
+          [
+            "Время действия тарифа Бодрое: утро пн-пт (8:00-11:00)/сб-вс (8:00-10:00)",
+          ],
+        ],
+      },
+    },
     computerSpecs: {
-      comfort:
-        "https://i.pinimg.com/originals/2e/5b/24/2e5b24090d374bae9364b8b7fb62a9b8.png",
-      vip: "https://i.pinimg.com/originals/4a/14/2a/4a142af1b7f6f953383418f695677a3c.png",
+      comfort: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3060" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire core" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud II" }],
+        [{ main: "Кресло", descr: "tunder x3 tcs" }],
+      ],
+      vip: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
+      bootcamp: [
+        [{ main: "Видеокарта", descr: "GEFORCE RTX 3070" }],
+        [{ main: "Процессор", descr: "INTEL CORE I5-11400F" }],
+        [{ main: "Оперативная память", descr: "16 GB" }],
+        [{ main: "Монитор", descr: "224 / 280 ГЦ" }],
+        [{ main: "Мышь", descr: "huprex pulsefire surge" }],
+        [{ main: "Клавиатура", descr: "huprex alloy originals" }],
+        [{ main: "Наушники", descr: "huprex cloud 5" }],
+        [{ main: "Кресло", descr: "dxracer" }],
+      ],
     },
     quantityСomputers: {
       comfort: 35,

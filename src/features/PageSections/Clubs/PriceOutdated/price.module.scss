@@ -2,11 +2,9 @@
 
 .PriceSectionContent{
   background-color: var(--pudge--bg-color);
-  >div{
-    >div{
-      button{
-        text-transform: uppercase;
-      }
-    }
+  img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
   }
 }
