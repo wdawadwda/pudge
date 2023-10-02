@@ -1,11 +1,10 @@
 import { links } from "~/router/Links";
-export const menuLinks = [
+
+export const menuLinksSchema = [
   { to: links.about, label: "О нас" },
-  { to: links.price, label: "Цены" },
-  { to: links.clubs, label: "Клубы" },
+  { to: links.clubs, label: "Всё о кубах" },
   { to: links.contacts, label: "Контакты" },
   { to: links.news, label: "Новости" },
   { to: links.gallery, label: "Галерея" },
-  { to: links.computers, label: "Железо" },
-  { to: links.games, label: "Игры" },
+  { to: links.events, label: "Мероприятия" },
 ];

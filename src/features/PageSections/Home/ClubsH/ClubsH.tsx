@@ -39,8 +39,8 @@ export const ClubsH = () => {
               >
                 <img src={club.img} alt="" />
                 <h3>{`${club.name}:`}</h3>
-                <p>{club.address}</p>
-                <p>{club.phone}</p>
+                <p>{club.contacts.address}</p>
+                <p>{club.contacts.phone}</p>
                 <ul>
                   {" "}
                   Кол-во компьютеров:

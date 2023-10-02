@@ -25,10 +25,11 @@
     text-transform: uppercase;
     color: var(--pudge--text-color);
     line-height: 20px;
-    font-size: 22px;
+    font-size: var(--pudge--text-normal-size2);
     font-weight: 500;
     padding-bottom: 10px;
-    transition: color var(--pudge-transition-text) linear;
+    transition: var(--pudge-transition-text) linear;
+    border-bottom: solid 2px var(--pudge--text-empty-border-color);
     &:hover{
       color: var(--pudge--text-second-color);
       border-bottom: solid 2px var(--pudge--text-second-color);

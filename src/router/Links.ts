@@ -1,16 +1,13 @@
 export const links = {
   home: "/",
   about: "/about",
-  computers: "/computers",
-  price: "/price",
   gallery: "/gallery",
-  games: "/games",
   news: "/news",
   contacts: "/contacts",
   clubs: "/clubs",
   club: "/clubs/:id",
   rules: "/rules",
-  hostingEvent: "/hosting-an-event",
+  events: "/events",
   clientAgreement: "/client-agreement",
 };
 
