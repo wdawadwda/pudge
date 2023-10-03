@@ -1,6 +1,7 @@
 import Logo from "~/assets/logo/logo.png";
 import { ReactComponent as Iinstagram } from "~/assets/social/instagram.svg";
 import { ReactComponent as VK } from "~/assets/social/vk.svg";
+import { socialLinks } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
 
 import Style from "./modalBook.module.scss";
@@ -17,14 +18,10 @@ export const ModalBook = () => {
           <Button disabled={true} appearance="primary">
             Через сайт
           </Button>
-          <a href="https://vk.com/pudgay" target="_blank" rel="noreferrer">
+          <a href={socialLinks.vk} target="_blank" rel="noreferrer">
             <Button appearance="primary" contentLeft={<VK />}></Button>
           </a>
-          <a
-            href="https://www.instagram.com/pudge_cyberclub/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={socialLinks.instagram} target="_blank" rel="noreferrer">
             <Button appearance="primary" contentLeft={<Iinstagram />}></Button>
           </a>
         </div>

@@ -38,8 +38,11 @@ export interface TypeClubData {
   map: string;
   img: string;
   name: string;
-  address: string;
-  phone: string;
+  contacts: {
+    address: string;
+    phone: string;
+    instagram: string;
+  };
   priceData: TypeClubPriceDataMap;
   computerSpecs: TypeClubComputerSpecs;
   quantityСomputers: TypeClubQuantityComputers;

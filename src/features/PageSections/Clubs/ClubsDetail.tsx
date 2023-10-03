@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { clubData } from "~/entities/const/clubsContent.const";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 
+import { BookClub } from "./BookClub/BookClub";
 import Style from "./clubsLayouts.module.scss";
 import { ComputerSpecsClubs } from "./ComputerSpecs/ComputerSpecsClubs";
 import { Location } from "./Location/Location";
@@ -32,6 +33,8 @@ export const ClubsDetail = () => {
         {selectedClub ? (
           <div>
             <h2>{`${selectedClub.name}:`}</h2>
+            <BookClub contacts={selectedClub.contacts} />
+            <NeonStrip color="yellow" marginBottom="50px" />
             <Price title={selectedClub.name} data={selectedClub.priceData} />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Location location={selectedClub.map} />

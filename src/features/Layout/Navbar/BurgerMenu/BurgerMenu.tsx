@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import Style from "./burger.module.scss";
-import { menuLinks } from "./burgerMeny,const";
+import { menuLinksSchema } from "./burgerMeny,const";
 
 export const BurgerMenu = ({
   isMenuOpen,
@@ -16,7 +16,7 @@ export const BurgerMenu = ({
 
   return (
     <nav className={Style.nav}>
-      {menuLinks.map((link) => (
+      {menuLinksSchema.map((link) => (
         <Link
           key={link.to}
           to={link.to}
