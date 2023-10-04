@@ -9,6 +9,7 @@ export const links = {
   rules: "/rules",
   events: "/events",
   clientAgreement: "/client-agreement",
+  reg: "/sign-up",
 };
 
 export const socialLinks = {

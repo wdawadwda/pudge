@@ -1,0 +1,10 @@
+@import '~/mixins.scss';
+
+.SignUpContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .SignUpContent{
+    display: flex;
+    @include flexCenter;
+  }
+}

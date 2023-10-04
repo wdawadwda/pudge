@@ -9,6 +9,7 @@ import { Contacts } from "~/pages/Contacts/Contacts";
 import { HomePage } from "~/pages/Home/HomePage";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
 import { Placeholder } from "~/pages/Placeholder/Placeholder";
+import { Registration } from "~/pages/Registration/Registration";
 import { Rules } from "~/pages/Rules/Rules";
 
 import { links } from "./Links";
@@ -55,6 +56,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: links.news,
         element: <Placeholder />,
+      },
+      {
+        path: links.reg,
+        element: <Registration />,
       },
       {
         path: "*",
