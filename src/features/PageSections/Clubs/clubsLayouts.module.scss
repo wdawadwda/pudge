@@ -4,3 +4,13 @@
   background-color: var(--pudge--bg-color);
   padding: 0 0 var(--pudge-padding-container-content) 0;
 }
+
+@media (max-width: 450px) {
+  .ClubsDetailContainer{
+    .selectedClub{
+      .title{
+        font-size: var(--pudge--text-subtitle-size)
+      }
+    }
+  }
+}

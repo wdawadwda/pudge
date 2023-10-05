@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { type TypeClubPriceDataMap } from "~/entities/const/clubsContent.type";
+import { type TypeClubPriceDataMap } from "~/entities/const/content/clubsContent.type";
 import { Expand } from "~/shared/ui/Expand/Expand";
 import { Tabs } from "~/shared/ui/Tabs/Tab";
 import { type FormState } from "~/shared/ui/Tabs/tabs.types";

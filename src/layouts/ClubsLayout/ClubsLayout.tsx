@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { NavLink } from "react-router-dom";
 
-import { clubData } from "~/entities/const/clubsContent.const";
+import { clubData } from "~/entities/const/content/clubsContent.const";
 import { ClubsDetail } from "~/features/PageSections/Clubs/ClubsDetail";
 import Styles from "~/features/PageSections/pageSections.module.scss";
 import { links } from "~/router/Links";

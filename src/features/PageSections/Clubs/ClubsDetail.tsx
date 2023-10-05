@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useParams } from "react-router-dom";
 
-import { clubData } from "~/entities/const/clubsContent.const";
+import { clubData } from "~/entities/const/content/clubsContent.const";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 
 import { BookClub } from "./BookClub/BookClub";
@@ -31,8 +31,8 @@ export const ClubsDetail = () => {
         })}`}
       >
         {selectedClub ? (
-          <div>
-            <h2>{`${selectedClub.name}:`}</h2>
+          <div className={Style.selectedClub}>
+            <h2 className={Style.title}>{`${selectedClub.name}:`}</h2>
             <BookClub contacts={selectedClub.contacts} />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Price title={selectedClub.name} data={selectedClub.priceData} />

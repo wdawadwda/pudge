@@ -1,0 +1,35 @@
+@import '~/mixins.scss';
+
+.mesWrap{
+  width: 100%;
+  background-color: var(--pudge--bg-color);
+  margin-bottom: 15px;
+  .text{
+    display: flex;
+    color: var(--pudge--text-second2-color);
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  span {
+    &:first-child {
+      border: 1px solid inherit;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    &:last-child {
+      border: 1px solid inherit;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+  .success{
+    background-color: var(--pudge--bg-color-second3);
+  }
+  .error{
+    background-color: var(--pudge--bg-alert-color);
+  }
+}

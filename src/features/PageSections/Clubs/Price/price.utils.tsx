@@ -1,4 +1,4 @@
-import { type TypeClubPriceDataMap } from "~/entities/const/clubsContent.type";
+import { type TypeClubPriceDataMap } from "~/entities/const/content/clubsContent.type";
 import { Table } from "~/features/Table/Table";
 
 export function getActiveForm(
