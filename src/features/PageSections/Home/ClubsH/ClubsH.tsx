@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { clubData } from "~/entities/const/clubsContent.const";
+import { clubData } from "~/entities/const/content/clubsContent.const";
 import { Modal } from "~/features/Modal/Modal";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";

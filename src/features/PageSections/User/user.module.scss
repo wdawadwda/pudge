@@ -1,0 +1,85 @@
+@import '~/mixins.scss';
+
+.UserContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+}
+  .UserContent{
+    display: flex;
+    @include flexCenter;
+    font-size: 16px;
+    font-weight: 400;
+    flex-direction: column;
+    .errorText{
+      color: var(--pudge--text-alert-color);
+    }
+    .errorBg{
+      background-color: var(--pudge--bg-alert-color);
+      border: 1px solid var(--pudge--bg-alert-color);
+    }
+    .validText{
+      color: var(--pudge--text-second-color);
+    }
+    .validBG{
+      background-color: var(--pudge--bg-color-second3);
+      border: 1px solid var(--pudge--bg-color-second3);
+    }
+  form{
+    width: 70%;
+    >div{
+      display: flex;
+      @include flexCenter;
+      flex-direction: column;
+      width: 100%;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 10px 0 10px 0;
+        label{
+          width: 30%;
+        }
+        input{
+          width: 60%;
+          height: 35px;
+          background-color: var(--pudge--text-second3-color);
+          border: 1px solid var(--pudge--text-second3-color);
+          border-radius: 10px;
+          color: var(--pudge--text-second2-color);
+        }
+        input:focus-visible {
+          outline: none;
+        }
+        input::placeholder {
+          color: var(--pudge--text-second2-color);
+        }
+      }
+      span{
+        color: var(--pudge--text-alert-color);
+      }
+    }
+    a{
+      display: block;
+      width: 100%;
+      text-align: center;
+      color: var(--pudge--text-color-links);
+      margin-top: 10px;
+      transition: linear var(--pudge-transition-text);
+      &:hover{
+        color: var(--pudge--text-second-color);
+      }
+    }
+    button{
+      margin-top: 25px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .UserContent{
+    form{
+      width: 100%;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Iinstagram } from "~/assets/social/instagram.svg";
-import { clubData } from "~/entities/const/clubsContent.const";
+import { clubData } from "~/entities/const/content/clubsContent.const";
 import { Expand } from "~/shared/ui/Expand/Expand";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 

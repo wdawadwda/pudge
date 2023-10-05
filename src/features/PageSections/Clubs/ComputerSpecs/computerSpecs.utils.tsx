@@ -1,7 +1,7 @@
 import {
-  type TypeComputerSpecsData,
   type TypeClubComputerSpecs,
-} from "~/entities/const/clubsContent.type";
+  type TypeComputerSpecsData,
+} from "~/entities/const/content/clubsContent.type";
 import { Table } from "~/features/Table/Table";
 
 export function getActiveForm(

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { type TypeComputerSpecsData } from "~/entities/const/clubsContent.type";
+import { type TypeComputerSpecsData } from "~/entities/const/content/clubsContent.type";
 
 export const ComputerSpec = ({
   specData,

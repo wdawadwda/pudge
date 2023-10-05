@@ -6,7 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { type Swiper as SwiperType } from "swiper/types";
 
 import "swiper/css";
-import { partners } from "~/entities/const/partners.const";
+
+import { partners } from "~/entities/const/content/partners.const";
 
 import Style from "./partners.module.scss";
 

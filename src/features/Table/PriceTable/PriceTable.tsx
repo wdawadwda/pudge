@@ -1,4 +1,4 @@
-import { type TypeClubTariff } from "~/entities/const/clubsContent.type";
+import { type TypeClubTariff } from "~/entities/const/content/clubsContent.type";
 import { Expand } from "~/shared/ui/Expand/Expand";
 
 export const PriceTable = ({ priceData }: { priceData: TypeClubTariff }) => {

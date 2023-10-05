@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useParams } from "react-router-dom";
 
-import { clubData } from "~/entities/const/clubsContent.const";
+import { clubData } from "~/entities/const/content/clubsContent.const";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
 
 import { BookClub } from "./BookClub/BookClub";

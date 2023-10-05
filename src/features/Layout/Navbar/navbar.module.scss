@@ -72,7 +72,7 @@
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.5s linear, max-height 0.5s linear, visibility 0s 0.5s;
+  transition: opacity var(--pudge-transition-second) linear, max-height var(--pudge-transition-second) linear, visibility 0s var(--pudge-transition-second);
 }
 
 .moreLinksWrapper:hover .moreLinksDropdown {
@@ -97,6 +97,20 @@
   color: var(--pudge--text-color);
   font-size: 50px;
   display: none;
+}
+
+.user{
+  cursor: pointer;
+  svg{
+    width: 25px;
+    height: auto;
+    color: var(--pudge--text-color);
+    transition: 0.5s linear;
+  }
+}
+
+.user:hover svg {
+  color: var(--pudge--text-second3-color);
 }
 
 @media (max-width: 1200px) {

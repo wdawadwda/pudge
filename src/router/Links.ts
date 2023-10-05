@@ -9,6 +9,10 @@ export const links = {
   rules: "/rules",
   events: "/events",
   clientAgreement: "/client-agreement",
+  reg: "/sign-up",
+  login: "/sign-in",
+  success: "/activate/:uid/:token",
+  account: "/account",
 };
 
 export const socialLinks = {
