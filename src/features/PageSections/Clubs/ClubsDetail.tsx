@@ -31,8 +31,8 @@ export const ClubsDetail = () => {
         })}`}
       >
         {selectedClub ? (
-          <div>
-            <h2>{`${selectedClub.name}:`}</h2>
+          <div className={Style.selectedClub}>
+            <h2 className={Style.title}>{`${selectedClub.name}:`}</h2>
             <BookClub contacts={selectedClub.contacts} />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Price title={selectedClub.name} data={selectedClub.priceData} />

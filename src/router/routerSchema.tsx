@@ -53,6 +53,10 @@ export const routerSchema = createBrowserRouter([
         element: <Placeholder />,
       },
       {
+        path: links.events,
+        element: <Placeholder />,
+      },
+      {
         path: links.news,
         element: <Placeholder />,
       },
