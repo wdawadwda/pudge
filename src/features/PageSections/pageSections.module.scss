@@ -35,3 +35,14 @@
     }
   }
 }
+
+@media (max-width: 550px) {
+  .Container{
+    .Content{
+      h2{
+        font-size: var(--pudge--text-subtitle-size);
+      }
+    }
+  }
+}
+

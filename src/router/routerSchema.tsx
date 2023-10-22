@@ -10,8 +10,13 @@ import { HomePage } from "~/pages/Home/HomePage";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
 import { Placeholder } from "~/pages/Placeholder/Placeholder";
 import { Rules } from "~/pages/Rules/Rules";
+import { Account } from "~/pages/User/Account/Account";
+import { Login } from "~/pages/User/Login/Login";
+import { Registration } from "~/pages/User/Registration/Registration";
+import { SuccessPage } from "~/pages/User/SuccessPage/SuccessPage";
 
 import { links } from "./Links";
+import { AccessControlRoute } from "./router.utils";
 
 export const routerSchema = createBrowserRouter([
   {
@@ -59,6 +64,32 @@ export const routerSchema = createBrowserRouter([
       {
         path: links.news,
         element: <Placeholder />,
+      },
+      {
+        element: <AccessControlRoute isPublicOnly={true} />,
+        children: [
+          {
+            path: links.reg,
+            element: <Registration />,
+          },
+          {
+            path: links.success,
+            element: <SuccessPage />,
+          },
+          {
+            path: links.login,
+            element: <Login />,
+          },
+        ],
+      },
+      {
+        element: <AccessControlRoute isProtected={true} />,
+        children: [
+          {
+            path: links.account,
+            element: <Account />,
+          },
+        ],
       },
       {
         path: "*",

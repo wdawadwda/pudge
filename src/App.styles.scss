@@ -20,6 +20,8 @@
   --pudge--bg-color-second4: #BEBE0B;
   --pudge--bg-disabled-color: rgb(138, 138, 138);
   --pudge--bg-color2: white;
+  --pudge--bg-alert-color: red;
+  --pudge--bg-color-other: aqua;
 
   /*! TEXT */
   --pudge--text-color: white;
@@ -28,6 +30,7 @@
   --pudge--text-second3-color: #BEBE0B;
   --pudge--text-alert-color: red;
   --pudge--text-empty-border-color: rgba(255, 255, 255, 0);
+  --pudge--text-color-links: aqua;
 
   --pudge--text-title-size: 80px;
   --pudge--text-title-second-size: 50px;
@@ -44,6 +47,7 @@ body {
   color: var(--pudge--text-color);
   background-color: var(--pudge--bg-color);
   font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; 
 }
 
 h1 {

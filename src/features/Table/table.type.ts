@@ -1,7 +1,7 @@
 import {
-  type TypeComputerSpecsData,
   type TypeClubTariff,
-} from "~/entities/const/clubsContent.type";
+  type TypeComputerSpecsData,
+} from "~/entities/const/content/clubsContent.type";
 
 export interface TypeTableProperties {
   priceData?: TypeClubTariff | null;
