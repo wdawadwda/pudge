@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "tms-typescript",
+  "homepage": "http://pudge.by",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
