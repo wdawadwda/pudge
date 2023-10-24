@@ -50,3 +50,61 @@
     fill: var(--pudge--text-second-color);
   }
 }
+
+.secondary {
+  background-color: var(--pudge--bg-color-second4);
+  border: 2px solid var(--pudge--bg-color-second4);
+  color: var(--pudge--text-second2-color);
+  transition: var(--pudge-transition-text) linear;
+  &:hover:not(:disabled) {
+    background-color: inherit;
+    color: var(--pudge--text-second3-color);
+    border-radius: 50px;
+  }
+  &:disabled {
+    background-color: var(--pudge--bg-disabled-color);
+    border: 2px solid var(--pudge--bg-disabled-color);
+    color: var(--pudge--text-color);
+    cursor: not-allowed;
+  }
+  svg{
+    width: 24px;
+    fill: var(--pudge--text-second2-color);
+    transition: var(--pudge-transition-text) linear;
+    &:hover{
+      fill: var(--pudge--text-second3-color);
+    }
+  }
+  &:hover svg {
+    fill: var(--pudge--text-second3-color);
+  }
+}
+
+.alert {
+  background-color: var(--pudge--bg-alert-color);
+  border: 2px solid var(--pudge--bg-alert-color);
+  color: var(--pudge--text-second2-color);
+  transition: var(--pudge-transition-text) linear;
+  &:hover:not(:disabled) {
+    background-color: inherit;
+    color: var(--pudge--text-alert-color);
+    border-radius: 50px;
+  }
+  &:disabled {
+    background-color: var(--pudge--bg-disabled-color);
+    border: 2px solid var(--pudge--bg-disabled-color);
+    color: var(--pudge--text-color);
+    cursor: not-allowed;
+  }
+  svg{
+    width: 24px;
+    fill: var(--pudge--text-second2-color);
+    transition: var(--pudge-transition-text) linear;
+    &:hover{
+      fill: var(--pudge--text-alert-color);
+    }
+  }
+  &:hover svg {
+    fill: var(--pudge--text-alert-color);
+  }
+}

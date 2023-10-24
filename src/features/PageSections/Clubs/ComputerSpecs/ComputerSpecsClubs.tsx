@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import { type TypeClubComputerSpecs } from "~/entities/const/content/clubsContent.type";
+import { sortOrder, tariffSortArray } from "~/entities/utils/sortTariff.utils";
 import { Expand } from "~/shared/ui/Expand/Expand";
 import { Tabs } from "~/shared/ui/Tabs/Tab";
 import { type FormState } from "~/shared/ui/Tabs/tabs.types";
@@ -17,13 +18,10 @@ export const ComputerSpecsClubs = ({
   title: string;
   сomputerData: TypeClubComputerSpecs;
 }) => {
-  const tabsName = Object.keys(сomputerData);
+  const tabsName = tariffSortArray(sortOrder, Object.keys(сomputerData));
   const { activeTab, handleTabClick } = useTabs<FormState>(tabsName[0]);
-  const activeForm: JSX.Element | null = getActiveForm(
-    activeTab,
-    tabsName,
-    сomputerData
-  );
+  const activeForm: JSX.Element | null = getActiveForm(activeTab, сomputerData);
+
   return (
     <>
       <div

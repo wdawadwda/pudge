@@ -1,26 +1,25 @@
 import {
+  type SpecData,
   type TypeClubComputerSpecs,
-  type TypeComputerSpecsData,
 } from "~/entities/const/content/clubsContent.type";
 import { Table } from "~/features/Table/Table";
 
 export function getActiveForm(
   activeTab: string,
-  tabsName: string[],
   сomputerData: TypeClubComputerSpecs
 ) {
   switch (activeTab) {
-    case tabsName[0]: {
-      const data: TypeComputerSpecsData[][] = сomputerData.comfort;
+    case "comfort": {
+      const data: SpecData | undefined = сomputerData.comfort;
       return <Table specData={data} type={"computerSpecs"} />;
     }
 
-    case tabsName[1]: {
-      const data: TypeComputerSpecsData[][] = сomputerData.vip;
+    case "vip": {
+      const data: SpecData | undefined = сomputerData.vip;
       return <Table specData={data} type={"computerSpecs"} />;
     }
-    case tabsName[2]: {
-      const data: TypeComputerSpecsData[][] | undefined = сomputerData.bootcamp;
+    case "bootcamp": {
+      const data: SpecData | undefined = сomputerData.bootcamp;
       return сomputerData.bootcamp ? (
         <Table specData={data} type={"computerSpecs"} />
       ) : null;

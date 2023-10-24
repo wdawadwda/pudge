@@ -1,8 +1,9 @@
 import classNames from "classnames";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { clubData } from "~/entities/const/content/clubsContent.const";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
+import { selectClubDataResults } from "~/store/content/content.selectors";
 
 import { BookClub } from "./BookClub/BookClub";
 import Style from "./clubsLayouts.module.scss";
@@ -15,7 +16,11 @@ export const ClubsDetail = () => {
   const { id } = useParams();
 
   const clubId = id ? Number.parseInt(id) : undefined;
+  const clubData = useSelector(selectClubDataResults);
   const selectedClub = clubData.find((club) => club.id === clubId);
+
+  // console.warn(clubId);
+  // console.warn(selectedClub.computerSpecs);
 
   return (
     <div
@@ -35,7 +40,7 @@ export const ClubsDetail = () => {
             <h2 className={Style.title}>{`${selectedClub.name}:`}</h2>
             <BookClub contacts={selectedClub.contacts} />
             <NeonStrip color="yellow" marginBottom="50px" />
-            <Price title={selectedClub.name} data={selectedClub.priceData} />
+            <Price title={selectedClub.name} data={selectedClub.price} />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Location location={selectedClub.map} />
             <NeonStrip color="yellow" marginBottom="50px" />

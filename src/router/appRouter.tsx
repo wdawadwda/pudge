@@ -2,16 +2,19 @@ import { useEffect } from "react";
 
 import { RouterProvider } from "react-router-dom";
 
+import { useAuth } from "~/entities/hooks/useAuth";
 import { Loader } from "~/pages/Loader/Loader";
-import { fetchUser } from "~/store/api/userApi";
+import { fetchClubContent } from "~/store/api/contentApi";
+// import { fetchUser } from "~/store/api/userApi";
 import { useAppDispatch, useAppSelector } from "~/store/store.types";
-import { selectTokens } from "~/store/user/user.selectors";
+// import { selectTokens } from "~/store/user/user.selectors";
 
 import { routerSchema } from "./routerSchema";
 
 export const AppRouter = () => {
   const dispatch = useAppDispatch();
-  const tokens = useAppSelector(selectTokens);
+  useAuth();
+
   const isInitializing = useAppSelector(
     ({ user }) =>
       (user.currentUser.status === "loading" ||
@@ -19,12 +22,40 @@ export const AppRouter = () => {
       user.tokens.status === "success"
   );
   useEffect(() => {
-    const promise = dispatch(fetchUser());
+    const promise = dispatch(fetchClubContent());
 
     return () => {
       promise.abort("cancelled");
     };
-  }, [dispatch, tokens]);
+  }, [dispatch]);
 
   return isInitializing ? <Loader /> : <RouterProvider router={routerSchema} />;
 };
+
+// export const AppRouter = () => {
+//   const dispatch = useAppDispatch();
+//   const tokens = useAppSelector(selectTokens);
+//   const isInitializing = useAppSelector(
+//     ({ user }) =>
+//       (user.currentUser.status === "loading" ||
+//         user.currentUser.status === "idle") &&
+//       user.tokens.status === "success"
+//   );
+//   useEffect(() => {
+//     const promise = dispatch(fetchUser());
+
+//     return () => {
+//       promise.abort("cancelled");
+//     };
+//   }, [dispatch, tokens]);
+
+//   useEffect(() => {
+//     const promise = dispatch(fetchClubContent());
+
+//     return () => {
+//       promise.abort("cancelled");
+//     };
+//   }, [dispatch, tokens]);
+
+//   return isInitializing ? <Loader /> : <RouterProvider router={routerSchema} />;
+// };

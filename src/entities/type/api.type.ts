@@ -2,6 +2,8 @@ export interface User {
   username: string;
   id: number;
   email: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  is_staff: boolean;
 }
 
 export type SignUpApiRequest = {
@@ -36,7 +38,7 @@ export interface JWTTokens {
   refresh: string;
 }
 
-export type ErrorCreateToken = {
+export type ErrorDetail = {
   detail: string;
 };
 

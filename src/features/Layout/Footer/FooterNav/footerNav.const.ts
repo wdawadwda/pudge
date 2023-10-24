@@ -5,5 +5,5 @@ export const footerNavSchema = [
   { to: links.rules, label: "Правила клубов" },
   { to: links.events, label: "Мероприятия" },
   { to: links.contacts, label: "Контакты" },
-  { to: links.about, label: "О нас" },
+  // { to: links.about, label: "О нас" },
 ];

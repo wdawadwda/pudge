@@ -10,8 +10,8 @@ export const LogoComponent = () => {
     <Link to={links.home} className={Style.logoWrapper}>
       <img className={Style.logo} src={Logo} alt="logo" />
       <div className={Style.logoText}>
-        <span>pudge.bu</span>
-        <span>cuber club</span>
+        <span>pudge.by</span>
+        <span>cyber club</span>
       </div>
     </Link>
   );

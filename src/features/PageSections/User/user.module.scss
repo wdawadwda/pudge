@@ -74,6 +74,16 @@
       margin-top: 25px;
     }
   }
+  .separator{
+    color: var(--pudge--text-alert-color);
+    display: flex;
+    @include flexCenter;
+  }
+}
+
+.goBackwrapper{
+  width: 100%;
+  margin-bottom: var(--pudge-margin-title-content);
 }
 
 @media (max-width: 1200px) {

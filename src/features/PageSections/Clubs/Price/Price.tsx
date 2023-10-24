@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 import { type TypeClubPriceDataMap } from "~/entities/const/content/clubsContent.type";
+import { sortOrder, tariffSortArray } from "~/entities/utils/sortTariff.utils";
 import { Expand } from "~/shared/ui/Expand/Expand";
 import { Tabs } from "~/shared/ui/Tabs/Tab";
 import { type FormState } from "~/shared/ui/Tabs/tabs.types";
@@ -17,13 +18,9 @@ export const Price = ({
   title: string;
   data: TypeClubPriceDataMap;
 }) => {
-  const tabsName = Object.keys(data);
+  const tabsName = tariffSortArray(sortOrder, Object.keys(data));
   const { activeTab, handleTabClick } = useTabs<FormState>(tabsName[0]);
-  const activeForm: JSX.Element | null = getActiveForm(
-    activeTab,
-    tabsName,
-    data
-  );
+  const activeForm: JSX.Element | null = getActiveForm(activeTab, data);
   return (
     <>
       <div

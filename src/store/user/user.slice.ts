@@ -25,6 +25,7 @@ export const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.currentUser = { status: "idle" };
+      state.tokens = { status: "idle" };
     },
     setError: (state, action: PayloadAction<ErrorObject | null>) => {
       state.error = action.payload;
