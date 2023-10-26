@@ -6,23 +6,26 @@ urlpatterns = [
   path('partners/', PartnersView.as_view({'get': 'list', 'post': 'create'})),
   path('partners/<int:pk>/', PartnersView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
 
-  path('clubs/', ClubsView.as_view({'get': 'list', 'post': 'create'})),
-  path('clubs/<int:pk>/', ClubsView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
-
-  path('tariffs/', TariffView.as_view({'get': 'list', 'post': 'create'})),
-  path('tariffs/<int:pk>/', TariffView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
-
-  path('computer-spec/', ComputerSpecView.as_view({'get': 'list', 'post': 'create'})),
-  path('computer-spec/<int:pk>/', ComputerSpecView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
-
-  path('quantity-computers/', QuantityComputersView.as_view({'get': 'list', 'post': 'create'})),
-  path('quantity-computers/<int:pk>/', QuantityComputersView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
-
-  path('collect-full-clubs-json/', CollectFullJsonView.as_view({'get': 'list'})),
-
-  path('get-full-clubs-json/', GetFullJsonView.as_view({'get': 'list'})),
-
+  # path('clubs/', ClubsView.as_view({'get': 'list', 'post': 'create'})),
+  # path('clubs/<int:pk>/', ClubsView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
+  #
+  # path('tariffs/', TariffView.as_view({'get': 'list', 'post': 'create'})),
+  # path('tariffs/<int:pk>/', TariffView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
+  #
+  # path('computer-spec/', ComputerSpecView.as_view({'get': 'list', 'post': 'create'})),
+  # path('computer-spec/<int:pk>/', ComputerSpecView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
+  #
+  # path('quantity-computers/', QuantityComputersView.as_view({'get': 'list', 'post': 'create'})),
+  # path('quantity-computers/<int:pk>/', QuantityComputersView.as_view({'get': 'list', 'put': 'update', 'delete': 'destroy'})),
+  #
+  # path('collect-full-clubs-json/', CollectFullJsonView.as_view({'get': 'list'})),
+  #
+  # path('get-full-clubs-json/', GetFullJsonView.as_view({'get': 'list'})),
+  #
   path('set-default-data/', LoadAllClubData.as_view()),
+
+  path('one-club/', OneClubView.as_view()),
+  path('one-club/<int:pk>/', OneClubView.as_view()),
 
 ]
 

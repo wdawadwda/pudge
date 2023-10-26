@@ -6,32 +6,37 @@ class PartnersSerializer(serializers.ModelSerializer):
     model = PartnersModel
     fields = '__all__'
 
-class ClubsSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = ClubsModel
-    fields = '__all__'
-
-class TariffSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = TariffModel
-    fields = '__all__'
-
-class ComputerSpecSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = ComputerSpecModel
-    fields = '__all__'
-
-class QuantityComputersSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = QuantityComputersModel
-    fields = '__all__'
-
-class ClubsInfoSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = ClubsModel
-    fields = '__all__'
+# class ClubsSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = ClubsModel
+#     fields = '__all__'
+#
+# class TariffSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = TariffModel
+#     fields = '__all__'
+#
+# class ComputerSpecSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = ComputerSpecModel
+#     fields = '__all__'
+#
+# class QuantityComputersSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = QuantityComputersModel
+#     fields = '__all__'
+#
+# class ClubsInfoSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = ClubsModel
+#     fields = '__all__'
 
 class ClubsFullSerializer(serializers.ModelSerializer):
   class Meta:
     model = ClubsFullJsonModel
+    fields = '__all__'
+
+class OneClubSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = OneClubModel
     fields = '__all__'

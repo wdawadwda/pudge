@@ -439,6 +439,7 @@ clubData = [
       'ps': 0,
     },
   },
+
   {
     'id': 4,
     'map': "https://yandex.by/map-widget/v1/?ll=27.488150%2C53.865208&mode=search&oid=163949560820&ol=biz&sctx=ZAAAAAgBEAAaKAoSCXmu78NBjjtAES%2F6CtKM80pAEhIJTl5kAn6N3z8RhPBo44i1xD8iBgABAgMEBSgKOABA%2FJ4GSABiEmxldG9fdl9nb3JvZGU9dHJ1ZWoCdWGdAc3MTD2gAQCoAQC9AZTatODCAQb0h5%2Fh4gTqAQDyAQD4AQCCAgVwdWRnZYoCAJICAJoCDGRlc2t0b3AtbWFwcw%3D%3D",
