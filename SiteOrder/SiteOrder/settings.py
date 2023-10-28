@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-f$4v5)9v$cv0qiupj5re_vjd2t!$93lqr67so7^fn*m$29m2!@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -49,13 +47,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'SiteOrder.urls'
@@ -224,4 +222,12 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'Pudge.CustomUser'
 
-CORS_ALLOW_ALL_ORIGINS: True
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'd2ce-93-171-161-29.ngrok-free.app',
+    'localhost:5173'
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')

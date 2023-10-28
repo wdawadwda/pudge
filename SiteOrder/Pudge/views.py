@@ -1,9 +1,13 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from psycopg2._json import Json
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
+from .forms import UploadFileForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
-from .helper import Helper
+from .helper.helper import Helper
 
 class PartnersView(viewsets.ModelViewSet):
   queryset = PartnersModel.objects.all()
@@ -164,3 +168,50 @@ class OneClubView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.D
     serializer.save()
     return Response({"status": "has been saved", "club": one_club})
 
+class PictureView(generics.ListCreateAPIView):
+  queryset = PictureModel.objects.all()
+  serializer_class = PictureSerializer
+
+  def post(self, request, *args, **kwargs):
+    data = request.data
+    form = UploadFileForm(request.POST, request.FILES)
+    if form.is_valid():
+      # Helper().handle_uploaded_file(request.FILES["clubPhoto"])
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      returned_object = PictureModel.objects.latest('id')
+      picture_url = {'picture_url': f"{PictureSerializer(returned_object).data['clubPhoto']}"}
+      print(picture_url)
+      return Response({'message': "picture has been saved"})
+    else:
+      form = UploadFileForm()
+    return Response({"f": "d"})
+
+    # file = request.FILES
+    # file_read = file.read()
+    #
+    # print(data['clubPhoto'].keys())
+    # file_name = data['clubPhoto'].name
+    # b_file = data['file']
+    # pass
+    #
+    # # b_file = data['clubPhoto']
+    # # file_name = 'file.jpg'
+    # domain = variables.domain
+    # file_path = variables.path_media_save
+    # save_file_path = f"./{file_path}/{file_name}"
+    # with open(save_file_path, "w", encoding="UTF-8") as file:
+    #   file.write(b_file)
+    # print('file_path', file_path)
+    #
+    # file_url = f"{domain}/SiteOrder/{file_path}/{file_name}"
+    # print(file_url)
+    #
+    # data['clubPhoto'] = file_url
+    #
+    # serializer = self.get_serializer(data=data)
+    # serializer.is_valid(raise_exception=True)
+    # serializer.save()
+    #
+    # return Response(data)

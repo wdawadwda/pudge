@@ -27,6 +27,8 @@ urlpatterns = [
   path('one-club/', OneClubView.as_view()),
   path('one-club/<int:pk>/', OneClubView.as_view()),
 
+  path('picture/', PictureView.as_view())
+
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')

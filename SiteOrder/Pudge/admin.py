@@ -9,4 +9,5 @@ admin.site.register(PartnersModel)
 # admin.site.register(QuantityComputersModel)
 admin.site.register(ClubsFullJsonModel)
 admin.site.register(OneClubModel)
+admin.site.register(PictureModel)
 

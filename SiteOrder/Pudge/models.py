@@ -62,3 +62,13 @@ class ClubsFullJsonModel(models.Model):
 class OneClubModel(models.Model):
   club = models.JSONField(blank=False, unique=True)
 
+class PictureModel(models.Model):
+  clubName = models.CharField(max_length=100, blank=False)
+  clubPhone = models.CharField(max_length=30)
+  clubPhoto = models.FileField()
+  # image_url = models.CharField()
+
+  def get_absolute_url(self):
+    pass
+    return self.clubPhoto.url
+

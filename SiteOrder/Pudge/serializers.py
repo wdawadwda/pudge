@@ -40,3 +40,14 @@ class OneClubSerializer(serializers.ModelSerializer):
   class Meta:
     model = OneClubModel
     fields = '__all__'
+
+class PictureSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = PictureModel
+    # fields = "__all__"
+    fields = ('clubName', 'clubPhone', 'clubPhoto',)
+    # read_only_fields = ('image_url',)
+
+
+  def get_image_url(self, obj):
+    return obj.get_absolute_url()
