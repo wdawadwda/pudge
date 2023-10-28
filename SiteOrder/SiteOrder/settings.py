@@ -222,12 +222,18 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'Pudge.CustomUser'
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'd2ce-93-171-161-29.ngrok-free.app',
-    'localhost:5173'
+# ALLOWED_HOSTS = [
+#     '127.0.0.1',
+#     'localhost',
+#     'd2ce-93-171-161-29.ngrok-free.app',
+#     'localhost:5173'
+# ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
+
+# CORS_ALLOW_ALL_ORIGINS: True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')

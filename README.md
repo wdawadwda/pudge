@@ -7,7 +7,7 @@
 2. Create the database and put attrs to settings
 3. Make migrations to the Database
 - cd SiteOrder
-- python manage.py makemirations
+- python manage.py makemigrations
 - python manage.py migrate
 4. Run the project
 - python manage.py runserver
