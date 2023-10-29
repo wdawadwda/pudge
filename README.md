@@ -13,32 +13,34 @@
 - python manage.py runserver
 
 ### CRUD club object
-- Create POST ^/one-club/
+- Create POST ^/clubs/
+  (multipart/form-data)
 >{\
+    "name": ..., \
     "map": ..., \
     "img": ..., \
-    "name": ..., \
     "contacts": ..., \
     "priceData": ..., \
     "computerSpecs": ..., \
     "quantityСomputers": ..., \
-}
+} \
+return {"message": "..."}
 
-- Get full json GET ^/one-club/
-- Get one club GET ^/one-club/<pk:int>
-- Update PUT ^/one-club/<pk:int>
+- Get full json GET ^/clubs/
+- Update PUT ^/clubs/<pk:int>
+  (multipart/form-data)
+
 >{\
-    {"club": {\
-        "map": ..., \
-        "img": ..., \
-        "name": ..., \
-        "contacts": ..., \
-        "priceData": ..., \
-        "computerSpecs": ..., \
-        "quantityСomputers": ..., \
-    } \
-}
-- Delete club DELETE ^/one-club/<pk:int>
+    "name": ..., \
+    "map": ..., \
+    "img": ..., \
+    "contacts": ..., \
+    "priceData": ..., \
+    "computerSpecs": ..., \
+    "quantityСomputers": ..., \
+} \
+return changed json object
+- Delete club DELETE ^/clubs/<pk:int>
 
 -----------------------------------------------
 ### Registration and authorization

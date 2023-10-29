@@ -1,11 +1,26 @@
 from django import forms
 
 
-class UploadFileForm(forms.Form):
-    clubName = forms.CharField(max_length=100)
-    clubPhone = forms.CharField(max_length=30)
-    clubPhoto = forms.FileField()
+class ClubsForm(forms.Form):
+    name = forms.CharField()
+    map = forms.CharField()
+    img = forms.FileField()
+    contacts = forms.JSONField()
+    priceData = forms.JSONField()
+    computerSpecs = forms.JSONField()
+    quantityComputers = forms.JSONField()
 
-    # def get_absolute_url(self):
-    #   return self.clubPhoto.url
+    def get_absolute_url(self):
+      return self.img.url
+
+# class Club2Form(forms.Form):
+#     name = forms.CharField()
+#     map = forms.CharField()
+#     img = forms.FileField()
+#     contacts = forms.JSONField()
+#     priceData = forms.JSONField()
+#     computerSpecs = forms.JSONField()
+#     quantityComputers = forms.JSONField()
+#
+#
 

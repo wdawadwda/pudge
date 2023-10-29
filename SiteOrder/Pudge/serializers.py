@@ -6,31 +6,6 @@ class PartnersSerializer(serializers.ModelSerializer):
     model = PartnersModel
     fields = '__all__'
 
-# class ClubsSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = ClubsModel
-#     fields = '__all__'
-#
-# class TariffSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = TariffModel
-#     fields = '__all__'
-#
-# class ComputerSpecSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = ComputerSpecModel
-#     fields = '__all__'
-#
-# class QuantityComputersSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = QuantityComputersModel
-#     fields = '__all__'
-#
-# class ClubsInfoSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = ClubsModel
-#     fields = '__all__'
-
 class ClubsFullSerializer(serializers.ModelSerializer):
   class Meta:
     model = ClubsFullJsonModel
@@ -41,13 +16,19 @@ class OneClubSerializer(serializers.ModelSerializer):
     model = OneClubModel
     fields = '__all__'
 
-class PictureSerializer(serializers.ModelSerializer):
+class ClubsSerializer(serializers.ModelSerializer):
   class Meta:
-    model = PictureModel
-    # fields = "__all__"
-    fields = ('clubName', 'clubPhone', 'clubPhoto',)
+    model = ClubsModel
+    fields = "__all__"
     # read_only_fields = ('image_url',)
-
 
   def get_image_url(self, obj):
     return obj.get_absolute_url()
+
+# class club2Serializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = Club2Model
+#     fields = "__all__"
+#
+#   def get_image_url(self, obj):
+#     return obj.get_absolute_url()
