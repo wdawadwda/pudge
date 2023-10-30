@@ -25,6 +25,16 @@ class ClubsSerializer(serializers.ModelSerializer):
   def get_image_url(self, obj):
     return obj.get_absolute_url()
 
+class SendInfoToUserSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = SendInfoToUserModel
+    fields = "__all__"
+
+class NewClubsTestSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = NewClubsTestModel
+    fields = "__all__"
+
 # class club2Serializer(serializers.ModelSerializer):
 #   class Meta:
 #     model = Club2Model

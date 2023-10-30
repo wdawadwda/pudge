@@ -41,6 +41,29 @@ class ClubsModel(models.Model):
   def __str__(self):
     return str(self.img.url)
 
+class SendInfoToUserModel(models.Model):
+  name = models.CharField()
+  phoneNumber = models.CharField()
+  usernameTelegram = models.CharField(blank=True)
+  clubName = models.CharField()
+  reservationTime = models.CharField()
+  seatsNumber =  models.IntegerField()
+  clubEMail = models.CharField()
+
+
+class NewClubsTestModel(models.Model):
+  name = models.CharField(blank=False)
+  map = models.CharField(blank=True)
+  img = models.FileField(blank=True)
+  imgs = models.JSONField(blank=True)
+
+  def get_absolute_url(self):
+    pass
+    return self.img.url
+
+  def __str__(self):
+    return str(self.img.url)
+
 # class Club2Model(models.Model):
 #   name = models.CharField()
 #   map = models.CharField()

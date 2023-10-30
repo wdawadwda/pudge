@@ -6,5 +6,5 @@ admin.site.register(PartnersModel)
 admin.site.register(ClubsFullJsonModel)
 admin.site.register(OneClubModel)
 admin.site.register(ClubsModel)
-# admin.site.register(Club2Model)
-
+admin.site.register(SendInfoToUserModel)
+admin.site.register(NewClubsTestModel)

@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from psycopg2._json import Json
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm
+from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -76,6 +76,7 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
 
   def post(self, request, *args, **kwargs):
     form = ClubsForm(request.POST, request.FILES)
+    form_valid = form.is_valid
     if form.is_valid():
       # Helper().handle_uploaded_file(request.FILES["clubPhoto"])
       serializer = self.get_serializer(data=request.data)
@@ -84,7 +85,25 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
       return Response({'message': "picture has been saved"})
     else:
       form = ClubsForm()
-    return Response({"f": "d"})
+    return Response({"error": "form is invalid"})
+
+class SendInfoToUserView(generics.ListCreateAPIView):
+  queryset = SendInfoToUserModel.objects.all()
+  serializer_class = SendInfoToUserSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = SendInfoToUserForm(request.POST)
+    if form.is_valid():
+      # serializer = self.get_serializer(data=request.data)
+      # serializer.is_valid(raise_exception=True)
+      # serializer.save()
+
+      # send email
+
+      return self.create(request, *args, **kwargs)
+    else:
+      form = ClubsForm()
+    return Response({"error": "form is invalid"})
 
 # class Club2View(generics.ListCreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
 #   queryset = Club2Model.objects.all()
@@ -111,4 +130,16 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
 #       form = Club2Form()
 #     return Response({"f": "d"})
 #
+class NewClubTestView(generics.ListCreateAPIView):
+  queryset = NewClubsTestModel.objects.all()
+  serializer_class = NewClubsTestSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = NewClubsTestForm(request.POST, request.FILES)
+    if form.is_valid():
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response({'message': "club has been saved"})
+    return Response({"error": "form is invalid"})
 

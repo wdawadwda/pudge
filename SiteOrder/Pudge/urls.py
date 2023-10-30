@@ -16,8 +16,9 @@ urlpatterns = [
     path('clubs/', ClubsView.as_view()),
     path('clubs/<int:pk>/', ClubsView.as_view()),
 
-    # path('clubs/', Club2View.as_view()),
+    path('reservation/', SendInfoToUserView.as_view()),
     # path('clubs/<int:pk>/', Club2View.as_view()),
+    path('new-club-test/', NewClubTestView.as_view()),
 
 ]
 
