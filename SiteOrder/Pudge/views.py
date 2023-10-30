@@ -136,6 +136,7 @@ class NewClubTestView(generics.ListCreateAPIView):
 
   def post(self, request, *args, **kwargs):
     form = NewClubsTestForm(request.POST, request.FILES)
+    print(request.data)
     if form.is_valid():
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
