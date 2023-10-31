@@ -35,6 +35,11 @@ class NewClubsTestSerializer(serializers.ModelSerializer):
     model = NewClubsTestModel
     fields = "__all__"
 
+class CollectClubSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = CollectClubModel
+    fields = "__all__"
+
 # class club2Serializer(serializers.ModelSerializer):
 #   class Meta:
 #     model = Club2Model
