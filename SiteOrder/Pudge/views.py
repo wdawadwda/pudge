@@ -144,18 +144,34 @@ class NewClubTestView(generics.ListCreateAPIView):
       return Response({'message': "club has been saved"})
     return Response({"error": "form is invalid"})
 
-class CollectClubView(generics.ListCreateAPIView):
+class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
   queryset = CollectClubModel.objects.all()
   serializer_class = CollectClubSerializer
 
+  def get(self, request, *args, **kwargs):
+    return self.list(request, *args, **kwargs)
+
+  def list(self, request, *args, **kwargs):
+    queryset = CollectClubModel.objects.filter(name__isnull=False).filter(contacts__isnull=False).filter(price__isnull=False).filter(computerSpecs__isnull=False).filter(quantityComputers__isnull=False)
+
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+      serializer = self.get_serializer(page, many=True)
+      return self.get_paginated_response(serializer.data)
+
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
+
   def post(self, request, *args, **kwargs):
+    helper = Helper()
+
     data = request.data
     keys = list(request.data.keys())
     club_name = request.data['name'] if 'name' in request.data.keys() else request.data[keys[0]]['name']
 
     custom_request = CollectClubModel.objects.filter(name=club_name).all()
     if not custom_request:
-      serializer = self.get_serializer(data={'name': club_name, 'club': 'club'})
+      serializer = self.get_serializer(data={'name': club_name})
       serializer.is_valid(raise_exception=True)
       serializer.save()
       print('has been wrote')
@@ -185,16 +201,20 @@ class CollectClubView(generics.ListCreateAPIView):
       CollectClubModel.objects.filter(name=club_name).update(contacts=request.data['contacts'])
 
     elif 'price' in request.data.keys():
-      request.data['price'].pop('name')
-      CollectClubModel.objects.filter(name=club_name).update(price=request.data['price'])
+      custom_request = CollectClubModel.objects.get(name=club_name).price
+      custom_request = helper.check_the_fields(request, custom_request, 'price')
+      CollectClubModel.objects.filter(name=club_name).update(price=custom_request)
 
 
     elif 'computerSpecs' in request.data.keys():
-      request.data['computerSpecs'].pop('name')
-      CollectClubModel.objects.filter(name=club_name).update(computerSpecs=request.data['computerSpecs'])
+      custom_request = CollectClubModel.objects.get(name=club_name).computerSpecs
+      custom_request = helper.check_the_fields(request, custom_request, 'computerSpecs')
+      CollectClubModel.objects.filter(name=club_name).update(computerSpecs=custom_request)
 
 
     elif 'quantityComputers' in request.data.keys():
+      custom_request = CollectClubModel.objects.get(name=club_name).quantityComputers
+
       request.data['quantityComputers'].pop('name')
       CollectClubModel.objects.filter(name=club_name).update(quantityComputers=request.data['quantityComputers'])
 

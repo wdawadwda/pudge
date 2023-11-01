@@ -83,7 +83,6 @@ class CollectClubModel(models.Model):
   name = models.CharField(blank=False, null=False)
   map = models.CharField(blank=True, null=True)
   img = models.FileField(blank=True, null=True)
-  # club = models.JSONField(blank=True, null=True)
   contacts = models.JSONField(blank=True, null=True)
   price = models.JSONField(blank=True, null=True)
   computerSpecs = models.JSONField(blank=True, null=True)

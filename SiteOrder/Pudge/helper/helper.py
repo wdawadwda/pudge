@@ -17,3 +17,19 @@ class Helper:
         with open(f"{path_media_save}{file_name}", "wb+") as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
+
+    def check_the_fields(self, request, custom_request, request_data_field_key):
+        request.data[request_data_field_key].pop('name')
+
+        if not custom_request:
+            return request.data[request_data_field_key]
+
+        keys = list(request.data.keys())
+        difference_tariffs = set(request.data[keys[0]]).difference(set(custom_request.keys()))
+        if difference_tariffs:
+            for tariff in difference_tariffs:
+                custom_request[tariff] = request.data[keys[0]][tariff]
+        else:
+            for tariff in request.data[keys[0]]:
+                custom_request[tariff] = request.data[keys[0]][tariff]
+        return custom_request

@@ -21,6 +21,7 @@ urlpatterns = [
     path('new-club-test/', NewClubTestView.as_view()),
 
     path('collect_club/', CollectClubView.as_view()),
+    path('collect_club/<int:pk>/', CollectClubView.as_view()),
 
 ]
 
