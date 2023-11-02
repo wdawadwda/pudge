@@ -1,6 +1,8 @@
 domain = 'https://d2ce-93-171-161-29.ngrok-free.app'
 path_media_save = "./media/"
 
+email_from = "ruslanslp19@gmail.com"
+
 clubs_table = {
   'id': 'SERIAL PRIMARY KEY',
   'name': 'VARCHAR (100) NOT NULL UNIQUE',

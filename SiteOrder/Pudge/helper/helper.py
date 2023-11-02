@@ -33,3 +33,24 @@ class Helper:
             for tariff in request.data[keys[0]]:
                 custom_request[tariff] = request.data[keys[0]][tariff]
         return custom_request
+
+    def compose_mail_text(self, request):
+
+        mail_text = "Запрос на бронь:\n\n"
+
+        for key in request.data:
+            match key:
+                case 'name':
+                    mail_text += f"Имя: {request.data['name']}\n"
+                case 'phone_number':
+                    mail_text += f"Телефон: {request.data['phone_number']}\n"
+                case 'telegram':
+                    mail_text += f"Телеграм: {request.data['telegram']}\n"
+                case 'club':
+                    mail_text += f"Клуб: {request.data['club']}\n"
+                case 'reservation_time':
+                    mail_text += f"Время брони: {request.data['reservation_time']}\n"
+                case 'quantity_seats':
+                    mail_text += f"Количество мест: {request.data['quantity_seats']}\n"
+
+        return mail_text

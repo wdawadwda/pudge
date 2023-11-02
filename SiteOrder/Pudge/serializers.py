@@ -52,3 +52,9 @@ class NewsSerializer(serializers.ModelSerializer):
 
   def get_image_url(self, obj):
     return obj.get_absolute_url()
+
+class ReservatonSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = ReservationModel
+    fields = "__all__"
+

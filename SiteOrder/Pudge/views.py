@@ -1,11 +1,12 @@
 from datetime import datetime
 
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from psycopg2._json import Json
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm, NewsForm
+from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -277,4 +278,37 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
   def get(self, request, *args, **kwargs):
     queryset = NewsModel.objects.all().order_by("id")
     return Response(NewsSerializer(queryset, many=True).data)
+
+class ReservationView(generics.ListCreateAPIView):
+  queryset = ReservationModel
+  serializer_class = ReservatonSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = ReservationForm(request.data)
+    if form.is_valid():
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+
+      helper = Helper()
+      text_mail = helper.compose_mail_text(request)
+
+      return Response({'status': 'Письмо отправлено'}) \
+        if send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=["omsinfo@yandex.ru",]) \
+        else Response({"status": "False"})
+
+    else:
+      return Response({'status': 'Не корректно заполнена форма'})
+
+  def list(self, request, *args, **kwargs):
+    queryset = ReservationModel.objects.all()
+
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+      serializer = self.get_serializer(page, many=True)
+      return self.get_paginated_response(serializer.data)
+
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
+
 

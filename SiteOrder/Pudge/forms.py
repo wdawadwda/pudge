@@ -47,3 +47,11 @@ class NewsForm(forms.Form):
 
     def get_absolute_url(self):
         return self.img.url
+
+class ReservationForm(forms.Form):
+  name = forms.CharField()
+  phone_number = forms.CharField()
+  telegram = forms.CharField(required=False)
+  club = forms.CharField()
+  reservation_time = forms.CharField()
+  quantity_seats = forms.CharField()

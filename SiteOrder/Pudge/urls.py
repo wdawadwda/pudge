@@ -16,7 +16,7 @@ urlpatterns = [
     path('clubs/', ClubsView.as_view()),
     path('clubs/<int:pk>/', ClubsView.as_view()),
 
-    path('reservation/', SendInfoToUserView.as_view()),
+    # path('reservation/', SendInfoToUserView.as_view()),
     # path('clubs/<int:pk>/', Club2View.as_view()),
     path('new-club-test/', NewClubTestView.as_view()),
 
@@ -28,6 +28,9 @@ urlpatterns = [
 
     path('news/', NewsView.as_view()),
     path('news/<int:pk>/', NewsView.as_view()),
+
+    path('reservation/', ReservationView.as_view()),
+
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')

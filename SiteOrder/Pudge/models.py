@@ -109,4 +109,13 @@ class NewsModel(models.Model):
   def get_absolute_url(self):
     return self.img.url
 
+class ReservationModel(models.Model):
+  name = models.CharField()
+  phone_number = models.CharField()
+  telegram = models.CharField(blank=True, null=True)
+  club = models.CharField()
+  reservation_time = models.CharField()
+  quantity_seats = models.CharField()
+
+
 
