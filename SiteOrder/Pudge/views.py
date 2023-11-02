@@ -5,7 +5,7 @@ from django.shortcuts import render
 from psycopg2._json import Json
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm
+from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm, NewsForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -259,4 +259,22 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
 
     serializer = self.get_serializer(queryset, many=True)
     return Response(serializer.data)
+
+class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+  queryset = NewsModel
+  serializer_class = NewsSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = NewsForm(request.data, request.FILES)
+    if form.is_valid():
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response({'status': 'Новость была записана'})
+    else:
+      return Response({'status': 'Не корректно заполнена форма'})
+
+  def get(self, request, *args, **kwargs):
+    queryset = NewsModel.objects.all().order_by("id")
+    return Response(NewsSerializer(queryset, many=True).data)
 

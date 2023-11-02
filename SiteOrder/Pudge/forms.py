@@ -36,3 +36,14 @@ class GalleryForm(forms.Form):
 
     def get_absolute_url(self):
         return self.img.url
+
+
+class NewsForm(forms.Form):
+    title = forms.CharField()
+    img = forms.FileField()
+    text1 = forms.CharField()
+    text2 = forms.CharField(required=False)
+    text3 = forms.CharField(required=False)
+
+    def get_absolute_url(self):
+        return self.img.url

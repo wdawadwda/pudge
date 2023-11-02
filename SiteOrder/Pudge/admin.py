@@ -10,3 +10,5 @@ admin.site.register(SendInfoToUserModel)
 admin.site.register(NewClubsTestModel)
 admin.site.register(CollectClubModel)
 admin.site.register(GalleryModel)
+admin.site.register(NewsModel)
+

@@ -26,6 +26,8 @@ urlpatterns = [
     path('gallery/', GalleryView.as_view()),
     path('gallery/<int:pk>/', GalleryView.as_view()),
 
+    path('news/', NewsView.as_view()),
+    path('news/<int:pk>/', NewsView.as_view()),
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')

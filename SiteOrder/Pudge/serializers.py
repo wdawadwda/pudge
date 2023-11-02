@@ -45,11 +45,10 @@ class GalleryModelSerializer(serializers.ModelSerializer):
     model = GalleryModel
     fields = "__all__"
 
+class NewsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = NewsModel
+    fields = "__all__"
 
-# class club2Serializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = Club2Model
-#     fields = "__all__"
-#
-#   def get_image_url(self, obj):
-#     return obj.get_absolute_url()
+  def get_image_url(self, obj):
+    return obj.get_absolute_url()
