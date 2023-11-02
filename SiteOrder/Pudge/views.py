@@ -108,31 +108,6 @@ class SendInfoToUserView(generics.ListCreateAPIView):
       form = ClubsForm()
     return Response({"error": "form is invalid"})
 
-# class Club2View(generics.ListCreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
-#   queryset = Club2Model.objects.all()
-#   serializer_class = club2Serializer
-#
-#   def get(self, request, *args, **kwargs):
-#     queryset = Club2Model.objects.all()
-#     serializer = club2Serializer(queryset, many=True)
-#     return Response(serializer.data)
-#
-#   def post(self, request, *args, **kwargs):
-#     data = request.data
-#     form = Club2Form(request.POST, request.FILES)
-#     if form.is_valid():
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       serializer.save()
-#       returned_object = Club2Model.objects.latest('id')
-#       picture_url = {'picture_url': f"{club2Serializer(returned_object).data['img']}"}
-#       print(picture_url)
-#
-#       return Response({'message': "object has been saved"})
-#     else:
-#       form = Club2Form()
-#     return Response({"f": "d"})
-#
 class NewClubTestView(generics.ListCreateAPIView):
   queryset = NewClubsTestModel.objects.all()
   serializer_class = NewClubsTestSerializer
@@ -295,7 +270,7 @@ class ReservationView(generics.ListCreateAPIView):
 
       return Response({'status': 'Письмо отправлено'}) \
         if send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=["omsinfo@yandex.ru",]) \
-        else Response({"status": "False"})
+        else Response({"status": False})
 
     else:
       return Response({'status': 'Не корректно заполнена форма'})
