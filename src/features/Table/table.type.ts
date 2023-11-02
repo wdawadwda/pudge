@@ -1,10 +1,10 @@
 import {
+  type SpecData,
   type TypeClubTariff,
-  type TypeComputerSpecsData,
 } from "~/entities/const/content/clubsContent.type";
 
 export interface TypeTableProperties {
   priceData?: TypeClubTariff | null;
-  specData?: TypeComputerSpecsData[][] | null;
+  specData?: SpecData | null;
   type: "price" | "computerSpecs";
 }

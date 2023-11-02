@@ -1,0 +1,9 @@
+@import '~/mixins.scss';
+
+.ContainerAdminLayout{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  button{
+    margin-bottom: var(--pudge-margin-title-content);
+  }
+}

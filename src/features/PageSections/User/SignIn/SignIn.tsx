@@ -110,7 +110,7 @@ export const SignIn = () => {
             appearance="primary"
             isFullWidth={true}
           >
-            Зарегистрироваться
+            Войти
           </Button>
         </form>
       </div>

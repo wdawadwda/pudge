@@ -1,0 +1,32 @@
+@import '~/mixins.scss';
+
+.modalDell{
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  @include ModalGradient;
+  @include flexCenter;
+  &__title{
+    font-size: var(--pudge--text-title-second-size);
+    color: var(--pudge--text-alert-color);
+    margin-bottom: var(--pudge-margin-title-content);
+    text-align: center;
+    text-transform: uppercase;
+    button{
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .modalDell{
+    h2{
+      font-size: var(--pudge--text-subtitle-size);
+    }
+    img{
+      height: 150px;
+    }
+  }
+}

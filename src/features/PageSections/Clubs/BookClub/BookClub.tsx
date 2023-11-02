@@ -12,6 +12,7 @@ import { type ContactsProperties } from "./bookClub.type";
 export const BookClub = ({ contacts }: ContactsProperties) => {
   const dispatch = useDispatch();
   const isShowModal = useSelector(selectIsShowModal);
+
   return (
     <Expand titleExpand={`Забронировать`}>
       <div className={Style.regContainer}>
@@ -19,7 +20,10 @@ export const BookClub = ({ contacts }: ContactsProperties) => {
         <Button
           appearance={"primary"}
           isFullWidth={false}
-          onClick={() => dispatch(modalActions.toggleModal())}
+          onClick={() => {
+            dispatch(modalActions.setContent(contacts));
+            dispatch(modalActions.toggleModal("book"));
+          }}
         >
           Забронировать
         </Button>

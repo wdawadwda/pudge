@@ -1,30 +1,39 @@
 import React from "react";
 
-import { type TypeComputerSpecsData } from "~/entities/const/content/clubsContent.type";
+import { type SpecData } from "~/entities/const/content/clubsContent.type";
 
-export const ComputerSpec = ({
-  specData,
-}: {
-  specData: TypeComputerSpecsData[][];
-}) => {
+import { type CellData } from "./computerSpec.type";
+
+export const ComputerSpec = ({ specData }: { specData: SpecData }) => {
+  const data = specData.content as unknown as CellData[][];
   return (
     <>
-      <table>
-        <tbody>
-          {specData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
-                <React.Fragment key={cellIndex}>
-                  <th>
-                    <span>{cell.main}</span>
-                  </th>
-                  <td>{cell.descr && <span>{cell.descr}</span>}</td>
-                </React.Fragment>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {data === null ? (
+        <div>Данные незагрузились</div>
+      ) : (
+        <table>
+          <tbody>
+            {data.map((row: CellData[], rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell: CellData, cellIndex: number) => (
+                  <React.Fragment key={cellIndex}>
+                    {cell.main !== "" && (
+                      <th>
+                        <span>{cell.main}</span>
+                      </th>
+                    )}
+                    {cell.descr !== "" && (
+                      <td>
+                        <span>{cell.descr}</span>
+                      </td>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </>
   );
 };

@@ -18,7 +18,6 @@ listenerMiddlewareUser.startListening({
 listenerMiddlewareUser.startListening({
   matcher: createTokens.fulfilled.match,
   effect: ({ payload }: { payload: JWTTokens }) => {
-    // Используйте функцию для обновления токенов
     updateTokens(payload);
   },
 });

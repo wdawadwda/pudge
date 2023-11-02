@@ -1,6 +1,5 @@
+import { type TypeClubContacts } from "~/entities/const/content/clubsContent.type";
+
 export interface ContactsProperties {
-  contacts: {
-    phone: string;
-    address: string;
-  };
+  contacts: TypeClubContacts;
 }

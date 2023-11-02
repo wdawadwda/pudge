@@ -1,0 +1,17 @@
+@import '~/mixins.scss';
+
+.AdminBtnContainer{
+  .sectionInForm, .subsectionInForm{
+    display: flex;
+    @include flexCenter;
+    text-align: center;
+    font-size: var(--pudge--text-subtitle-size);
+    color: var(--pudge--text-alert-color);
+  }
+  .subsectionInForm{
+    font-size: var(--pudge--text-normal-size);
+  }
+  button{
+    margin-top: var(--pudge-margin-title-content);
+  }
+}

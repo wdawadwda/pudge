@@ -26,6 +26,18 @@ module.exports = {
       }
     },
     {
+      files: ['*.type.ts'],
+      rules: {
+        'eslint-comments/require-description': 'off'
+      }
+    },
+    {
+      files: ['AddPrice.tsx'],
+      rules: {
+        '@typescript-eslint/no-unsafe-argument': 'off'
+      }
+    },
+    {
       files: ['axiosInstance.ts'],
       rules: {
         '@typescript-eslint/no-unsafe-argument': 'off'

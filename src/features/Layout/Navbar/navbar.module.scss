@@ -109,6 +109,13 @@
   }
 }
 
+.userActive{
+  color: var(--pudge--text-second-color);
+  .userActive{
+    color: var(--pudge--text-second-color);
+  }
+}
+
 .user:hover svg {
   color: var(--pudge--text-second3-color);
 }

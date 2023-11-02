@@ -12,3 +12,8 @@ export const selectError = (state: RootState) => state.user.error;
 
 export const selectTokensStatus = (state: RootState) =>
   state.user.tokens.status;
+
+export const selectUserStaff = (state: RootState) =>
+  state.user.currentUser.status === "success"
+    ? state.user.currentUser.data.is_staff
+    : null;

@@ -1,15 +1,16 @@
 import classNames from "classnames";
-import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, Outlet } from "react-router-dom";
 
-import { clubData } from "~/entities/const/content/clubsContent.const";
-import { ClubsDetail } from "~/features/PageSections/Clubs/ClubsDetail";
 import Styles from "~/features/PageSections/pageSections.module.scss";
 import { links } from "~/router/Links";
 import { NeonStrip } from "~/shared/ui/NeonStrip/NeonStrip";
+import { selectClubDataResults } from "~/store/content/content.selectors";
 
 import Style from "./clubsLayouts.module.scss";
 
 export const ClubsLayout = () => {
+  const clubData = useSelector(selectClubDataResults);
   return (
     <>
       <div
@@ -39,7 +40,7 @@ export const ClubsLayout = () => {
           <NeonStrip color={"green"} />
         </div>
       </div>
-      <ClubsDetail />
+      <Outlet />
     </>
   );
 };

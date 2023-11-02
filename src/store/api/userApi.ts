@@ -8,36 +8,45 @@ import {
   type EmailConfirmRequest,
   type SignUpApiRequest,
   type CreateTokenPayload,
-  type ErrorCreateToken,
+  type ErrorDetail,
   type User,
 } from "~/entities/type/api.type";
 
-import { accessToken, axiosAuthorizationInstance } from "./axiosInstance";
+import { createErrorObject } from "./api.utils";
+import { axiosAuthorizationInstance } from "./axiosInstance";
 import { userActions } from "../user/user.slice";
 
-export function registerUser(signUpData: SignUpApiRequest) {
-  return axios
-    .post(`${PUDGE_TEST_API_URL}auth/users/`, signUpData)
-    .then((response) => response.data as string)
-    .catch((error) => {
-      throw error;
-    });
+export async function registerUser(signUpData: SignUpApiRequest) {
+  try {
+    const response = await axios.post(
+      `${PUDGE_TEST_API_URL}auth/users/`,
+      signUpData
+    );
+    return response.data as string;
+  } catch (error) {
+    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
+    throw errorObject;
+  }
 }
 
-export function emailConfirmation(uidToken: EmailConfirmRequest) {
-  return axios
-    .post(`${PUDGE_TEST_API_URL}auth/users/activation/`, uidToken)
-    .then((response) => response.data as string)
-    .catch((error) => {
-      throw error;
-    });
+export async function emailConfirmation(uidToken: EmailConfirmRequest) {
+  try {
+    const response = await axios.post(
+      `${PUDGE_TEST_API_URL}auth/users/activation/`,
+      uidToken
+    );
+    return response.data as string;
+  } catch (error) {
+    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
+    throw errorObject;
+  }
 }
 
 export const createTokens = createAsyncThunk<
   JWTTokens,
   CreateTokenPayload,
   {
-    rejectValue: ErrorCreateToken;
+    rejectValue: ErrorDetail;
   }
 >("user/createTokens", async function (payload: CreateTokenPayload, thunkAPI) {
   try {
@@ -49,16 +58,8 @@ export const createTokens = createAsyncThunk<
       signal: thunkAPI.signal,
     });
     return response.data;
-  } catch (error: unknown) {
-    const axiosError = error as AxiosError<ErrorCreateToken>;
-    const errorStatus = axiosError.response?.status || "";
-    const errorData = JSON.stringify(axiosError.response?.data.detail) || "";
-    const errorMassage = axiosError.message || "";
-    const errorObject = {
-      statusErr: errorStatus,
-      detail: errorData,
-      message: errorMassage,
-    };
+  } catch (error) {
+    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
     thunkAPI.dispatch(userActions.setError(errorObject));
     throw error;
   }
@@ -67,9 +68,6 @@ export const createTokens = createAsyncThunk<
 export const fetchUser = createAsyncThunk(
   "user/fetch",
   async function (_, thunkAPI) {
-    if (!accessToken) {
-      throw new Error("Unauthorized");
-    }
     const { data } = await axiosAuthorizationInstance.get<User>(
       `${PUDGE_TEST_API_URL}auth/users/me/`,
       {

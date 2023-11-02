@@ -1,9 +1,10 @@
 import classNames from "classnames";
 
-import Style from "./rulesSection.module.scss";
-import Styles from "../pageSections.module.scss";
+import Styles from "~/features/PageSections/pageSections.module.scss";
 
-export const RulesSection = () => {
+import Style from "./rules.module.scss";
+
+export const Rules = () => {
   return (
     <div
       className={`${classNames({

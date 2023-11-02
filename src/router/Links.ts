@@ -13,6 +13,23 @@ export const links = {
   login: "/sign-in",
   success: "/activate/:uid/:token",
   account: "/account",
+  admin: "/account/admin",
+  adminClub: "/account/admin/club",
+  adminClubAdd: "/account/admin/club/add-club",
+  adminClubAddContacts: "/account/admin/club/add-club-contacts",
+  adminClubAddComputer: "/account/admin/club/add-club-computer",
+  adminClubAddSpec: "/account/admin/club/add-club-spec",
+  adminClubAddPrice: "/account/admin/club/add-club-price",
+  adminClubRemove: "/account/admin/club/remove-club",
+  adminGallery: "/account/admin/gallery",
+  adminGalleryAddPhoto: "/account/admin/gallery/add-photo",
+  adminGalleryRemovePhoto: "/account/admin/gallery/remove-photo",
+  adminNews: "/account/admin/news",
+  adminNewsAdd: "/account/admin/news/add-news",
+  adminNewsRemove: "/account/admin/news/remove-news",
+  adminEvents: "/account/admin/events",
+  adminEventsAdd: "/account/admin/events/add-events",
+  adminEventsRemove: "/account/admin/events/remove-events",
 };
 
 export const socialLinks = {

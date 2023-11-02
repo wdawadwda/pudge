@@ -8,8 +8,7 @@ export const PriceTable = ({ priceData }: { priceData: TypeClubTariff }) => {
         <thead>
           <tr>
             <th>
-              <span>{`${priceData.name}`}</span>{" "}
-              <strong>{`${priceData.tariff}`}</strong>
+              <span>{`Цены`}</span> <strong>{`${priceData.tariff}`}</strong>
             </th>
           </tr>
         </thead>
@@ -28,9 +27,11 @@ export const PriceTable = ({ priceData }: { priceData: TypeClubTariff }) => {
       </table>
       <Expand titleExpand="Уточнения">
         <ul>
-          {priceData.description.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
+          {priceData.description.map((item, index) =>
+            typeof item === "string" && item !== "" ? (
+              <li key={index}>{item}</li>
+            ) : null
+          )}
         </ul>
       </Expand>
     </>

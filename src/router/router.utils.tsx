@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-import { selectUser } from "~/store/user/user.selectors";
+import { selectUser, selectUserStaff } from "~/store/user/user.selectors";
 
 export const AccessControlRoute = ({
   isProtected = false,
@@ -14,6 +14,23 @@ export const AccessControlRoute = ({
   }
 
   if (!user && isPublicOnly) {
+    return <Outlet />;
+  }
+
+  return <Navigate to="/" replace />;
+};
+
+export const AccessControlStaff = ({
+  isProtected = false,
+  isPublicOnly = false,
+}) => {
+  const isStaff = useSelector(selectUserStaff);
+
+  if (isStaff && isProtected) {
+    return <Outlet />;
+  }
+
+  if (!isStaff && isPublicOnly) {
     return <Outlet />;
   }
 
