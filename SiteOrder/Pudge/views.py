@@ -245,3 +245,18 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
     else:
       return Response({'status': 'Не корректно заполнена форма'})
 
+  def get(self, request, *args, **kwargs):
+    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
+    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
+    return self.list(request, *args, **kwargs)
+
+  def list(self, request, *args, **kwargs):
+    queryset = GalleryModel.objects.all()[self.offset:self.offset+self.limit] if self.limit else GalleryModel.objects.all()
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+        serializer = self.get_serializer(page, many=True)
+        return self.get_paginated_response(serializer.data)
+
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
+
