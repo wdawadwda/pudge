@@ -92,4 +92,12 @@ class CollectClubModel(models.Model):
     return self.img.url
 
 
+class GalleryModel(models.Model):
+  name = models.CharField(blank=False, null=False)
+  img = models.FileField(blank=True, null=True)
+  date = models.DateTimeField()
+
+  def get_absolute_url(self):
+    return self.img.url
+
 

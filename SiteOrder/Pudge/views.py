@@ -1,9 +1,11 @@
+from datetime import datetime
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from psycopg2._json import Json
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm
+from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -220,4 +222,26 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
 
     return Response({"status": "200"})
 
+class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+  queryset = GalleryModel.objects.all()
+  serializer_class = GalleryModelSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = GalleryForm(request.data, request.FILES)
+    if form.is_valid():
+      request.data['date'] = datetime.now()
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response({'status': 'Объект добавлен в галлерею'})
+    else:
+      return Response({'status': 'Не корректно заполнена форма'})
+
+  def put(self, request, *args, **kwargs):
+    if GalleryForm(request.data, request.FILES).is_valid():
+      if 'date' not in request.data:
+        request.data['date'] = datetime.now()
+      return self.update(request, *args, **kwargs)
+    else:
+      return Response({'status': 'Не корректно заполнена форма'})
 

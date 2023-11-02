@@ -23,6 +23,9 @@ urlpatterns = [
     path('collect_club/', CollectClubView.as_view()),
     path('collect_club/<int:pk>/', CollectClubView.as_view()),
 
+    path('gallery/', GalleryView.as_view()),
+    path('gallery/<int:pk>/', GalleryView.as_view()),
+
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')

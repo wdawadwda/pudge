@@ -27,18 +27,12 @@ class NewClubsTestForm(forms.Form):
     map = forms.CharField()
     img = forms.FileField()
 
-
     def get_absolute_url(self):
         return self.img.url
 
-# class Club2Form(forms.Form):
-#     name = forms.CharField()
-#     map = forms.CharField()
-#     img = forms.FileField()
-#     contacts = forms.JSONField()
-#     priceData = forms.JSONField()
-#     computerSpecs = forms.JSONField()
-#     quantityComputers = forms.JSONField()
-#
-#
+class GalleryForm(forms.Form):
+    name = forms.CharField()
+    img = forms.FileField()
 
+    def get_absolute_url(self):
+        return self.img.url
