@@ -31,7 +31,7 @@ class ClubsModel(models.Model):
   contacts = models.JSONField()
   priceData = models.JSONField()
   computerSpecs = models.JSONField()
-  quantityComputers = models.JSONField()
+  quantityComputers = models.JSONField()\
 
 
   def get_absolute_url(self):
@@ -80,13 +80,16 @@ class NewClubsTestModel(models.Model):
 #     return str(self.img.url)
 
 class CollectClubModel(models.Model):
-  name = models.CharField(blank=False, null=False)
+  name = models.CharField(blank=False, null=False, unique=True)
   map = models.CharField(blank=True, null=True)
   img = models.FileField(blank=True, null=True)
   contacts = models.JSONField(blank=True, null=True)
   price = models.JSONField(blank=True, null=True)
   computerSpecs = models.JSONField(blank=True, null=True)
   quantityComputers = models.JSONField(blank=True, null=True)
+
+  def __str__(self):
+    return self.name
 
   def get_absolute_url(self):
     return self.img.url

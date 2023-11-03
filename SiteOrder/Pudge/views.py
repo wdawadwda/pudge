@@ -130,7 +130,7 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
     return self.list(request, *args, **kwargs)
 
   def list(self, request, *args, **kwargs):
-    queryset = CollectClubModel.objects.filter(name__isnull=False).filter(contacts__isnull=False).filter(price__isnull=False).filter(computerSpecs__isnull=False).filter(quantityComputers__isnull=False)
+    queryset = CollectClubModel.objects.filter(name__isnull=False).filter(contacts__isnull=False).filter(price__isnull=False).filter(computerSpecs__isnull=False).filter(quantityComputers__isnull=False).all()
 
     page = self.paginate_queryset(queryset)
     if page is not None:
@@ -252,6 +252,19 @@ class ReservationView(generics.ListCreateAPIView):
   serializer_class = ReservatonSerializer
 
   def post(self, request, *args, **kwargs):
+
+    if 'recipient' in request.data:
+        recipient_list = [request.data['recipient'], ]
+        request.data.pop('recipient')
+    else:
+        try:
+            contacts = CollectClubModel.objects.get(name=request.data['club']).contacts
+            if not contacts or 'email' not in contacts or not contacts['email']:
+              return Response({"error": "У клуба нет email"})
+        except Exception as ex:
+            return Response({"error": "Клуба с таким именем не существует"})
+        recipient_list = [contacts['email'], ]
+
     form = ReservationForm(request.data)
     if form.is_valid():
       serializer = self.get_serializer(data=request.data)
@@ -262,7 +275,7 @@ class ReservationView(generics.ListCreateAPIView):
       text_mail = helper.compose_mail_text(request)
 
       return Response({'status': 'Письмо отправлено'}) \
-        if send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=["omsinfo@yandex.ru",]) \
+        if send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=recipient_list) \
         else Response({"status": False})
 
     else:

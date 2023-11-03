@@ -25,8 +25,11 @@ Headers: Content-Type
 > "telegram": text, (optional field)\
 > "club": text, \
 > "reservation_time": text, \
-> "quantity_seats": text \
+> "quantity_seats": text, \
+> "recipient": email (optional field) \
 > }
+
+if club has email in contacts, mail will be sending, or it needed to include key "recipient" with email for sending email
 
 After creating Reservation request mail will be sending to recipient
 - ### *Get Reservations ^/reservation/*
@@ -89,7 +92,7 @@ You must collect one club from different objects (forms) like:
 3. contacts (json)
 > { \
 > "name": text (club_name), \
-> "price": {object} \
+> "contacts": {object} \
 > }
 4. computerSpecs (json)
 > { \
