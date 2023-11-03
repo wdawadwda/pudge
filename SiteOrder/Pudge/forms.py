@@ -55,3 +55,4 @@ class ReservationForm(forms.Form):
   club = forms.CharField()
   reservation_time = forms.CharField()
   quantity_seats = forms.CharField()
+  recipient = forms.CharField(required=False)

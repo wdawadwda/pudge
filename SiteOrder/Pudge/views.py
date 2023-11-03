@@ -252,10 +252,8 @@ class ReservationView(generics.ListCreateAPIView):
   serializer_class = ReservatonSerializer
 
   def post(self, request, *args, **kwargs):
-
     if 'recipient' in request.data:
         recipient_list = [request.data['recipient'], ]
-        request.data.pop('recipient')
     else:
         try:
             contacts = CollectClubModel.objects.get(name=request.data['club']).contacts
