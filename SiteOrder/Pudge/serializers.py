@@ -20,15 +20,14 @@ class ClubsSerializer(serializers.ModelSerializer):
   class Meta:
     model = ClubsModel
     fields = "__all__"
-    # read_only_fields = ('image_url',)
 
   def get_image_url(self, obj):
     return obj.get_absolute_url()
 
-class SendInfoToUserSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = SendInfoToUserModel
-    fields = "__all__"
+# class SendInfoToUserSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = SendInfoToUserModel
+#     fields = "__all__"
 
 class NewClubsTestSerializer(serializers.ModelSerializer):
   class Meta:

@@ -55,18 +55,18 @@ Headers: Content-Type
 ---
 
 ## ***GALLERY***
-- ### *Create News POST ^/gallery/ (multipart/form-data)*
+- ### *Create Gallery POST ^/gallery/ (multipart/form-data)*
 >{\
 > "name": text, \
 > "img": file \
 > }
-- ### *GET News ^/gallery/?offset=<int>&limit=<int>*
-- ### *PUT News ^/gallery/<int:pk>*
+- ### *GET Gallery ^/gallery/?offset=<int>&limit=<int>club_name=<text>*
+- ### *PUT Gallery ^/gallery/<int:pk>*
 >{\
 > "name": text, \
 > "img": file \
 > }
-- ### *DELETE News ^/gallery/<int:pk>*
+- ### *DELETE Gallery ^/gallery/<int:pk>*
 ---
 
 ## ***CLUBS***

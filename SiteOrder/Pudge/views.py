@@ -6,7 +6,7 @@ from django.shortcuts import render
 from psycopg2._json import Json
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm, SendInfoToUserForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm
+from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -90,23 +90,23 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
       form = ClubsForm()
     return Response({"error": "form is invalid"})
 
-class SendInfoToUserView(generics.ListCreateAPIView):
-  queryset = SendInfoToUserModel.objects.all()
-  serializer_class = SendInfoToUserSerializer
-
-  def post(self, request, *args, **kwargs):
-    form = SendInfoToUserForm(request.POST)
-    if form.is_valid():
-      # serializer = self.get_serializer(data=request.data)
-      # serializer.is_valid(raise_exception=True)
-      # serializer.save()
-
-      # send email
-
-      return self.create(request, *args, **kwargs)
-    else:
-      form = ClubsForm()
-    return Response({"error": "form is invalid"})
+# class SendInfoToUserView(generics.ListCreateAPIView):
+#   queryset = SendInfoToUserModel.objects.all()
+#   serializer_class = SendInfoToUserSerializer
+#
+#   def post(self, request, *args, **kwargs):
+#     form = SendInfoToUserForm(request.POST)
+#     if form.is_valid():
+#       # serializer = self.get_serializer(data=request.data)
+#       # serializer.is_valid(raise_exception=True)
+#       # serializer.save()
+#
+#       # send email
+#
+#       return self.create(request, *args, **kwargs)
+#     else:
+#       form = ClubsForm()
+#     return Response({"error": "form is invalid"})
 
 class NewClubTestView(generics.ListCreateAPIView):
   queryset = NewClubsTestModel.objects.all()
@@ -224,17 +224,10 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
   def get(self, request, *args, **kwargs):
     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
     self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
-    return self.list(request, *args, **kwargs)
-
-  def list(self, request, *args, **kwargs):
-    queryset = GalleryModel.objects.all()[self.offset:self.offset+self.limit] if self.limit else GalleryModel.objects.all()
-    page = self.paginate_queryset(queryset)
-    if page is not None:
-        serializer = self.get_serializer(page, many=True)
-        return self.get_paginated_response(serializer.data)
-
-    serializer = self.get_serializer(queryset, many=True)
-    return Response(serializer.data)
+    self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
+    to = self.offset+self.limit if self.limit else None
+    queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
+    return Response({self.club_name: self.get_serializer(queryset, many=True).data}) if self.club_name else Response({'error': 'Укажите имя клуба'})
 
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = NewsModel

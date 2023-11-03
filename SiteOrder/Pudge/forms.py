@@ -13,14 +13,14 @@ class ClubsForm(forms.Form):
     def get_absolute_url(self):
       return self.img.url
 
-class SendInfoToUserForm(forms.Form):
-    name = forms.CharField()
-    phoneNumber = forms.CharField()
-    usernameTelegram = forms.CharField()
-    clubName = forms.CharField()
-    reservationTime = forms.CharField()
-    seatsNumber =  forms.IntegerField()
-    clubEMail = forms.CharField()
+# class SendInfoToUserForm(forms.Form):
+#     name = forms.CharField()
+#     phoneNumber = forms.CharField()
+#     usernameTelegram = forms.CharField()
+#     clubName = forms.CharField()
+#     reservationTime = forms.CharField()
+#     seatsNumber =  forms.IntegerField()
+#     clubEMail = forms.CharField()
 
 class NewClubsTestForm(forms.Form):
     name = forms.CharField()
