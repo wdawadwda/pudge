@@ -17,9 +17,6 @@ export const modalSlice = createSlice({
     toggleModal: (state, action: PayloadAction<ModalType | null>) => {
       state.isShowModal = !state.isShowModal;
       state.modalType = action.payload;
-      if (!state.isShowModal) {
-        state.content = null;
-      }
     },
     setContent: (state, action: PayloadAction<Content>) => {
       state.content = action.payload;

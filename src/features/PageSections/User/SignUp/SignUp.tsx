@@ -30,7 +30,6 @@ export const SignUp = () => {
     password: "",
     successMessage: "",
   });
-
   const {
     register,
     formState: { errors, isValid, isDirty },

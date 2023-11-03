@@ -1,0 +1,54 @@
+@import '~/mixins.scss';
+
+.GalleryContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+}
+
+.GalleryContent{
+  &__imgWrapper{
+    position: relative;
+    width: 100%;
+    height: auto;
+    button{
+      position: absolute;
+    }
+    .buttonLeft{
+      bottom: 45%;
+      border-radius: 0;
+      &:hover{
+        border-radius: 0;
+      }
+    }
+    .buttonRight{
+      bottom: 45%;
+      right: -4px;
+      border-radius: 0;
+      &:hover{
+        border-radius: 0;
+      }
+    }
+  }
+  &__404{
+    display: flex;
+    width: 100%;
+    @include flexCenter;
+    margin-bottom: var(--pudge-margin-title-content);
+    font-size: var(--pudge--text-subtitle-size);
+    color: var(--pudge--text-second3-color);
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid var(--pudge--bg-color-second3);
+  }
+  span{
+    display: flex;
+    width: 100%;
+    @include flexCenter;
+    margin-bottom: var(--pudge-margin-title-content);
+    font-size: var(--pudge--text-subtitle-size);
+    color: var(--pudge--text-second3-color);
+  }
+}

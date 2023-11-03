@@ -1,0 +1,39 @@
+@import '~/mixins.scss';
+
+.GalleryContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .LoadingContainer{
+    display: flex;
+    @include flexCenter;
+  }
+  img{
+    cursor: pointer;
+  }
+}
+
+.GalleryContent{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px;
+  padding: 0 25px 0 25px;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .GalleryContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .GalleryContent {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

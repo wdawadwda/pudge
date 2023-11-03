@@ -18,9 +18,9 @@ export const AdminGallery = () => {
       <Button
         isFullWidth={true}
         appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminGalleryRemovePhoto)}
+        onClick={() => redirectTo(navigate, links.adminGalleryRemove)}
       >
-        Удалить Фото
+        Удалить Галерею
       </Button>
     </>
   );

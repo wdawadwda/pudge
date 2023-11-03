@@ -1,4 +1,4 @@
-import { type FormField } from "./AddContacts.type";
+import { type FormField } from "./addContacts.type";
 
 export const addContactsFormSchema: FormField[] = [
   {
@@ -23,6 +23,12 @@ export const addContactsFormSchema: FormField[] = [
     label: "Instagram",
     placeholder: "Введите ссылку",
     name: "instagram",
+    type: "text",
+  },
+  {
+    label: "Email",
+    placeholder: "Введите email",
+    name: "email",
     type: "text",
   },
 ];

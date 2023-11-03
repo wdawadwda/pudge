@@ -7,7 +7,6 @@ export const mainLinksSchema = [
 ];
 
 export const moreLinksSchema = [
-  { to: links.news, label: "Новости" },
+  { to: links.newsLink, label: "Новости" },
   { to: links.gallery, label: "Галерея" },
-  { to: links.events, label: "Мероприятия" },
 ];

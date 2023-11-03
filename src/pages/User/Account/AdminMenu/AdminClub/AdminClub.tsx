@@ -45,13 +45,6 @@ export const AdminClub = () => {
       >
         Добавить информацию о железе
       </Button>
-      <Button
-        isFullWidth={true}
-        appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminClubRemove)}
-      >
-        Удалить клуб
-      </Button>
     </div>
   );
 };

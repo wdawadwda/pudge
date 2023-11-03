@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios, { type AxiosError, type AxiosResponse } from "axios";
 import axiosCore from "axios";
 
-import { PUDGE_TEST_API_URL } from "~/entities/const/url.const";
+import { PUDGE_API_URL } from "~/entities/const/url.const";
 import {
   type JWTTokens,
   type EmailConfirmRequest,
@@ -19,26 +19,26 @@ import { userActions } from "../user/user.slice";
 export async function registerUser(signUpData: SignUpApiRequest) {
   try {
     const response = await axios.post(
-      `${PUDGE_TEST_API_URL}auth/users/`,
+      `${PUDGE_API_URL}auth/users/`,
       signUpData
     );
     return response.data as string;
-  } catch (error) {
-    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
-    throw errorObject;
+  } catch (error: unknown) {
+    const errors = error;
+    throw errors;
   }
 }
 
 export async function emailConfirmation(uidToken: EmailConfirmRequest) {
   try {
     const response = await axios.post(
-      `${PUDGE_TEST_API_URL}auth/users/activation/`,
+      `${PUDGE_API_URL}auth/users/activation/`,
       uidToken
     );
     return response.data as string;
-  } catch (error) {
-    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
-    throw errorObject;
+  } catch (error: unknown) {
+    const errors = error;
+    throw errors;
   }
 }
 
@@ -54,7 +54,7 @@ export const createTokens = createAsyncThunk<
       JWTTokens,
       AxiosResponse<JWTTokens>,
       CreateTokenPayload
-    >(`${PUDGE_TEST_API_URL}api/v1/token/`, payload, {
+    >(`${PUDGE_API_URL}api/v1/token/`, payload, {
       signal: thunkAPI.signal,
     });
     return response.data;
@@ -69,7 +69,7 @@ export const fetchUser = createAsyncThunk(
   "user/fetch",
   async function (_, thunkAPI) {
     const { data } = await axiosAuthorizationInstance.get<User>(
-      `${PUDGE_TEST_API_URL}auth/users/me/`,
+      `${PUDGE_API_URL}auth/users/me/`,
       {
         signal: thunkAPI.signal,
       }

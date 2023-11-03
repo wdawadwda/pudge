@@ -4,24 +4,26 @@ import { redirectTo } from "~/entities/utils/navigate.utils";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
 
-export const AdminEvents = () => {
+import Style from "../amminMenu.module.scss";
+
+export const AdminPartners = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <div className={Style.AdminBtnContainer}>
       <Button
         isFullWidth={true}
         appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminEventsAdd)}
+        onClick={() => redirectTo(navigate, links.adminPartnersAdd)}
       >
-        Добавить мероприятияме
+        Добавить партнёров
       </Button>
       <Button
         isFullWidth={true}
         appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminEventsRemove)}
+        onClick={() => redirectTo(navigate, links.adminPartnersRemove)}
       >
-        Удалить мероприятияме
+        Улалить партнёров
       </Button>
-    </>
+    </div>
   );
 };

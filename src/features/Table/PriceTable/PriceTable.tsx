@@ -27,11 +27,9 @@ export const PriceTable = ({ priceData }: { priceData: TypeClubTariff }) => {
       </table>
       <Expand titleExpand="Уточнения">
         <ul>
-          {priceData.description.map((item, index) =>
-            typeof item === "string" && item !== "" ? (
-              <li key={index}>{item}</li>
-            ) : null
-          )}
+          {priceData.description.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
       </Expand>
     </>

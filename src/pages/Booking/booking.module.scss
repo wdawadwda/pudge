@@ -1,0 +1,9 @@
+@import '~/mixins.scss';
+
+.BookingContainer{
+  background-color: var(--pudge--bg-color);
+  padding: var(--pudge-padding-container-content) 0 var(--pudge-padding-container-content) 0;
+  .BookingContent{
+
+  }
+}

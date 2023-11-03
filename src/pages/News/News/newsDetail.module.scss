@@ -1,0 +1,36 @@
+@import '~/mixins.scss';
+
+.title{
+  font-size: var(--pudge--text-subtitle-size);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+
+.contentWrapper{
+  display: flex;
+  @include flexCenter;
+  flex-direction: column;
+  text-align: center;
+}
+
+.text{
+  font-size: var(--pudge--text-normal-size2);
+  font-weight: 600;
+}
+
+.text1{
+  color: var(--pudge--text-color);
+}
+
+.text2{
+  color: var(--pudge--text-second3-color);
+}
+
+.text3{
+  color: var(--pudge--text-second-color);
+}
+
+.img{
+  width: 50%;
+}

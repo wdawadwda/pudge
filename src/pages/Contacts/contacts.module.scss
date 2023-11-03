@@ -33,6 +33,33 @@
           fill: var(--pudge--text-second-color);
         }
       }
+      button{
+        margin-bottom: var(--pudge-margin-title-content);
+      }
+      iframe{
+        margin-top: 25px;
+        opacity: 0;
+        height: 0;
+        transition: opacity 0.5s, height 0.5s;
+      }
+      iframe.showIframe {
+        opacity: 1;
+        height: 300px;
+      }
+      .howToFind {
+        cursor: pointer;
+        font-size: var(--pudge--text-normal-size);
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        color: var(--pudge--text-second3-color);
+        &:hover{
+          color: var(--pudge--text-second-color);
+        }
+      }
+      .howToFind.showIframe{
+        color: var(--pudge--text-second-color);
+      }
     }
   }
 }

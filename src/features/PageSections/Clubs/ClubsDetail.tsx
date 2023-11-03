@@ -19,9 +19,6 @@ export const ClubsDetail = () => {
   const clubData = useSelector(selectClubDataResults);
   const selectedClub = clubData.find((club) => club.id === clubId);
 
-  // console.warn(clubId);
-  // console.warn(selectedClub.computerSpecs);
-
   return (
     <div
       className={`${classNames({
@@ -38,7 +35,13 @@ export const ClubsDetail = () => {
         {selectedClub ? (
           <div className={Style.selectedClub}>
             <h2 className={Style.title}>{`${selectedClub.name}:`}</h2>
-            <BookClub contacts={selectedClub.contacts} />
+            <BookClub
+              data={{
+                contacts: selectedClub.contacts,
+                name: selectedClub.name,
+                id: selectedClub.id,
+              }}
+            />
             <NeonStrip color="yellow" marginBottom="50px" />
             <Price title={selectedClub.name} data={selectedClub.price} />
             <NeonStrip color="yellow" marginBottom="50px" />

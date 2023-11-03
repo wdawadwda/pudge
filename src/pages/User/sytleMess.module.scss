@@ -1,0 +1,27 @@
+@import '~/mixins.scss';
+
+.mesWrapSuccess{
+  width: 100%;
+  height: 50px;
+  background-color: var(--pudge--bg-color-second3);
+  border: 1px solid var(--pudge--bg-color-second3);
+  border-radius: 10px;
+  margin-bottom: var(--pudge-margin-title-content);
+  display: flex;
+  @include flexCenter;
+  .textSuccess{
+    text-align: center;
+    font-size: var(--pudge--text-normal-size);
+    color: var(--pudge--text-second2-color);
+  }
+}
+
+.mesWrapError{
+  @extend .mesWrapSuccess;
+  background-color: var(--pudge--bg-alert-color);
+  border: var(--pudge--bg-alert-color);
+  .textError{
+    @extend .textSuccess;
+
+  }
+}

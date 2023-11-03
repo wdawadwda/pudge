@@ -48,6 +48,7 @@ export interface TypeClubContacts {
   address: string;
   phone: string;
   instagram: string;
+  email: string;
 }
 
 export interface TypeClubData {
@@ -78,7 +79,13 @@ export interface ClubRequest {
 }
 
 export interface ContactsRequest {
-  contacts: { name: string; address: string; phone: string; instagram: string };
+  contacts: {
+    name: string;
+    address: string;
+    phone: string;
+    instagram: string;
+    email: string;
+  };
 }
 
 export type PriceRequest = {
@@ -126,3 +133,7 @@ export type ClubRequestType =
   | PriceRequest
   | ComputerSpecsRequest
   | QuantityComputersRequest;
+
+export interface MainMapRequest {
+  mainMap: string;
+}

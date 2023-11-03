@@ -75,6 +75,10 @@ export const addContactsSchema = yup.object().shape({
   name: yup
     .string()
     .required('Поле "Название клуба" обязательно для заполнения'),
+  email: yup
+    .string()
+    .required("Это обязательное поле")
+    .matches(/^[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/, "Некорректный email"),
   address: yup
     .string()
     .required('Поле "Адрес клуба" обязательно для заполнения'),
@@ -163,4 +167,97 @@ export const addPriceschema = yup.object().shape({
   DescrFour: yup.string(),
   DescrFive: yup.string(),
   section: yup.string(),
+});
+
+export const addPhotoSchema = yup.object().shape({
+  name: yup.string().required("Название клуба обязательно для заполнения"),
+  text: yup.string().required("Обязательно для заполнения"),
+  img: yup
+    .mixed()
+    .test("fileType", "Фото клуба должно быть изображением", (value) => {
+      if (value instanceof FileList && value.length === 1) {
+        const acceptedImageTypes = ["image/jpeg", "image/png"];
+        const fileType = value[0].type;
+        return acceptedImageTypes.includes(fileType);
+      }
+      return false;
+    })
+    .required("Фото обязательно"),
+});
+
+export const bookingSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required('Поле "Ваше имя" обязательно для заполнения')
+    .min(2, "Имя должно содержать как минимум 2 символа"),
+  phone_number: yup
+    .string()
+    .required('Поле "Телефон" обязательно для заполнения')
+    .matches(
+      /^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$/,
+      "Номер телефона должен соответствовать формату +375 (XX) XXX-XX-XX"
+    ),
+  telegram: yup.string().notRequired(),
+  time: yup
+    .string()
+    .required('Поле "Время" обязательно для заполнения')
+    .matches(
+      /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01]) (0\d|1\d|2[0-3]):[0-5]\d$/,
+      {
+        message: "Введите корректное время в формате ММ/ДД ЧЧ:ММ",
+      }
+    ),
+
+  quantity_seats: yup
+    .number()
+    .required('Поле "Кол-во мест" обязательно для заполнения')
+    .integer("Введите целое число"),
+});
+
+export const addPartnerFormValidationSchema = yup.object().shape({
+  name: yup.string().required("Название обязательно"),
+  url: yup
+    .string()
+    .required("URL обязателен")
+    .url('Введите корректный URL (например, "http://www.example.com")'),
+  img: yup
+    .mixed()
+    .test("fileType", "Фото должно быть изображением", (value) => {
+      if (value instanceof FileList && value.length === 1) {
+        const acceptedImageTypes = ["image/jpeg", "image/png"];
+        const fileType = value[0].type;
+        return acceptedImageTypes.includes(fileType);
+      }
+      return false;
+    })
+    .required("Фото обязательно"),
+});
+
+export const removeGalleryValidationSchema = yup.object().shape({
+  name: yup.string().required("Это поле обязательно"),
+});
+
+export const addMainMapSchema = yup.object().shape({
+  url: yup
+    .string()
+    .required("URL обязателен")
+    .url('Введите корректный URL (например, "http://www.example.com")'),
+});
+
+export const addNewsSchema = yup.object().shape({
+  title: yup.string().required("Заголовок обязателен"),
+  img: yup
+    .mixed()
+    .test("fileType", "Фото клуба должно быть изображением", (value) => {
+      if (value instanceof FileList && value.length === 1) {
+        const acceptedImageTypes = ["image/jpeg", "image/png"];
+        const fileType = value[0].type;
+        return acceptedImageTypes.includes(fileType);
+      }
+      return false;
+    })
+    .required("Фото клуба обязательно"),
+  text1: yup.string().required("Первое поле обязателено"),
+  text2: yup.string(),
+  text3: yup.string(),
 });

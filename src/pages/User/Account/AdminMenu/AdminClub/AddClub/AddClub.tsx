@@ -1,9 +1,14 @@
+import { useState } from "react";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
 
 import { addClubSchema } from "~/entities/const/validation";
+import { type ErrorObject } from "~/entities/type/api.type";
 import StylesUser from "~/features/PageSections/User/user.module.scss";
+import { ServerResponse } from "~/features/ServerResponse/ServerResponse";
+import { Loader } from "~/pages/Loader/Loader";
 import { Button } from "~/shared/ui/Button/Buttons";
 import { fetchClubContent, sendMainClubData } from "~/store/api/contentApi";
 import { useAppDispatch } from "~/store/store.types";
@@ -13,6 +18,11 @@ import { addClubFormSchema } from "./formSchema";
 import Style from "../../amminMenu.module.scss";
 
 export const AddClub = () => {
+  const [serverResponse, setServerResponse] = useState({
+    message: "",
+    error: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const {
     register,
@@ -24,6 +34,7 @@ export const AddClub = () => {
   });
 
   const onClick = () => {
+    setIsLoading(true);
     const formData = new FormData();
     const photoFiles = getValues("img");
 
@@ -32,13 +43,18 @@ export const AddClub = () => {
       formData.append("map", getValues("map"));
       formData.append("img", photoFiles[0]);
     }
-    try {
-      const responseData = sendMainClubData(formData);
-      console.warn("Успешно отправлено:", responseData);
-      void dispatch(fetchClubContent());
-    } catch (error) {
-      console.error("Ошибка отправки:", error);
-    }
+
+    sendMainClubData(formData)
+      .then((responseData) => {
+        setServerResponse({ message: responseData.message, error: "" });
+        return dispatch(fetchClubContent());
+      })
+      .catch((error: ErrorObject) => {
+        setServerResponse({ message: "", error: error.message });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -48,7 +64,21 @@ export const AddClub = () => {
         [StylesUser.UserContent]: true,
       })}
     >
+      {isLoading && (
+        <Loader
+          loaderWidth="100%"
+          loaderHeight="100%"
+          dotSize="30px"
+          loaderMargin="0 0 77px 0"
+        />
+      )}
       <form>
+        {serverResponse && (serverResponse.message || serverResponse.error) && (
+          <ServerResponse
+            message={serverResponse.message}
+            error={serverResponse.error}
+          />
+        )}
         {addClubFormSchema.map((field: FormField) => (
           <div key={field.name}>
             <div>
@@ -82,7 +112,7 @@ export const AddClub = () => {
         <Button
           type="button"
           onClick={onClick}
-          disabled={!isValid || !isDirty}
+          disabled={!isValid || !isDirty || isLoading}
           appearance="primary"
           isFullWidth={true}
         >
