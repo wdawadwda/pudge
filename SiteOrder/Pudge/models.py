@@ -100,7 +100,7 @@ class GalleryModel(models.Model):
   date = models.DateTimeField()
 
   def __str__(self):
-    return self.img + self.name
+    return self.img
 
   def get_absolute_url(self):
     return self.img.url
