@@ -99,6 +99,9 @@ class GalleryModel(models.Model):
   img = models.FileField(blank=True, null=True)
   date = models.DateTimeField()
 
+  def __str__(self):
+    return self.img + self.name
+
   def get_absolute_url(self):
     return self.img.url
 

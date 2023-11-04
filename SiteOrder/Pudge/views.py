@@ -1,10 +1,6 @@
 from datetime import datetime
-
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from psycopg2._json import Json
-from rest_framework import viewsets, generics, status
+from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm
 from .serializers import *
@@ -55,7 +51,7 @@ class OneClubView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.D
     serializer = self.get_serializer(data={'club': one_club})
     serializer.is_valid(raise_exception=True)
     serializer.save()
-    return Response({"status": "has been saved", "club": one_club})
+    return Response({"message": "клуб сохранен", "club": one_club})
 
   def put(self, request, *args, **kwargs):
     return self.update(request, *args, **kwargs)
@@ -85,10 +81,10 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response({'message': "picture has been saved"})
+      return Response({'message': "Файл сохранен"})
     else:
       form = ClubsForm()
-    return Response({"error": "form is invalid"})
+    return Response({"message": "Не корректно заполнена форма"})
 
 # class SendInfoToUserView(generics.ListCreateAPIView):
 #   queryset = SendInfoToUserModel.objects.all()
@@ -119,8 +115,8 @@ class NewClubTestView(generics.ListCreateAPIView):
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response({'message': "club has been saved"})
-    return Response({"error": "form is invalid"})
+      return Response({'message': "клуб сохранен"})
+    return Response({"message": "Не корректно заполнена форма"})
 
 class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
   queryset = CollectClubModel.objects.all()
@@ -165,14 +161,14 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
           serializer = self.get_serializer(data=request.data)
           serializer.is_valid(raise_exception=True)
           serializer.save()
-          return Response({'message': "club has been created"})
+          return Response({'message': f"Клуб {club_name} создан"})
         else:
           instance = CollectClubModel.objects.get(name=request.data['name'])
           serializer = CollectClubSerializer(data=request.data, instance=instance)
           serializer.is_valid(raise_exception=True)
           serializer.save()
-          return Response({"message": f"object {club_name} has been updated"})
-      return Response({"error": "form is invalid"})
+          return Response({"message": f"Клуб {club_name} был обновлен"})
+      return Response({"message": "Не корректно заполнена форма"})
 
     elif 'contacts' in request.data.keys():
       request.data['contacts'].pop('name')
@@ -196,7 +192,7 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
       request.data['quantityComputers'].pop('name')
       CollectClubModel.objects.filter(name=club_name).update(quantityComputers=request.data['quantityComputers'])
 
-    return Response({"status": "200"})
+    return Response({"message": f"Клуб {club_name} обновлен"})
 
 class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = GalleryModel.objects.all()
@@ -209,9 +205,9 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response({'status': 'Объект добавлен в галлерею'})
+      return Response({'message': 'Объект добавлен в галлерею'})
     else:
-      return Response({'status': 'Не корректно заполнена форма'})
+      return Response({'message': 'Не корректно заполнена форма'})
 
   def put(self, request, *args, **kwargs):
     if GalleryForm(request.data, request.FILES).is_valid():
@@ -219,7 +215,7 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
         request.data['date'] = datetime.now()
       return self.update(request, *args, **kwargs)
     else:
-      return Response({'status': 'Не корректно заполнена форма'})
+      return Response({'message': 'Не корректно заполнена форма'})
 
   def get(self, request, *args, **kwargs):
     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
@@ -227,7 +223,7 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
     to = self.offset+self.limit if self.limit else None
     queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
-    return Response({self.club_name: self.get_serializer(queryset, many=True).data}) if self.club_name else Response({'error': 'Укажите имя клуба'})
+    return Response({self.club_name: self.get_serializer(queryset, many=True).data}) if self.club_name else Response({'message': 'Укажите имя клуба'})
 
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = NewsModel
@@ -239,9 +235,9 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response({'status': 'Новость была записана'})
+      return Response({'message': 'Новость была записана'})
     else:
-      return Response({'status': 'Не корректно заполнена форма'})
+      return Response({'message': 'Не корректно заполнена форма'})
 
   def get(self, request, *args, **kwargs):
     queryset = NewsModel.objects.all().order_by("id")
@@ -258,9 +254,9 @@ class ReservationView(generics.ListCreateAPIView):
         try:
             contacts = CollectClubModel.objects.get(name=request.data['club']).contacts
             if not contacts or 'email' not in contacts or not contacts['email']:
-              return Response({"error": "У клуба нет email"})
+              return Response({"message": "У клуба нет email"})
         except Exception as ex:
-            return Response({"error": "Клуба с таким именем не существует"})
+            return Response({"message": "Клуба с таким именем не существует"})
         recipient_list = [contacts['email'], ]
 
     form = ReservationForm(request.data)
@@ -272,12 +268,12 @@ class ReservationView(generics.ListCreateAPIView):
       helper = Helper()
       text_mail = helper.compose_mail_text(request)
 
-      return Response({'status': 'Письмо отправлено'}) \
+      return Response({'message': 'Письмо отправлено'}) \
         if send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=recipient_list) \
-        else Response({"status": False})
+        else Response({"message": False})
 
     else:
-      return Response({'status': 'Не корректно заполнена форма'})
+      return Response({'message': 'Не корректно заполнена форма'})
 
   def list(self, request, *args, **kwargs):
     queryset = ReservationModel.objects.all()
