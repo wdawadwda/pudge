@@ -280,14 +280,14 @@ class ReservationView(generics.ListCreateAPIView):
     return Response(serializer.data)
 
 class GetClubsNameView(generics.ListAPIView):
-  queryset = CollectClubModel
+  queryset = GalleryModel
   serializer_class = GetClubNames
 
   def get(self, request, *args, **kwargs):
-    queryset = GetClubNames(CollectClubModel.objects.all(), many=True).data
+    queryset = GetClubNames(GalleryModel.objects.all(), many=True).data
     clubs = []
     for club in queryset:
       clubs.append(club['name'])
 
-    return Response({"clubsGallery": clubs})
+    return Response({"clubsGallery": set(clubs)})
 
