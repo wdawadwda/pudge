@@ -24,11 +24,6 @@ class ClubsSerializer(serializers.ModelSerializer):
   def get_image_url(self, obj):
     return obj.get_absolute_url()
 
-# class SendInfoToUserSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = SendInfoToUserModel
-#     fields = "__all__"
-
 class NewClubsTestSerializer(serializers.ModelSerializer):
   class Meta:
     model = NewClubsTestModel
@@ -57,3 +52,7 @@ class ReservatonSerializer(serializers.ModelSerializer):
     model = ReservationModel
     fields = "__all__"
 
+class GetClubNames(serializers.ModelSerializer):
+  class Meta:
+    model = CollectClubModel
+    fields = ("name", )

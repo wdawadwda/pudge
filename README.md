@@ -16,6 +16,10 @@
 - python manage.py runserver
 
 ---
+## ***GET CLUB NAMES***
+
+- ### *get-clubs/*
+---
 ## ***RESERVATION*** (sending to email)
 Headers: Content-Type
 - ### *Create Reservation POST ^/reservation/ (multipart/form-data)*
@@ -62,6 +66,7 @@ Headers: Content-Type
 >{\
 > "name": text, \
 > "img": file \
+> "text": text (optional) \
 > }
 - ### *GET Gallery ^/gallery/?offset=<int>&limit=<int>club_name=<text>*
 - ### *PUT Gallery ^/gallery/<int:pk>*

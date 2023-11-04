@@ -11,12 +11,17 @@ class CustomUser(AbstractUser):
     return self.username
 
 class PartnersModel(models.Model):
-  name = models.CharField(max_length=300, blank=False)
-  img = models.CharField(max_length=400, blank=False)
-  url = models.CharField(max_length=200, blank=False)
+  name = models.CharField(max_length=300, blank=False, unique=True)
+  img = models.FileField()
+  url = models.CharField(max_length=200, blank=False, null=True)
+  text = models.CharField(max_length=2000, blank=True, null=True)
 
   def __str__(self):
     return self.name
+
+  def get_absolute_url(self):
+    pass
+    return self.img.url
 
 class ClubsFullJsonModel(models.Model):
   club = models.JSONField(unique=True)
@@ -50,7 +55,6 @@ class SendInfoToUserModel(models.Model):
   seatsNumber =  models.IntegerField()
   clubEMail = models.CharField()
 
-
 class NewClubsTestModel(models.Model):
   name = models.CharField(blank=False)
   map = models.CharField(blank=True)
@@ -62,22 +66,6 @@ class NewClubsTestModel(models.Model):
 
   def __str__(self):
     return str(self.img.url)
-
-# class Club2Model(models.Model):
-#   name = models.CharField()
-#   map = models.CharField()
-#   img = models.FileField()
-#   contacts = models.JSONField()
-#   priceData = models.JSONField()
-#   computerSpecs = models.JSONField()
-#   quantityComputers = models.JSONField()
-#
-#   def get_absolute_url(self):
-#     pass
-#     return self.img.url
-#
-#   def __str__(self):
-#     return str(self.img.url)
 
 class CollectClubModel(models.Model):
   name = models.CharField(blank=False, null=False, unique=True)
@@ -98,6 +86,7 @@ class GalleryModel(models.Model):
   name = models.CharField(blank=False, null=False)
   img = models.FileField(blank=True, null=True)
   date = models.DateTimeField()
+  text = models.TextField(blank=True, null=True)
 
   def __str__(self):
     return self.img

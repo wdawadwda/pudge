@@ -54,3 +54,9 @@ class Helper:
                     mail_text += f"Количество мест: {request.data['quantity_seats']}\n"
 
         return mail_text
+
+    def move_fields_from_queryset(self, queryset, moving_fields:list):
+        for record in range(0, len(queryset)):
+            for moving_field in moving_fields:
+                queryset[record].pop(moving_field)
+        return queryset

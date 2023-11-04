@@ -1,8 +1,8 @@
 from datetime import datetime
 from django.core.mail import send_mail
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
-from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm
+from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm, PartnersForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
@@ -11,6 +11,17 @@ from .helper.helper import Helper
 class PartnersView(viewsets.ModelViewSet):
   queryset = PartnersModel.objects.all()
   serializer_class = PartnersSerializer
+
+  def create(self, request, *args, **kwargs):
+    form = PartnersForm(request.data, request.FILES)
+    if form.is_valid():
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      self.perform_create(serializer)
+      headers = self.get_success_headers(serializer.data)
+      return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    else:
+      return Response({"message": "Не корректно заполнена форма"})
 
 class LoadAllClubData(generics.ListCreateAPIView):
   queryset = OneClubModel.objects.all()
@@ -31,7 +42,6 @@ class LoadAllClubData(generics.ListCreateAPIView):
     helper = Helper()
     clubs_set = helper.collect_full_clubs_json(queryset_list)
     return Response(clubs_set)
-
 
 class OneClubView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
   queryset = OneClubModel.objects.all()
@@ -75,34 +85,13 @@ class ClubsView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.Des
 
   def post(self, request, *args, **kwargs):
     form = ClubsForm(request.POST, request.FILES)
-    form_valid = form.is_valid
     if form.is_valid():
-      # Helper().handle_uploaded_file(request.FILES["clubPhoto"])
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
       return Response({'message': "Файл сохранен"})
     else:
-      form = ClubsForm()
-    return Response({"message": "Не корректно заполнена форма"})
-
-# class SendInfoToUserView(generics.ListCreateAPIView):
-#   queryset = SendInfoToUserModel.objects.all()
-#   serializer_class = SendInfoToUserSerializer
-#
-#   def post(self, request, *args, **kwargs):
-#     form = SendInfoToUserForm(request.POST)
-#     if form.is_valid():
-#       # serializer = self.get_serializer(data=request.data)
-#       # serializer.is_valid(raise_exception=True)
-#       # serializer.save()
-#
-#       # send email
-#
-#       return self.create(request, *args, **kwargs)
-#     else:
-#       form = ClubsForm()
-#     return Response({"error": "form is invalid"})
+      return Response({"message": "Не корректно заполнена форма"})
 
 class NewClubTestView(generics.ListCreateAPIView):
   queryset = NewClubsTestModel.objects.all()
@@ -223,7 +212,11 @@ class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.
     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
     to = self.offset+self.limit if self.limit else None
     queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
-    return Response({self.club_name: self.get_serializer(queryset, many=True).data}) if self.club_name else Response({'message': 'Укажите имя клуба'})
+
+    helper = Helper()
+    queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
+
+    return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
 
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = NewsModel
@@ -286,4 +279,15 @@ class ReservationView(generics.ListCreateAPIView):
     serializer = self.get_serializer(queryset, many=True)
     return Response(serializer.data)
 
+class GetClubsNameView(generics.ListAPIView):
+  queryset = CollectClubModel
+  serializer_class = GetClubNames
+
+  def get(self, request, *args, **kwargs):
+    queryset = GetClubNames(CollectClubModel.objects.all(), many=True).data
+    clubs = []
+    for club in queryset:
+      clubs.append(club['name'])
+
+    return Response({"clubsGallery": clubs})
 

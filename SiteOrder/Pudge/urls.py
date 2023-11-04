@@ -31,6 +31,8 @@ urlpatterns = [
 
     path('reservation/', ReservationView.as_view()),
 
+    path('get-clubs/', GetClubsNameView.as_view()),
+
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')
