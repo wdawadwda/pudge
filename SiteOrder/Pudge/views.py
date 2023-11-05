@@ -2,6 +2,8 @@ from datetime import datetime
 from django.core.mail import send_mail
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm, PartnersForm
 from .serializers import *
 from .models import PartnersModel
@@ -183,40 +185,40 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
 
     return Response({"message": f"Клуб {club_name} обновлен"})
 
-class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
-  queryset = GalleryModel.objects.all()
-  serializer_class = GalleryModelSerializer
-
-  def post(self, request, *args, **kwargs):
-    form = GalleryForm(request.data, request.FILES)
-    if form.is_valid():
-      request.data['date'] = datetime.now()
-      serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-      return Response({'message': 'Объект добавлен в галлерею'})
-    else:
-      return Response({'message': 'Не корректно заполнена форма'})
-
-  def put(self, request, *args, **kwargs):
-    if GalleryForm(request.data, request.FILES).is_valid():
-      if 'date' not in request.data:
-        request.data['date'] = datetime.now()
-      return self.update(request, *args, **kwargs)
-    else:
-      return Response({'message': 'Не корректно заполнена форма'})
-
-  def get(self, request, *args, **kwargs):
-    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
-    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
-    self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
-    to = self.offset+self.limit if self.limit else None
-    queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
-
-    helper = Helper()
-    queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
-
-    return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
+# class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+#   queryset = GalleryModel.objects.all()
+#   serializer_class = GalleryModelSerializer
+#
+#   def post(self, request, *args, **kwargs):
+#     form = GalleryForm(request.data, request.FILES)
+#     if form.is_valid():
+#       request.data['date'] = datetime.now()
+#       serializer = self.get_serializer(data=request.data)
+#       serializer.is_valid(raise_exception=True)
+#       serializer.save()
+#       return Response({'message': 'Объект добавлен в галлерею'})
+#     else:
+#       return Response({'message': 'Не корректно заполнена форма'})
+#
+#   def put(self, request, *args, **kwargs):
+#     if GalleryForm(request.data, request.FILES).is_valid():
+#       if 'date' not in request.data:
+#         request.data['date'] = datetime.now()
+#       return self.update(request, *args, **kwargs)
+#     else:
+#       return Response({'message': 'Не корректно заполнена форма'})
+#
+#   def get(self, request, *args, **kwargs):
+#     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
+#     self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
+#     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
+#     to = self.offset+self.limit if self.limit else None
+#     queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
+#
+#     helper = Helper()
+#     queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
+#
+#     return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
 
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = NewsModel
@@ -280,14 +282,107 @@ class ReservationView(generics.ListCreateAPIView):
     return Response(serializer.data)
 
 class GetClubsNameView(generics.ListAPIView):
-  queryset = GalleryModel
+  queryset = GalleryUpdatedModel
   serializer_class = GetClubNames
 
   def get(self, request, *args, **kwargs):
-    queryset = GetClubNames(GalleryModel.objects.all(), many=True).data
-    clubs = []
+    queryset = GetClubNames(GalleryUpdatedModel.objects.order_by('name').all(), many=True).data
+    clubs = {}
+    names = []
     for club in queryset:
-      clubs.append(club['name'])
+      club = dict(club)
+      if club['name'] not in names:
+        names.append(club['name'])
+        club['quantityPictures'] = GalleryUpdatedModel.objects.filter(name=club['name']).count()
 
-    return Response({"clubsGallery": set(clubs)})
+        if 'clubsGallery' not in clubs:
+          clubs['clubsGallery'] = []
+        clubs['clubsGallery'].append(club['name'])
 
+        if 'galeryTotalPhoto' not in clubs:
+          clubs['galeryTotalPhoto'] = []
+        clubs['galeryTotalPhoto'].append(club)
+
+
+    return Response(clubs)
+
+class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView, APIView):
+  queryset = GalleryUpdatedModel
+  serializer_class = GalleryUpdatesSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = GalleryForm(request.data, request.FILES)
+    if form.is_valid():
+      last_id_object = GalleryUpdatedModel.objects.order_by('id_object').values('id_object').last()
+      if not last_id_object:
+        last_id_object = 0
+      else:
+        last_id_object = last_id_object['id_object'] + 1
+      request.data['id_object'] = last_id_object
+      request.data['date'] = datetime.now()
+
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+      return Response({"message": "Фото сохранено в галерею"})
+    else:
+      return Response({"message": "Не корректно заполнена форма"})
+
+  # def get(self, request, *args, **kwargs):
+  #   return Response(GalleryUpdatedModel.objects.order_by('id_object').values())
+
+  def put(self, request, *args, **kwargs):
+    id_object = kwargs['pk']
+    instance = GalleryUpdatedModel.objects.get(id_object=id_object)
+
+    if 'id_object' not in request.data:
+      request.data['id_object'] = id_object
+
+    if 'date' not in request.data:
+      request.data['date'] = datetime.now()
+
+    form = GalleryForm(request.data, request.FILES)
+    if form.is_valid():
+      partial = kwargs.pop('partial', False)
+      serializer = self.get_serializer(instance, data=request.data, partial=partial)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+    else:
+      return Response({"message": "Не корректно заполнена форма"})
+
+    if getattr(instance, '_prefetched_objects_cache', None):
+      instance._prefetched_objects_cache = {}
+
+    return Response(serializer.data)
+
+  def destroy(self, request, *args, **kwargs):
+    id_object = kwargs['pk']
+    try:
+      instance = GalleryUpdatedModel.objects.get(id_object=id_object)
+    except:
+      return Response({"message": "Записи с таким id_object не существует"})
+    self.perform_destroy(instance)
+
+    queryset = GalleryUpdatedModel.objects.filter(id_object__gt=id_object).all()
+    queryset_custom = GalleryUpdatesSerializer(queryset, many=True).data
+    for item in range(0, len(queryset)):
+      instance = queryset[item]
+      object = dict(queryset_custom[item])
+      object['id_object'] -= 1
+      object.pop('img')
+      serializer = self.get_serializer(instance, object)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+  def get(self, request, *args, **kwargs):
+    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
+    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
+    self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
+    to = self.offset+self.limit if self.limit else None
+    queryset = GalleryUpdatedModel.objects.order_by('id_object').filter(name=self.club_name).all()[self.offset:to]
+
+    helper = Helper()
+    queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
+
+    return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})

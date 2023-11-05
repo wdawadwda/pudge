@@ -82,17 +82,17 @@ class CollectClubModel(models.Model):
   def get_absolute_url(self):
     return self.img.url
 
-class GalleryModel(models.Model):
-  name = models.CharField(blank=False, null=False)
-  img = models.FileField(blank=True, null=True)
-  date = models.DateTimeField()
-  text = models.TextField(blank=True, null=True)
-
-  def __str__(self):
-    return self.img
-
-  def get_absolute_url(self):
-    return self.img.url
+# class GalleryModel(models.Model):
+#   name = models.CharField(blank=False, null=False)
+#   img = models.FileField(blank=True, null=True)
+#   date = models.DateTimeField()
+#   text = models.TextField(blank=True, null=True)
+#
+#   def __str__(self):
+#     return self.img
+#
+#   def get_absolute_url(self):
+#     return self.img.url
 
 class NewsModel(models.Model):
   title = models.CharField(blank=False, null=False)
@@ -112,5 +112,17 @@ class ReservationModel(models.Model):
   reservation_time = models.CharField()
   quantity_seats = models.CharField()
 
+class GalleryUpdatedModel(models.Model):
+  id_object = models.IntegerField(blank=False, null=False, unique=True)
+  name = models.CharField(blank=False, null=False)
+  img = models.FileField(blank=True, null=True)
+  date = models.DateTimeField()
+  text = models.TextField(blank=True, null=True)
+
+  def __str__(self):
+    return self.img
+
+  def get_absolute_url(self):
+    return self.img.url
 
 

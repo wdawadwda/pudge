@@ -23,8 +23,10 @@ urlpatterns = [
     path('collect_club/', CollectClubView.as_view()),
     path('collect_club/<int:pk>/', CollectClubView.as_view()),
 
-    path('gallery/', GalleryView.as_view()),
-    path('gallery/<int:pk>/', GalleryView.as_view()),
+    # path('gallery/', GalleryView.as_view()),
+    # path('gallery/<int:pk>/', GalleryView.as_view()),
+    path('gallery-updated/', GalleryUpdatedView.as_view()),
+    path('gallery-updated/<int:pk>/', GalleryUpdatedView.as_view()),
 
     path('news/', NewsView.as_view()),
     path('news/<int:pk>/', NewsView.as_view()),

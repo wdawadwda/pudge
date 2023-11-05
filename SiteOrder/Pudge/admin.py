@@ -8,8 +8,8 @@ admin.site.register(OneClubModel)
 admin.site.register(ClubsModel)
 admin.site.register(NewClubsTestModel)
 admin.site.register(CollectClubModel)
-admin.site.register(GalleryModel)
+# admin.site.register(GalleryModel)
 admin.site.register(NewsModel)
 admin.site.register(ReservationModel)
-
+admin.site.register(GalleryUpdatedModel)
 

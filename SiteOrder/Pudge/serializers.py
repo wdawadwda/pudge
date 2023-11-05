@@ -34,10 +34,10 @@ class CollectClubSerializer(serializers.ModelSerializer):
     model = CollectClubModel
     fields = "__all__"
 
-class GalleryModelSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = GalleryModel
-    fields = "__all__"
+# class GalleryModelSerializer(serializers.ModelSerializer):
+#   class Meta:
+#     model = GalleryModel
+#     fields = "__all__"
 
 class NewsSerializer(serializers.ModelSerializer):
   class Meta:
@@ -56,3 +56,8 @@ class GetClubNames(serializers.ModelSerializer):
   class Meta:
     model = CollectClubModel
     fields = ("name", )
+
+class GalleryUpdatesSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = GalleryUpdatedModel
+    fields = "__all__"
