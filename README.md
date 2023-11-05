@@ -69,6 +69,8 @@ Headers: Content-Type
 > "text": text (optional) \
 > }
 - ### *GET Gallery ^/gallery-updated/?offset=<int>&limit=<int>club_name=<text>*
+- ### *GET Gallery ^/gallery-updated/?id=<int:pk>*
+
 - ### *PUT Gallery ^/gallery-updated/<int:pk>*
 >{\
 > "name": text, \

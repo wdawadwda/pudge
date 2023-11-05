@@ -222,6 +222,15 @@ DJOSER = {
 #     'LOGOUT_ON_PASSWORD_CHANGE': True,
 #     'TOKEN_MODEL': None,
     'SERIALIZERS': {},
+    # "EMAIL":
+    #     {
+    #         "activation": ".djoser.email.ActivationEmail",
+    #         "confirmation": "djoser.email.ConfirmationEmail",
+    #         "password_reset": "djoser.email.PasswordResetEmail",
+    #         "password_changed_confirmation": "djoser.email.PasswordChangedConfirmationEmail",
+    #         "username_changed_confirmation": "djoser.email.UsernameChangedConfirmationEmail",
+    #         "username_reset": "djoser.email.UsernameResetEmail",
+    #     }
 }
 
 AUTH_USER_MODEL = 'Pudge.CustomUser'

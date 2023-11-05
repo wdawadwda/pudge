@@ -376,6 +376,14 @@ class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, gen
     return Response(status=status.HTTP_204_NO_CONTENT)
 
   def get(self, request, *args, **kwargs):
+    id = request.query_params['id'] if 'id' in request.query_params else None
+    if id:
+      try:
+        queryset = GalleryUpdatedModel.objects.get(id=id)
+        return Response(GalleryUpdatesSerializer(queryset).data)
+      except:
+        return Response({"message": f"Записm с id={id} не найдена"})
+
     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
     self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
