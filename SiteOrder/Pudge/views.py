@@ -1,22 +1,15 @@
 from datetime import datetime
-
 from django.shortcuts import redirect
-from djoser import utils
-from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
-from django.urls import reverse
-from djoser.email import ActivationEmail
-from djoser.views import UserViewSet
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from templated_mail.mail import BaseEmailMessage
-
 from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm, PartnersForm
 from .serializers import *
 from .models import PartnersModel
 from .variables import variables
 from .helper.helper import Helper
+from .email.custom_send_email import CustomSendEmail
 
 class PartnersView(viewsets.ModelViewSet):
   queryset = PartnersModel.objects.all()
@@ -229,7 +222,7 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
 #     return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
 
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
-  queryset = NewsModel
+  queryset = NewsModel.objects.all()
   serializer_class = NewsSerializer
 
   def post(self, request, *args, **kwargs):
@@ -238,12 +231,31 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      return Response({'message': 'Новость была записана'})
+      text_mail = request.data['title'] + "\nsome addition text"
+      recipient_list = list(CustomUser.objects.values_list('email', flat=True))
+      try:
+        send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
+      except:
+        return Response({"error": "Новость была записана, но не разослана на имейлы"})
+      return Response({'message': 'Новость была записана и разослана на имейлы'})
     else:
-      return Response({'message': 'Не корректно заполнена форма'})
+      return Response({'error': 'Не корректно заполнена форма'})
 
   def get(self, request, *args, **kwargs):
-    queryset = NewsModel.objects.all().order_by("id")
+    ex = None
+    id = kwargs['pk'] if 'pk' in kwargs else None
+    if id:
+      try:
+        queryset = NewsModel.objects.filter(id=id).get()
+        return Response(self.get_serializer(queryset).data)
+      except Exception as ex:
+        return Response({"error": f"Записи с номером {id} не существует"} if not ex else {"error": str(ex)})
+
+    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
+    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
+    to = self.offset+self.limit if self.limit else None
+
+    queryset = NewsModel.objects.order_by('id').all().reverse()[self.offset:to]
     return Response(NewsSerializer(queryset, many=True).data)
 
 class ReservationView(generics.ListCreateAPIView):
@@ -423,15 +435,19 @@ class MainMapView(generics.ListCreateAPIView):
     return Response(serializer.data[0])
 
   def post(self, request, *args, **kwargs):
-    queryset = MainMapModel.objects.last()
-    if queryset:
-      queryset = self.get_serializer(queryset)
-      MainMapModel.objects.filter(id=queryset.data['id']).update(mainMap=request.data['mainMap'])
-    else:
-      serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-    return Response({"message": "ссылка сохранена"})
+    try:
+        queryset = MainMapModel.objects.last()
+        if queryset:
+          queryset = self.get_serializer(queryset)
+          MainMapModel.objects.filter(id=queryset.data['id']).update(mainMap=request.data['mainMap'])
+        else:
+          serializer = self.get_serializer(data=request.data)
+          serializer.is_valid(raise_exception=True)
+          serializer.save()
+        return Response({"message": "ссылка сохранена"})
+    except:
+        return Response({"error": "Что-то пошло не так"})
+
 
 class ActivateView(generics.ListAPIView):
   def get(self, request, *qrgs, **kwargs):
