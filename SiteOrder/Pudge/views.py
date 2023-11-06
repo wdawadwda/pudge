@@ -431,7 +431,7 @@ class MainMapView(generics.ListCreateAPIView):
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-    return Response(request.data)
+    return Response({"message": "ссылка сохранена"})
 
 class ActivateView(generics.ListAPIView):
   def get(self, request, *qrgs, **kwargs):
