@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
 class PartnersModel(models.Model):
   name = models.CharField(max_length=300, blank=False, unique=True)
   img = models.FileField()
-  url = models.CharField(max_length=200, blank=False, null=True)
+  # url = models.CharField(max_length=200, blank=False, null=True)
   text = models.CharField(max_length=2000, blank=True, null=True)
 
   def __str__(self):
@@ -125,4 +125,5 @@ class GalleryUpdatedModel(models.Model):
   def get_absolute_url(self):
     return self.img.url
 
-
+class MainMapModel(models.Model):
+  mainMap = models.CharField()

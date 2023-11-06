@@ -61,3 +61,8 @@ class GalleryUpdatesSerializer(serializers.ModelSerializer):
   class Meta:
     model = GalleryUpdatedModel
     fields = "__all__"
+
+class MainMapSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = MainMapModel
+    fields = "__all__"

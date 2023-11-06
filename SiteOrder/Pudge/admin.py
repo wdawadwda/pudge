@@ -12,4 +12,5 @@ admin.site.register(CollectClubModel)
 admin.site.register(NewsModel)
 admin.site.register(ReservationModel)
 admin.site.register(GalleryUpdatedModel)
+admin.site.register(MainMapModel)
 

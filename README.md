@@ -16,6 +16,29 @@
 - python manage.py runserver
 
 ---
+## ***PARTNERS***
+
+- ### *Create New partner POST ^/partners/ (multipart/form-data)*
+>{ \
+> "name": "txt", \
+> "img": file, \
+> "text": "txt" \
+> }
+
+- ### *Get the partner GET ^/partners/*
+- ### *Delete the partner DELETE ^/partners/<int:pk>/*
+
+---
+## ***Main Map***
+
+- ### *Create New MainMap POST ^/main-map/ (json)*
+>{ \
+> "mainMap": "txt", \
+> }
+
+- ### *Get the mainMap GET ^/main-map/*
+
+---
 ## ***GET CLUB NAMES***
 
 - ### *get-clubs/*
@@ -77,6 +100,7 @@ Headers: Content-Type
 > "img": file \
 > }
 - ### *DELETE Gallery ^/gallery-updated/<int:pk>*
+- ### *DELETE all photos by clubName ^/gallery-updated?delete_club_name=text*
 ---
 
 ## ***CLUBS***

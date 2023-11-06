@@ -328,9 +328,6 @@ class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, gen
     else:
       return Response({"message": "Не корректно заполнена форма"})
 
-  # def get(self, request, *args, **kwargs):
-  #   return Response(GalleryUpdatedModel.objects.order_by('id_object').values())
-
   def put(self, request, *args, **kwargs):
     id_object = kwargs['pk']
     instance = GalleryUpdatedModel.objects.get(id_object=id_object)
@@ -355,7 +352,11 @@ class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, gen
 
     return Response(serializer.data)
 
+  def delete(self, request, *args, **kwargs):
+    return self.destroy(request, *args, **kwargs)
+
   def destroy(self, request, *args, **kwargs):
+
     id_object = kwargs['pk']
     try:
       instance = GalleryUpdatedModel.objects.get(id_object=id_object)
@@ -376,21 +377,46 @@ class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, gen
     return Response(status=status.HTTP_204_NO_CONTENT)
 
   def get(self, request, *args, **kwargs):
-    id = request.query_params['id'] if 'id' in request.query_params else None
-    if id:
+    if "delete_club_name" in request.query_params:
+      GalleryUpdatedModel.objects.filter(name=request.query_params['delete_club_name']).delete()
+      return Response({"message": f"Фото клуба {request.query_params['delete_club_name']} удалены"})
+
+    self.id = request.query_params['id'] if 'id' in request.query_params else None
+    if self.id:
       try:
-        queryset = GalleryUpdatedModel.objects.get(id=id)
-        return Response(GalleryUpdatesSerializer(queryset).data)
+        queryset = GalleryUpdatedModel.objects.filter(id=self.id).all()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data[0])
       except:
-        return Response({"message": f"Записm с id={id} не найдена"})
+        return Response({"message": f"Запись с id={self.id} не найдена"})
 
     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
     self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
     to = self.offset+self.limit if self.limit else None
-    queryset = GalleryUpdatedModel.objects.order_by('id_object').filter(name=self.club_name).all()[self.offset:to]
+    queryset = GalleryUpdatedModel.objects.order_by('id_object').filter(name=self.club_name).all().reverse()[self.offset:to]
 
     helper = Helper()
     queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
 
     return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
+
+class MainMapView(generics.ListCreateAPIView):
+  queryset = MainMapModel.objects.all()
+  serializer_class = MainMapSerializer
+
+  def list(self, request, *args, **kwargs):
+    queryset = self.filter_queryset(self.get_queryset())
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+      serializer = self.get_serializer(page, many=True)
+      return Response(serializer.data[0])
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data[0])
+
+  def post(self, request, *args, **kwargs):
+    queryset = MainMapModel.objects.last()
+    queryset = self.get_serializer(queryset)
+    MainMapModel.objects.filter(id=queryset.data['id']).update(mainMap=request.data['mainMap'])
+    return Response(request.data)
+

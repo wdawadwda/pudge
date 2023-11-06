@@ -35,6 +35,8 @@ urlpatterns = [
 
     path('get-clubs/', GetClubsNameView.as_view()),
 
+    path('main-map/', MainMapView.as_view()),
+
 ]
 
 schema_view = get_swagger_view(title='Pastebin API')

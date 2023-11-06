@@ -50,6 +50,6 @@ class ReservationForm(forms.Form):
 class PartnersForm(forms.Form):
   name = forms.CharField()
   img = forms.CharField()
-  url = forms.CharField(required=False)
+  # url = forms.CharField(required=False)
   text = forms.CharField(required=False)
 
