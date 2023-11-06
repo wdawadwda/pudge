@@ -1,5 +1,6 @@
-domain = 'https://d2ce-93-171-161-29.ngrok-free.app'
+domain = 'https://pudge.by'
 path_media_save = "./media/"
+
 
 email_from = "ruslanslp19@gmail.com"
 

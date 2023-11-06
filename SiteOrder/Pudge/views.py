@@ -1,8 +1,16 @@
 from datetime import datetime
+
+from django.shortcuts import redirect
+from djoser import utils
+from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django.urls import reverse
+from djoser.email import ActivationEmail
+from djoser.views import UserViewSet
 from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from templated_mail.mail import BaseEmailMessage
 
 from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm, PartnersForm
 from .serializers import *
@@ -416,7 +424,16 @@ class MainMapView(generics.ListCreateAPIView):
 
   def post(self, request, *args, **kwargs):
     queryset = MainMapModel.objects.last()
-    queryset = self.get_serializer(queryset)
-    MainMapModel.objects.filter(id=queryset.data['id']).update(mainMap=request.data['mainMap'])
+    if queryset:
+      queryset = self.get_serializer(queryset)
+      MainMapModel.objects.filter(id=queryset.data['id']).update(mainMap=request.data['mainMap'])
+    else:
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      serializer.save()
     return Response(request.data)
 
+class ActivateView(generics.ListAPIView):
+  def get(self, request, *qrgs, **kwargs):
+    redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
+    return redirect(redirect_url)
