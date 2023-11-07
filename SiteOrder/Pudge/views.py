@@ -1,4 +1,6 @@
 from datetime import datetime
+from django.core.mail import EmailMessage
+
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from rest_framework import viewsets, generics, status
@@ -233,7 +235,15 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
       text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}/{id}/"
       recipient_list = list(CustomUser.objects.values_list('email', flat=True))
       try:
-        send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
+        email = EmailMessage(
+          subject=variables.text_mail_object,
+          body=text_mail,
+          from_email=variables.email_from,
+          to=[variables.admin_email,],
+          bcc=recipient_list,
+        )
+        email.send()
+        # send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
       except:
         return Response({"error": "Новость была записана, но не разослана на имейлы"})
       return Response({'message': 'Новость была записана и разослана на имейлы'})
