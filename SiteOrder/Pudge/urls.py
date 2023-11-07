@@ -1,17 +1,23 @@
-from django.contrib.auth import get_user_model
+from django.db import router
 from django.urls import path
-from rest_framework.routers import DefaultRouter
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 from rest_framework_swagger.views import get_swagger_view
 
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
-from djoser import views
 
-# router = DefaultRouter()
-# router.register("users", views.UserViewSet)
-# User = get_user_model()
-
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API",
+        default_version="v1",
+        description="API Documentation",
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
 
 urlpatterns = [
     path('partners/', PartnersView.as_view({'get': 'list', 'post': 'create'})),
@@ -25,8 +31,6 @@ urlpatterns = [
     path('clubs/', ClubsView.as_view()),
     path('clubs/<int:pk>/', ClubsView.as_view()),
 
-    # path('reservation/', SendInfoToUserView.as_view()),
-    # path('clubs/<int:pk>/', Club2View.as_view()),
     path('new-club-test/', NewClubTestView.as_view()),
 
     path('collect_club/', CollectClubView.as_view()),
@@ -47,16 +51,9 @@ urlpatterns = [
 
     path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
 
-    path('test/', ActivateView.as_view())
-]
-# urlpatterns += router.urls
+    path('swagger/', schema_view.with_ui('swagger'), name='swagger'),
 
-schema_view = get_swagger_view(title='Pastebin API')
-
-url_django_swagger = [
-    path('swagger/', schema_view),
 ]
-urlpatterns += url_django_swagger
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

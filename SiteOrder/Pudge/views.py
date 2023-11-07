@@ -189,41 +189,6 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
 
     return Response({"message": f"Клуб {club_name} обновлен"})
 
-# class GalleryView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
-#   queryset = GalleryModel.objects.all()
-#   serializer_class = GalleryModelSerializer
-#
-#   def post(self, request, *args, **kwargs):
-#     form = GalleryForm(request.data, request.FILES)
-#     if form.is_valid():
-#       request.data['date'] = datetime.now()
-#       serializer = self.get_serializer(data=request.data)
-#       serializer.is_valid(raise_exception=True)
-#       serializer.save()
-#       return Response({'message': 'Объект добавлен в галлерею'})
-#     else:
-#       return Response({'message': 'Не корректно заполнена форма'})
-#
-#   def put(self, request, *args, **kwargs):
-#     if GalleryForm(request.data, request.FILES).is_valid():
-#       if 'date' not in request.data:
-#         request.data['date'] = datetime.now()
-#       return self.update(request, *args, **kwargs)
-#     else:
-#       return Response({'message': 'Не корректно заполнена форма'})
-#
-#   def get(self, request, *args, **kwargs):
-#     self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
-#     self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
-#     self.club_name = request.query_params['club_name'] if 'club_name' in request.query_params else None
-#     to = self.offset+self.limit if self.limit else None
-#     queryset = GalleryModel.objects.order_by('id').filter(name=self.club_name).all()[self.offset:to]
-#
-#     helper = Helper()
-#     queryset = helper.move_fields_from_queryset(queryset=self.get_serializer(queryset, many=True).data, moving_fields=['name'])
-#
-#     return Response({self.club_name: queryset}) if self.club_name else Response({'message': 'Укажите имя клуба'})
-
 class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
   queryset = NewsModel.objects.all()
   serializer_class = NewsSerializer
@@ -468,13 +433,8 @@ class MainMapView(generics.ListCreateAPIView):
         return Response({"error": "Что-то пошло не так"})
 
 class ActivateView(generics.ListAPIView):
-  def get(self, request, *qrgs, **kwargs):
-    redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
-    return redirect(redirect_url)
-
-class CustomAuth():
-  def __init__(self):
-    super().__init__()
+  serializer_class = NewsSerializer
 
   def get(self, request, *args, **kwargs):
-    pass
+    redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
+    return redirect(redirect_url)
