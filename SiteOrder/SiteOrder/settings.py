@@ -114,6 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'Ru-ru'
+# MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+
+
 LANGUAGES = (
     ('en', 'English'),
     ('ru', 'Russian'),

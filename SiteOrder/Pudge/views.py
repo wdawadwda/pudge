@@ -1,6 +1,5 @@
 from datetime import datetime
 from django.core.mail import EmailMessage
-
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from rest_framework import viewsets, generics, status
@@ -235,7 +234,7 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       id = serializer.save().pk
-      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}/{id}/"
+      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}"
       recipient_list = list(CustomUser.objects.values_list('email', flat=True))
       try:
         email = EmailMessage(
@@ -468,8 +467,14 @@ class MainMapView(generics.ListCreateAPIView):
     except:
         return Response({"error": "Что-то пошло не так"})
 
-
 class ActivateView(generics.ListAPIView):
   def get(self, request, *qrgs, **kwargs):
     redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
     return redirect(redirect_url)
+
+class CustomAuth():
+  def __init__(self):
+    super().__init__()
+
+  def get(self, request, *args, **kwargs):
+    pass

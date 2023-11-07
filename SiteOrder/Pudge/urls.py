@@ -2,14 +2,15 @@ from django.contrib.auth import get_user_model
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
+
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from djoser import views
 
-router = DefaultRouter()
-router.register("users", views.UserViewSet)
-User = get_user_model()
+# router = DefaultRouter()
+# router.register("users", views.UserViewSet)
+# User = get_user_model()
 
 
 urlpatterns = [
@@ -44,9 +45,11 @@ urlpatterns = [
 
     path('main-map/', MainMapView.as_view()),
 
-    path('activate/<str:uid>/<str:token>', ActivateView.as_view())
+    path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
+
+    path('test/', ActivateView.as_view())
 ]
-urlpatterns += router.urls
+# urlpatterns += router.urls
 
 schema_view = get_swagger_view(title='Pastebin API')
 
