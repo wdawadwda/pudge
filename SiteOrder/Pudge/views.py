@@ -230,10 +230,10 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
       serializer.save()
-      text_mail = request.data['title'] + "\nsome addition text"
+      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}"
       recipient_list = list(CustomUser.objects.values_list('email', flat=True))
       try:
-        send_mail(subject="Reservation", message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
+        send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
       except:
         return Response({"error": "Новость была записана, но не разослана на имейлы"})
       return Response({'message': 'Новость была записана и разослана на имейлы'})

@@ -1,6 +1,8 @@
 domain = 'https://pudge.by'
 path_media_save = "./media/"
-
+text_mail = "Вас приветствует сеть компьютерных клубов Pudge.by\nОзнакомьтесь с обновлением наших новостей\n\n"
+text_mail_news_link = 'http://pudge.by/news'
+text_mail_object = "Новостная рассылка"
 
 email_from = "ruslanslp19@gmail.com"
 
