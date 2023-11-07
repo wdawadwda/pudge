@@ -17,15 +17,18 @@ class PartnersView(viewsets.ModelViewSet):
   serializer_class = PartnersSerializer
 
   def create(self, request, *args, **kwargs):
-    form = PartnersForm(request.data, request.FILES)
-    if form.is_valid():
-      serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      self.perform_create(serializer)
-      headers = self.get_success_headers(serializer.data)
-      return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-    else:
-      return Response({"message": "Не корректно заполнена форма"})
+    try:
+      form = PartnersForm(request.data, request.FILES)
+      if form.is_valid():
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+      else:
+        return Response({"error": "Не корректно заполнена форма"})
+    except:
+      return Response({"error": "Что-то пошло не так"})
 
 class LoadAllClubData(generics.ListCreateAPIView):
   queryset = OneClubModel.objects.all()
