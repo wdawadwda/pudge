@@ -1,3 +1,5 @@
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -25,7 +27,7 @@ export const AdminLayout = () => {
           })}`}
         >
           <Button appearance="secondary" onClick={() => goBack(navigate)}>
-            Назад
+            <FontAwesomeIcon icon={faArrowLeft} />
           </Button>
           <Outlet />
         </div>

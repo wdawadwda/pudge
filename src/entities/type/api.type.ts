@@ -45,3 +45,11 @@ export type ErrorDetail = {
 export interface Access {
   access: string;
 }
+
+export interface ErrorObject {
+  statusErr: string | number;
+  detail: string;
+  message: string;
+}
+
+export type Status = "idle" | "loading" | "success" | "error";

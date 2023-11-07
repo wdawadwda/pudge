@@ -21,6 +21,13 @@ export const AdminMenu = () => {
       <Button
         isFullWidth={true}
         appearance="primary"
+        onClick={() => redirectTo(navigate, links.adminPartners)}
+      >
+        Управление партнёрами
+      </Button>
+      <Button
+        isFullWidth={true}
+        appearance="primary"
         onClick={() => redirectTo(navigate, links.adminGallery)}
       >
         Управление галереей
@@ -35,9 +42,9 @@ export const AdminMenu = () => {
       <Button
         isFullWidth={true}
         appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminEvents)}
+        onClick={() => redirectTo(navigate, links.adminMainMap)}
       >
-        Управление мероприятиями
+        Управление картой
       </Button>
     </div>
   );

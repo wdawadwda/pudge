@@ -1,17 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "~/assets/logo/logo.png";
 import { ReactComponent as Iinstagram } from "~/assets/social/instagram.svg";
 import { ReactComponent as VK } from "~/assets/social/vk.svg";
-import { type TypeClubContacts } from "~/entities/const/content/clubsContent.type";
-import { socialLinks } from "~/router/Links";
+import { redirectTo } from "~/entities/utils/navigate.utils";
+import { links, socialLinks } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
 import { selectModalContent } from "~/store/modal/modal.selectors";
+import { modalActions } from "~/store/modal/modal.slice";
+import { type Booking } from "~/store/modal/modal.type";
 
 import Style from "./modalBook.module.scss";
 
 export const ModalBook = () => {
-  const content = useSelector(selectModalContent) as TypeClubContacts;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const content = useSelector(selectModalContent) as Booking;
 
   return (
     <div className={Style.modalBook}>
@@ -21,13 +26,19 @@ export const ModalBook = () => {
       </div>
       <div className={Style.modalBook__bottom}>
         <div className={Style.btnWrapper}>
-          <Button disabled={true} appearance="primary">
+          <Button
+            onClick={() => {
+              dispatch(modalActions.toggleModal(null));
+              redirectTo(navigate, links.booking);
+            }}
+            appearance="primary"
+          >
             Через сайт
           </Button>
           <a href={socialLinks.vk} target="_blank" rel="noreferrer">
             <Button appearance="primary" contentLeft={<VK />}></Button>
           </a>
-          <a href={content.instagram} target="_blank" rel="noreferrer">
+          <a href={content.contacts.instagram} target="_blank" rel="noreferrer">
             <Button appearance="primary" contentLeft={<Iinstagram />} />
           </a>
         </div>

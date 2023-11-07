@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,13 +8,13 @@ import { type Swiper as SwiperType } from "swiper/types";
 
 import "swiper/css";
 
-import { partners } from "~/entities/const/content/partners.const";
+import { selectPartnersData } from "~/store/content/content.selectors";
 
 import Style from "./partners.module.scss";
 
 export const Partners = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const partners = useSelector(selectPartnersData);
   const handleSlideChange = (swiper: SwiperType) => {
     setCurrentSlide(swiper.activeIndex);
   };

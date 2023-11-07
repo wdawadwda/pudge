@@ -1,0 +1,21 @@
+@import '~/mixins.scss';
+
+.pagination{
+  margin-top: var(--pudge-margin-title-content);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  &__center{
+    text-align: center;
+    display: flex;
+    @include flexCenter;
+    margin: 0 15px 0 15px;
+  }
+  .buttonWrapper{
+    display: flex;
+    &__button{
+    margin: 0 15px 0 15px;
+    }
+  }
+}

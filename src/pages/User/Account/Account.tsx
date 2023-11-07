@@ -1,8 +1,10 @@
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { redirectTo } from "~/entities/utils/navigate.utils";
+import { goBack, redirectTo } from "~/entities/utils/navigate.utils";
 import Styles from "~/features/PageSections/pageSections.module.scss";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
@@ -36,6 +38,9 @@ export const Account = () => {
               [Style.AccountContent]: true,
             })}
           >
+            <Button appearance="secondary" onClick={() => goBack(navigate)}>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </Button>
             <h2>Привет {user.username}</h2>
             {user.is_staff === true ? (
               <Button

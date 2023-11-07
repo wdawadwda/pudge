@@ -11,3 +11,9 @@ export const selectClubDataResults = (state: RootState) =>
 
 export const selectClubError = (state: RootState) =>
   state.content.clubContent.clubError;
+
+export const selectPartnersData = (state: RootState) =>
+  state.content.clubContent.partnersData.results;
+
+export const selectMainMapData = (state: RootState) =>
+  state.content.clubContent.mainMapData.results;

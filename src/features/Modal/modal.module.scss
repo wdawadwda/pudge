@@ -6,9 +6,9 @@
   z-index: 10;
   background-color: var(--pudge--bg-color);
   opacity: 0.5;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  width: 500vw;
+  height: 500vh;
+  height: 500dvh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -28,4 +28,26 @@
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 1s linear;
+}
+
+.modalPhoto{
+  overflow: hidden;
+  position: fixed;
+  z-index: 11;
+  opacity: 0;
+  width: var(--pudge-max-content-width);
+  max-height: 95vh;
+  max-height: 95dvh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1s linear;
+}
+
+@media (max-width: 450px) {
+  .modalPhoto{
+    width: 100vw;
+    left: 47%;
+    height: auto;
+  }
 }

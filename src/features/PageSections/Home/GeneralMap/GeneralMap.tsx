@@ -1,9 +1,14 @@
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+
+import { selectMainMapData } from "~/store/content/content.selectors";
 
 import Style from "./generalMap.module.scss";
 import Styles from "../../pageSections.module.scss";
 
 export const GeneralMap = () => {
+  const map = useSelector(selectMainMapData);
+
   return (
     <div
       className={`${classNames({
@@ -18,7 +23,7 @@ export const GeneralMap = () => {
         })}`}
       >
         <h2>Найти нас можете тут:</h2>
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adfcdde640d03d40d4493de47d90ec36d2a41b8d0c5bbe1573ced7e3613e01030&amp;source=constructor"></iframe>
+        <iframe src={map.mainMap}></iframe>
       </div>
     </div>
   );

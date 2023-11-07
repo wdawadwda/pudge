@@ -4,12 +4,17 @@ import { ClubsDetail } from "~/features/PageSections/Clubs/ClubsDetail";
 import { AccountLayout } from "~/layouts/AccountLayout/AccountLayout";
 import { AdminLayout } from "~/layouts/AdminLayout/AdminLayout";
 import { ClubsLayout } from "~/layouts/ClubsLayout/ClubsLayout";
+import { GalleryLayout } from "~/layouts/GalleryLayout/GalleryLayout";
 import { MainLayout } from "~/layouts/MainLayout/MainLayout";
+import { Booking } from "~/pages/Booking/Booking";
 import { ClientAgreement } from "~/pages/ClientAgreement/ClientAgreement";
 import { Contacts } from "~/pages/Contacts/Contacts";
+import { Gallery } from "~/pages/Gallery/Gallery";
+import { GalleryDetail } from "~/pages/Gallery/GalleryDetail/GalleryDetail";
 import { HomePage } from "~/pages/Home/HomePage";
+import { News } from "~/pages/News/News";
+import { NewsDetail } from "~/pages/News/News/NewsDetail";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
-import { Placeholder } from "~/pages/Placeholder/Placeholder";
 import { Rules } from "~/pages/Rules/Rules";
 import { Account } from "~/pages/User/Account/Account";
 import { AddClub } from "~/pages/User/Account/AdminMenu/AdminClub/AddClub/AddClub";
@@ -18,16 +23,16 @@ import { AddPrice } from "~/pages/User/Account/AdminMenu/AdminClub/AddPrice/AddP
 import { AddSpecs } from "~/pages/User/Account/AdminMenu/AdminClub/AddSpecs/AddSpecs";
 import { AddСomputers } from "~/pages/User/Account/AdminMenu/AdminClub/AddСomputers/AddСomputers";
 import { AdminClub } from "~/pages/User/Account/AdminMenu/AdminClub/AdminClub";
-import { AddEvents } from "~/pages/User/Account/AdminMenu/AdminEvents/AddEvents/AddEvents";
-import { AdminEvents } from "~/pages/User/Account/AdminMenu/AdminEvents/AdminEvents";
-import { RemoveEvents } from "~/pages/User/Account/AdminMenu/AdminEvents/RemoveEvents/RemoveEvents";
 import { AddPhoto } from "~/pages/User/Account/AdminMenu/AdminGallery/AddPhoto/AddPhoto";
 import { AdminGallery } from "~/pages/User/Account/AdminMenu/AdminGallery/AdminGallery";
-import { RemovePhoto } from "~/pages/User/Account/AdminMenu/AdminGallery/RemovePhoto/RemovePhoto";
+import { RemoveGallery } from "~/pages/User/Account/AdminMenu/AdminGallery/RemoveGallery/RemoveGallery";
+import { AddMainMap } from "~/pages/User/Account/AdminMenu/AdminMainMap/AddMainMap";
 import { AdminMenu } from "~/pages/User/Account/AdminMenu/AdminMenu";
 import { AddNews } from "~/pages/User/Account/AdminMenu/AdminNews/AddNews/AddNews";
 import { AdminNews } from "~/pages/User/Account/AdminMenu/AdminNews/AdminNews";
-import { RemoveNews } from "~/pages/User/Account/AdminMenu/AdminNews/RemoveNews/RemoveNews";
+import { AddPartner } from "~/pages/User/Account/AdminMenu/AdminPartners/AddPartner/AddPartner";
+import { AdminPartners } from "~/pages/User/Account/AdminMenu/AdminPartners/AdminPartners";
+import { RemovePartners } from "~/pages/User/Account/AdminMenu/AdminPartners/RemovePartners/RemovePartners";
 import { Login } from "~/pages/User/Login/Login";
 import { Registration } from "~/pages/User/Registration/Registration";
 import { SuccessPage } from "~/pages/User/SuccessPage/SuccessPage";
@@ -51,8 +56,30 @@ export const routerSchema = createBrowserRouter([
         ],
       },
       {
+        path: links.gallery,
+        element: <GalleryLayout />,
+        children: [
+          {
+            path: links.galleryName,
+            element: <Gallery />,
+          },
+          {
+            path: links.galleryNamePage,
+            element: <Gallery />,
+          },
+        ],
+      },
+      {
+        path: links.galleryDetail,
+        element: <GalleryDetail />,
+      },
+      {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: links.booking,
+        element: <Booking />,
       },
       {
         path: links.clientAgreement,
@@ -68,19 +95,15 @@ export const routerSchema = createBrowserRouter([
       },
       {
         path: links.gallery,
-        element: <Placeholder />,
-      },
-      {
-        path: links.events,
-        element: <Placeholder />,
+        element: <Gallery />,
       },
       {
         path: links.news,
-        element: <Placeholder />,
+        element: <News />,
       },
       {
-        path: links.news,
-        element: <Placeholder />,
+        path: links.newsDetail,
+        element: <NewsDetail />,
       },
       {
         element: <AccessControlRoute isPublicOnly={true} />,
@@ -122,6 +145,10 @@ export const routerSchema = createBrowserRouter([
                         element: <AdminMenu />,
                       },
                       {
+                        path: links.adminMainMap,
+                        element: <AddMainMap />,
+                      },
+                      {
                         path: links.adminClub,
                         element: <AdminClub />,
                       },
@@ -154,8 +181,8 @@ export const routerSchema = createBrowserRouter([
                         element: <AddPhoto />,
                       },
                       {
-                        path: links.adminGalleryRemovePhoto,
-                        element: <RemovePhoto />,
+                        path: links.adminGalleryRemove,
+                        element: <RemoveGallery />,
                       },
                       {
                         path: links.adminNews,
@@ -166,20 +193,16 @@ export const routerSchema = createBrowserRouter([
                         element: <AddNews />,
                       },
                       {
-                        path: links.adminNewsRemove,
-                        element: <RemoveNews />,
+                        path: links.adminPartners,
+                        element: <AdminPartners />,
                       },
                       {
-                        path: links.adminEvents,
-                        element: <AdminEvents />,
+                        path: links.adminPartnersAdd,
+                        element: <AddPartner />,
                       },
                       {
-                        path: links.adminEventsAdd,
-                        element: <AddEvents />,
-                      },
-                      {
-                        path: links.adminEventsRemove,
-                        element: <RemoveEvents />,
+                        path: links.adminPartnersRemove,
+                        element: <RemovePartners />,
                       },
                     ],
                   },

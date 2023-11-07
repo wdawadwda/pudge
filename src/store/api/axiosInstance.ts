@@ -1,6 +1,6 @@
 import axiosCore, { type AxiosError, type AxiosResponse } from "axios";
 
-import { PUDGE_TEST_API_URL } from "~/entities/const/url.const";
+import { PUDGE_API_URL } from "~/entities/const/url.const";
 import { type JWTTokens, type Access } from "~/entities/type/api.type";
 
 export const axiosAuthorizationInstance = axiosCore.create();
@@ -26,7 +26,7 @@ const handleRequestError = async (error: AxiosError) => {
     retryCount++;
     try {
       const { data } = await axiosAuthorizationInstance.post<Access>(
-        `${PUDGE_TEST_API_URL}api/v1/token/refresh/`,
+        `${PUDGE_API_URL}api/v1/token/refresh/`,
         { refresh: refreshToken }
       );
       const newAccessToken = data.access;

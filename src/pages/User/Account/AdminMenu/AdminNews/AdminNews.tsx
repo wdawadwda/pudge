@@ -15,13 +15,6 @@ export const AdminNews = () => {
       >
         Добавить Новость
       </Button>
-      <Button
-        isFullWidth={true}
-        appearance="primary"
-        onClick={() => redirectTo(navigate, links.adminNewsRemove)}
-      >
-        Удалить Новость
-      </Button>
     </>
   );
 };

@@ -8,7 +8,7 @@ export const partners = [
   {
     id: 2,
     name: "Deepcool",
-    img: "https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/e1f2b158-f9e7-4b25-8cf5-5a1710ae9c52.png  ",
+    img: "https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/e1f2b158-f9e7-4b25-8cf5-5a1710ae9c52.png",
     url: "https://uk.deepcool.com/",
   },
   {

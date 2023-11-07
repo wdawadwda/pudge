@@ -9,6 +9,9 @@ import Style from "./modal.module.scss";
 import { type ModalProperties } from "./modal.type";
 import { ModalBook } from "./ModalBook/ModalBook";
 import { ModalDell } from "./ModalDell/ModalDell";
+import { ModalDellNews } from "./ModalDellNews/ModalDellNews";
+import { ModalDellPhoto } from "./ModalDellPhoto/ModalDellPhoto";
+import { ModalPhotoSlider } from "./ModalPhotoSlider/ModalPhotoSlider";
 
 export const Modal = ({ type }: ModalProperties) => {
   const dispatch = useDispatch();
@@ -32,9 +35,15 @@ export const Modal = ({ type }: ModalProperties) => {
   return (
     <>
       {isShowModal && (
-        <div className={Style.modal} style={{ opacity: isVisible ? 1 : 0 }}>
+        <div
+          className={type === "photoSlider" ? Style.modalPhoto : Style.modal}
+          style={{ opacity: isVisible ? 1 : 0 }}
+        >
           {type === "book" && <ModalBook />}
-          {type === "dell" && <ModalDell />}
+          {type === "dellClub" && <ModalDell />}
+          {type === "dellPhoto" && <ModalDellPhoto />}
+          {type === "dellNews" && <ModalDellNews />}
+          {type === "photoSlider" && <ModalPhotoSlider />}
         </div>
       )}
       {isShowModal && <div className={Style.blur} onClick={toggleModal}></div>}
