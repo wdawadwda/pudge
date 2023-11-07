@@ -268,7 +268,7 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
     to = self.offset+self.limit if self.limit else None
 
     queryset = NewsModel.objects.order_by('id').all().reverse()[self.offset:to]
-    return Response(NewsSerializer(queryset, many=True).data)
+    return Response(self.get_serializer(queryset, many=True).data)
 
 class AllNewsView(generics.ListAPIView):
   queryset = NewsModel.objects.count()

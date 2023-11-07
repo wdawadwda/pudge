@@ -96,7 +96,7 @@ class CollectClubModel(models.Model):
 
 class NewsModel(models.Model):
   title = models.CharField(blank=False, null=False)
-  img = models.FileField
+  img = models.FileField()
   text1 = models.CharField(null=True)
   text2 = models.CharField(null=True)
   text3 = models.CharField(null=True)
