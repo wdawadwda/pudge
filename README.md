@@ -16,6 +16,10 @@
 - python manage.py runserver
 
 ---
+## ***SWAGGER***
+- ### *GET ^/swagger/*
+
+---
 ## ***PARTNERS***
 
 - ### *Create New partner POST ^/partners/ (multipart/form-data)*
