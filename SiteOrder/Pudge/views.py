@@ -268,7 +268,7 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
     return Response(NewsSerializer(queryset, many=True).data)
 
 class AllNewsView(generics.ListAPIView):
-  queryset = NewsModel.objects.all().count()
+  queryset = NewsModel.objects.count()
   serializer_class = NewsSerializer
 
   def get(self, request, *args, **kwargs):
