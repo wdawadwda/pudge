@@ -229,8 +229,8 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
     if form.is_valid():
       serializer = self.get_serializer(data=request.data)
       serializer.is_valid(raise_exception=True)
-      serializer.save()
-      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}"
+      id = serializer.save().pk
+      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}/{id}/"
       recipient_list = list(CustomUser.objects.values_list('email', flat=True))
       try:
         send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
@@ -256,6 +256,14 @@ class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.Upd
 
     queryset = NewsModel.objects.order_by('id').all().reverse()[self.offset:to]
     return Response(NewsSerializer(queryset, many=True).data)
+
+class AllNewsView(generics.ListAPIView):
+  queryset = NewsModel.objects.all().count()
+  serializer_class = NewsSerializer
+
+  def get(self, request, *args, **kwargs):
+    queryset = self.get_queryset()
+    return Response({"quantityNews": queryset})
 
 class ReservationView(generics.ListCreateAPIView):
   queryset = ReservationModel

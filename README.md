@@ -72,7 +72,11 @@ Headers: Content-Type
 > "text2": text, (optional field)\
 > "text3": text, (optional field)\
 > }
-- ### *GET News ^/news/*
+- ### *GET News ^/news/* - all news
+- ### *GET News ^/news/<int:pk>* - one news by id
+- ### *GET News ^/news&offset=0&limit=20* - news slice from offset to offset+limit
+- ### *GET News ^/news-count/ - return news quantity
+
 - ### *PUT News ^/news/<int:pk> (multipart/form-data)*
 >{\
 > "title": text, \
