@@ -9,7 +9,6 @@ from .serializers import *
 from .models import PartnersModel
 from .variables import variables
 from .helper.helper import Helper
-from .email.custom_send_email import CustomSendEmail
 
 class PartnersView(viewsets.ModelViewSet):
   queryset = PartnersModel.objects.all()
