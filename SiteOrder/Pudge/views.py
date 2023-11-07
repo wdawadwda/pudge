@@ -272,7 +272,7 @@ class AllNewsView(generics.ListAPIView):
   serializer_class = NewsSerializer
 
   def get(self, request, *args, **kwargs):
-    queryset = self.get_queryset()
+    queryset = NewsModel.objects.count()
     return Response({"quantityNews": queryset})
 
 class ReservationView(generics.ListCreateAPIView):
