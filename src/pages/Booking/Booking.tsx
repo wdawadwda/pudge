@@ -1,4 +1,5 @@
 import classNames from "classnames";
+
 import { redirectTo } from "~/entities/utils/navigate.utils";
 import Styles from "~/features/PageSections/pageSections.module.scss";
 import StylesUser from "~/features/PageSections/User/user.module.scss";
@@ -9,8 +10,8 @@ import { Button } from "~/shared/ui/Button/Buttons";
 import Style from "./booking.module.scss";
 import { type FormField } from "./booking.type";
 import { bookingFormSchema } from "./formSchema";
-import { Loader } from "../Loader/Loader";
 import { useBookingForm } from "./useBookingForm";
+import { Loader } from "../Loader/Loader";
 
 export const Booking = () => {
   const {
