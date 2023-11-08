@@ -9,10 +9,8 @@ import {
   fetchMainMap,
   fetchPartnersContent,
 } from "~/store/api/contentApi";
-// import { fetchUser } from "~/store/api/userApi";
 import { getQuantityNews } from "~/store/api/newsApi";
 import { useAppDispatch, useAppSelector } from "~/store/store.types";
-// import { selectTokens } from "~/store/user/user.selectors";
 
 import { routerSchema } from "./routerSchema";
 
