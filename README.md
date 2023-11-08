@@ -80,6 +80,7 @@ Headers: Content-Type
 - ### *GET News ^/news/<int:pk>* - one news by id
 - ### *GET News ^/news&offset=0&limit=20* - news slice from offset to offset+limit
 - ### *GET News ^/news-count/ - return news quantity
+- ### *GET News ^/last-news/ - return last 5 records (news)
 
 - ### *PUT News ^/news/<int:pk> (multipart/form-data)*
 >{\

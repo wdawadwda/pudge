@@ -42,6 +42,7 @@ urlpatterns = [
     path('news/', NewsView.as_view()),
     path('news/<int:pk>/', NewsView.as_view()),
     path('news-count/', AllNewsView.as_view()),
+    path('last-news/', LastFiveNewsView.as_view()),
 
     path('reservation/', ReservationView.as_view()),
 

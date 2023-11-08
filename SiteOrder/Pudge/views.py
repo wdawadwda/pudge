@@ -438,3 +438,12 @@ class ActivateView(generics.ListAPIView):
   def get(self, request, *args, **kwargs):
     redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
     return redirect(redirect_url)
+
+class LastFiveNewsView(generics.ListAPIView):
+    queryset = NewsModel.objects.order_by('id').all().reverse()[0:5]
+    serializer_class = NewsSerializer
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        return Response(self.get_serializer(queryset, many=True).data)
+
