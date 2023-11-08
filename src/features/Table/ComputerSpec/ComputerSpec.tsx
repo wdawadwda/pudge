@@ -9,7 +9,7 @@ export const ComputerSpec = ({ specData }: { specData: SpecData }) => {
   return (
     <>
       {data === null ? (
-        <div>Данные незагрузились</div>
+        <div>Данные не загрузились</div>
       ) : (
         <table>
           <tbody>

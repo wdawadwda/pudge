@@ -39,7 +39,6 @@ export const NewsDetail = () => {
         }
       }
     }
-
     void fetchNewsData();
   }, [id]);
 
