@@ -1,7 +1,13 @@
-import { AxiosError } from "axios";
 import { useState, useRef, useEffect } from "react";
+
+import { type AxiosError } from "axios";
 import { useParams } from "react-router-dom";
-import { Status, EmailConfirmRequest, ErrorConfirm } from "~/entities/type/api.type";
+
+import {
+  type Status,
+  type EmailConfirmRequest,
+  type ErrorConfirm,
+} from "~/entities/type/api.type";
 import { emailConfirmation } from "~/store/api/userApi";
 
 export const useEmailConfirmation = () => {

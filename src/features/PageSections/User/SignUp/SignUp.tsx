@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { Loader } from "~/pages/Loader/Loader";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
+
 import { regFormSchema } from "./formSchema";
+import { useSignUpForm } from "./useSignUpForm";
 import { MessForm } from "../../MessagesForm/MessForm";
 import Styles from "../../pageSections.module.scss";
 import StylesUser from "../user.module.scss";
-import { useSignUpForm } from "./useSignUpForm";
-
 
 export const SignUp = () => {
   const {

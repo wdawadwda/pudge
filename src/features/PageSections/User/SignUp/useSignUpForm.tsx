@@ -1,9 +1,15 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { AxiosError } from "axios";
 import { useState } from "react";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { type AxiosError } from "axios";
 import { useForm } from "react-hook-form";
+
 import { regValidYup } from "~/entities/const/validation";
-import { SignUpApiRequest, ErrorDetailSignUp, Status } from "~/entities/type/api.type";
+import {
+  type SignUpApiRequest,
+  type ErrorDetailSignUp,
+  type Status,
+} from "~/entities/type/api.type";
 import { registerUser } from "~/store/api/userApi";
 
 export const useSignUpForm = () => {

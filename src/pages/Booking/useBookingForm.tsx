@@ -1,14 +1,16 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useState, useEffect } from "react";
+
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { bookingSchema } from "~/entities/const/validation";
-import { ErrorObject } from "~/entities/type/api.type";
+import { type ErrorObject } from "~/entities/type/api.type";
 import { links } from "~/router/Links";
 import { booking } from "~/store/api/booking";
 import { selectModalContent } from "~/store/modal/modal.selectors";
-import { ContentDell } from "~/store/modal/modal.type";
+import { type ContentDell } from "~/store/modal/modal.type";
 
 export const useBookingForm = () => {
   const [serverResponse, setServerResponse] = useState({

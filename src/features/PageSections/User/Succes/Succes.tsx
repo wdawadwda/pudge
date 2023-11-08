@@ -4,10 +4,10 @@ import { useRedirect } from "~/entities/hooks/useRedirect";
 import { Loader } from "~/pages/Loader/Loader";
 import { links } from "~/router/Links";
 
+import { useEmailConfirmation } from "./useEmailConfirmation";
 import { MessForm } from "../../MessagesForm/MessForm";
 import Styles from "../../pageSections.module.scss";
 import StylesUser from "../user.module.scss";
-import { useEmailConfirmation } from "./useEmailConfirmation";
 
 export const Success = () => {
   const { status, detailMessage } = useEmailConfirmation();
