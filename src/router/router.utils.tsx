@@ -3,6 +3,8 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import { selectUser, selectUserStaff } from "~/store/user/user.selectors";
 
+import { links } from "./Links";
+
 export const AccessControlRoute = ({
   isProtected = false,
   isPublicOnly = false,
@@ -17,7 +19,7 @@ export const AccessControlRoute = ({
     return <Outlet />;
   }
 
-  return <Navigate to="/" replace />;
+  return <Navigate to={links.home} replace />;
 };
 
 export const AccessControlStaff = ({
@@ -34,5 +36,15 @@ export const AccessControlStaff = ({
     return <Outlet />;
   }
 
-  return <Navigate to="/" replace />;
+  return <Navigate to={links.home} replace />;
+};
+
+export const IsTechnicalWorks = ({ isWorks = false }) => {
+  const isStaff = useSelector(selectUserStaff);
+
+  if (isStaff && isWorks) {
+    return <Outlet />;
+  }
+
+  return <Navigate to={links.technicalWorks} replace />;
 };

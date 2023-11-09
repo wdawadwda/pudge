@@ -1,4 +1,5 @@
 import { HomeIntro } from "~/features/Home/Intro/Intro";
+import { NewsSlider } from "~/features/Home/NewsSlider/NewsSlider";
 import { Partners } from "~/features/Home/Partners/Partners";
 import { Advantages } from "~/features/PageSections/Home/Advantages/Advantages";
 import { ClubsH } from "~/features/PageSections/Home/ClubsH/ClubsH";
@@ -9,6 +10,8 @@ export const HomePage = () => {
   return (
     <>
       <HomeIntro />
+      <NeonStrip color={"yellow"} />
+      <NewsSlider />
       <NeonStrip color={"yellow"} />
       <ClubsH />
       <NeonStrip color={"yellow"} />
