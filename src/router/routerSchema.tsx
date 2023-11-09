@@ -15,6 +15,7 @@ import { HomePage } from "~/pages/Home/HomePage";
 import { News } from "~/pages/News/News";
 import { NewsDetail } from "~/pages/News/News/NewsDetail";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
+import { Placeholder } from "~/pages/Placeholder/Placeholder";
 import { Rules } from "~/pages/Rules/Rules";
 import { Account } from "~/pages/User/Account/Account";
 import { AddClub } from "~/pages/User/Account/AdminMenu/AdminClub/AddClub/AddClub";
@@ -38,73 +39,88 @@ import { Registration } from "~/pages/User/Registration/Registration";
 import { SuccessPage } from "~/pages/User/SuccessPage/SuccessPage";
 
 import { links } from "./Links";
-import { AccessControlRoute, AccessControlStaff } from "./router.utils";
+import {
+  AccessControlRoute,
+  AccessControlStaff,
+  IsTechnicalWorks,
+} from "./router.utils";
 
 export const routerSchema = createBrowserRouter([
   {
     path: links.home,
     element: <MainLayout />,
     children: [
+      //!Удалить
       {
-        path: links.clubs,
-        element: <ClubsLayout />,
+        element: <IsTechnicalWorks isWorks={true} />,
         children: [
+          //!Удалить
           {
-            path: links.club,
-            element: <ClubsDetail />,
+            path: links.clubs,
+            element: <ClubsLayout />,
+            children: [
+              {
+                path: links.club,
+                element: <ClubsDetail />,
+              },
+            ],
           },
-        ],
-      },
-      {
-        path: links.gallery,
-        element: <GalleryLayout />,
-        children: [
           {
-            path: links.galleryName,
+            path: links.gallery,
+            element: <GalleryLayout />,
+            children: [
+              {
+                path: links.galleryName,
+                element: <Gallery />,
+              },
+              {
+                path: links.galleryNamePage,
+                element: <Gallery />,
+              },
+            ],
+          },
+          {
+            path: links.galleryDetail,
+            element: <GalleryDetail />,
+          },
+          {
+            index: true,
+            element: <HomePage />,
+          },
+          {
+            path: links.booking,
+            element: <Booking />,
+          },
+          {
+            path: links.clientAgreement,
+            element: <ClientAgreement />,
+          },
+          {
+            path: links.rules,
+            element: <Rules />,
+          },
+
+          {
+            path: links.contacts,
+            element: <Contacts />,
+          },
+
+          {
+            path: links.gallery,
             element: <Gallery />,
           },
           {
-            path: links.galleryNamePage,
-            element: <Gallery />,
+            path: links.news,
+            element: <News />,
           },
+          {
+            path: links.newsDetail,
+            element: <NewsDetail />,
+          },
+          //!Удалить
         ],
       },
-      {
-        path: links.galleryDetail,
-        element: <GalleryDetail />,
-      },
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: links.booking,
-        element: <Booking />,
-      },
-      {
-        path: links.clientAgreement,
-        element: <ClientAgreement />,
-      },
-      {
-        path: links.rules,
-        element: <Rules />,
-      },
-      {
-        path: links.contacts,
-        element: <Contacts />,
-      },
-      {
-        path: links.gallery,
-        element: <Gallery />,
-      },
-      {
-        path: links.news,
-        element: <News />,
-      },
-      {
-        path: links.newsDetail,
-        element: <NewsDetail />,
-      },
+      //!Удалить
       {
         element: <AccessControlRoute isPublicOnly={true} />,
         children: [
@@ -215,6 +231,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: "*",
         element: <NotFoundPage />,
+      },
+      {
+        path: links.technicalWorks,
+        element: <Placeholder />,
       },
     ],
   },

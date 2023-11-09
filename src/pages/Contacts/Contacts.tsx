@@ -75,16 +75,11 @@ export const Contacts = () => {
                     >
                       Забронировать
                     </Button>
-                    <div
-                      className={`${Style.howToFind} ${
-                        isShowIframe ? Style.isShowIframe : ""
-                      }`}
-                      onClick={toggleIframe}
-                    >
+                    <Button isFullWidth={false} onClick={toggleIframe}>
                       Карта
-                    </div>
+                    </Button>
                     <iframe
-                      className={isShowIframe ? Style.isShowIframe : ""}
+                      className={isShowIframe ? Style.showIframe : ""}
                       src={selectClub.map}
                     ></iframe>
                   </div>

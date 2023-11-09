@@ -26,14 +26,14 @@ export const NewsDetail = () => {
   const modal = useSelector(selectModal);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [newsItem, setImage] = useState<NewsData | null>(null);
+  const [newsItem, setNews] = useState<NewsData | null>(null);
 
   useEffect(() => {
     async function fetchNewsData() {
       if (id) {
         try {
           const response = await getNewsDataById(Number.parseInt(id, 10));
-          setImage(response);
+          setNews(response);
         } catch (error) {
           console.error("Ошибка при загрузке данных фотографии:", error);
         }

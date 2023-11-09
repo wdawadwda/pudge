@@ -85,3 +85,13 @@ export async function deleteNewsById(id: number): Promise<void> {
     throw errorObject;
   }
 }
+
+export async function getNewsDataLast(): Promise<NewsData[]> {
+  try {
+    const response = await axios.get<NewsData[]>(`${PUDGE_API_URL}last-news/`);
+    return response.data;
+  } catch (error) {
+    const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
+    throw errorObject;
+  }
+}

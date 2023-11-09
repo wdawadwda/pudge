@@ -35,6 +35,7 @@ export const links = {
   adminPartners: "/account/admin/partners",
   adminPartnersAdd: "/account/admin/partners/add-partner",
   adminPartnersRemove: "/account/admin/partners/remove-partner",
+  technicalWorks: "/plasholder",
 };
 
 export const socialLinks = {

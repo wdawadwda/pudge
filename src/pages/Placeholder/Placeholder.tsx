@@ -7,8 +7,8 @@ export const Placeholder = () => {
   return (
     <div className={Style.container}>
       <FontAwesomeIcon icon={faPersonDigging} />
-      <h3>Пока тут ничего нет</h3>
-      <h3>Но мы уже работаем</h3>
+      <h3>Ведутся</h3>
+      <h3>Технические работы</h3>
     </div>
   );
 };
