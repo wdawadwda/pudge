@@ -1,4 +1,4 @@
-import { type FormField } from "./addMainMap";
+import { type FormField } from "./addMainMap.type";
 
 export const AddMainMapFormSchema: FormField[] = [
   {

@@ -14,7 +14,7 @@ import { Button } from "~/shared/ui/Button/Buttons";
 import { fetchMainMap, sendMainMap } from "~/store/api/contentApi";
 import { useAppDispatch } from "~/store/store.types";
 
-import { type FormField } from "./addMainMap";
+import { type FormField } from "./addMainMap.type";
 import { AddMainMapFormSchema } from "./formSchema";
 import Style from "../amminMenu.module.scss";
 

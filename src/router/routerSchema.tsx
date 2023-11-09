@@ -232,10 +232,12 @@ export const routerSchema = createBrowserRouter([
         path: "*",
         element: <NotFoundPage />,
       },
+      //!Удалить
       {
         path: links.technicalWorks,
         element: <Placeholder />,
       },
+      //!Удалить
     ],
   },
   {
