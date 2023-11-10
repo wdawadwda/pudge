@@ -15,7 +15,6 @@ import { HomePage } from "~/pages/Home/HomePage";
 import { News } from "~/pages/News/News";
 import { NewsDetail } from "~/pages/News/News/NewsDetail";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
-import { Placeholder } from "~/pages/Placeholder/Placeholder";
 import { Rules } from "~/pages/Rules/Rules";
 import { Account } from "~/pages/User/Account/Account";
 import { AddClub } from "~/pages/User/Account/AdminMenu/AdminClub/AddClub/AddClub";
@@ -39,88 +38,75 @@ import { Registration } from "~/pages/User/Registration/Registration";
 import { SuccessPage } from "~/pages/User/SuccessPage/SuccessPage";
 
 import { links } from "./Links";
-import {
-  AccessControlRoute,
-  AccessControlStaff,
-  IsTechnicalWorks,
-} from "./router.utils";
+import { AccessControlRoute, AccessControlStaff } from "./router.utils";
 
 export const routerSchema = createBrowserRouter([
   {
     path: links.home,
     element: <MainLayout />,
     children: [
-      //!Удалить
       {
-        element: <IsTechnicalWorks isWorks={true} />,
+        path: links.clubs,
+        element: <ClubsLayout />,
         children: [
-          //!Удалить
           {
-            path: links.clubs,
-            element: <ClubsLayout />,
-            children: [
-              {
-                path: links.club,
-                element: <ClubsDetail />,
-              },
-            ],
+            path: links.club,
+            element: <ClubsDetail />,
           },
+        ],
+      },
+      {
+        path: links.gallery,
+        element: <GalleryLayout />,
+        children: [
           {
-            path: links.gallery,
-            element: <GalleryLayout />,
-            children: [
-              {
-                path: links.galleryName,
-                element: <Gallery />,
-              },
-              {
-                path: links.galleryNamePage,
-                element: <Gallery />,
-              },
-            ],
-          },
-          {
-            path: links.galleryDetail,
-            element: <GalleryDetail />,
-          },
-          {
-            index: true,
-            element: <HomePage />,
-          },
-          {
-            path: links.booking,
-            element: <Booking />,
-          },
-          {
-            path: links.clientAgreement,
-            element: <ClientAgreement />,
-          },
-          {
-            path: links.rules,
-            element: <Rules />,
-          },
-
-          {
-            path: links.contacts,
-            element: <Contacts />,
-          },
-
-          {
-            path: links.gallery,
+            path: links.galleryName,
             element: <Gallery />,
           },
           {
-            path: links.news,
-            element: <News />,
+            path: links.galleryNamePage,
+            element: <Gallery />,
           },
-          {
-            path: links.newsDetail,
-            element: <NewsDetail />,
-          },
-          //!Удалить
         ],
       },
-      //!Удалить
+      {
+        path: links.galleryDetail,
+        element: <GalleryDetail />,
+      },
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: links.booking,
+        element: <Booking />,
+      },
+      {
+        path: links.clientAgreement,
+        element: <ClientAgreement />,
+      },
+      {
+        path: links.rules,
+        element: <Rules />,
+      },
+
+      {
+        path: links.contacts,
+        element: <Contacts />,
+      },
+
+      {
+        path: links.gallery,
+        element: <Gallery />,
+      },
+      {
+        path: links.news,
+        element: <News />,
+      },
+      {
+        path: links.newsDetail,
+        element: <NewsDetail />,
+      },
       {
         element: <AccessControlRoute isPublicOnly={true} />,
         children: [
@@ -232,12 +218,6 @@ export const routerSchema = createBrowserRouter([
         path: "*",
         element: <NotFoundPage />,
       },
-      //!Удалить
-      {
-        path: links.technicalWorks,
-        element: <Placeholder />,
-      },
-      //!Удалить
     ],
   },
   {
