@@ -34,19 +34,6 @@ class CollectClubSerializer(serializers.ModelSerializer):
     model = CollectClubModel
     fields = "__all__"
 
-# class GalleryModelSerializer(serializers.ModelSerializer):
-#   class Meta:
-#     model = GalleryModel
-#     fields = "__all__"
-
-class NewsSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = NewsModel
-    fields = "__all__"
-
-  def get_image_url(self, obj):
-    return obj.get_absolute_url()
-
 class ReservatonSerializer(serializers.ModelSerializer):
   class Meta:
     model = ReservationModel
@@ -66,3 +53,12 @@ class MainMapSerializer(serializers.ModelSerializer):
   class Meta:
     model = MainMapModel
     fields = "__all__"
+
+class NewsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = NewsModel
+    fields = "__all__"
+
+  def get_image_url(self, obj):
+    return obj.get_absolute_url()
+

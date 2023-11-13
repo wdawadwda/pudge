@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_swagger',
     'drf_yasg',
+    'django_mysql',
 ]
 
 MIDDLEWARE = [
@@ -81,17 +82,65 @@ WSGI_APPLICATION = 'SiteOrder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+# # ------ local -------
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'site',
+#         'USER': 'ruslan',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'NAME': 'test',
+#     'USER': 'root',
+#     'PASSWORD': '123454321',
+#     'HOST': 'localhost',
+#     'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'site',
-        'USER': 'ruslan',
-        'PASSWORD': '12345',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pudge_database',
+        'USER': 'root',
+        'PASSWORD': '123454321rOOt@',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'sql_mode': 'traditional',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+        'TEST': {
+            'CHARSET': 'utf8mb4',
+            'COLLATION': 'utf8mb4_unicode_ci',
+        },
     }
 }
 
+
+# # # ------ hoster.by -------
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'OPTIONS': {
+#         'sql_mode': 'traditional',
+#         },
+#     'NAME': 'taxitutb_pudge_database',
+#     'USER': 'taxitutb_root',
+#     'PASSWORD': '&},;R&#?Fob{',
+#     'HOST': 'localhost',
+#     'PORT': '3306',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -129,13 +178,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
-SITE_URL = '/site/'
-SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -204,10 +246,10 @@ SIMPLE_JWT = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ruslanslp19@gmail.com'
-EMAIL_HOST_PASSWORD = 'cjqe vjrr jabt pbqr'
+EMAIL_HOST_USER = 'pudgebelarus@gmail.com'
+EMAIL_HOST_PASSWORD = 'jgum dopr iauh nria'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL  = 'ruslanslp19@gmail.com'
+DEFAULT_FROM_EMAIL  = 'pudgebelarus@gmail.com'
 
 DJOSER = {
     'USERNAME_RESET_CONFIRM_URL': 'username/reset/confirm/{uid}/{token}',
@@ -239,6 +281,7 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'Pudge.CustomUser'
 
+# # ------ local -------
 # ALLOWED_HOSTS = [
 #     '127.0.0.1',
 #     'localhost',
@@ -246,11 +289,33 @@ AUTH_USER_MODEL = 'Pudge.CustomUser'
 #     'localhost:5173'
 # ]
 
+# # ------ hoster.by -------
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://pudge.by",
+    "https://backend.pudge.by",
+    "https://pudge.vh64.hosterby.com",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS: True
 
+# ------ local -------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# # ------ hoster.by -------
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = 'static/'
+SITE_URL = '/site/'
+SITE_ROOT = os.path.join(BASE_DIR, 'site')
+
+# STATIC_URL = '/backend.pudge.by/static/'
+# STATIC_ROOT = '/home/yourdoma/public_html/mysite/static/'
+# MEDIA_URL = '/backend.pudge.by/media/'
+# MEDIA_ROOT = '/home/yourdoma/public_html/mysite/media/'
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

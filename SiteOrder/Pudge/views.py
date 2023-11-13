@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .forms import ClubsForm, NewClubsTestForm, GalleryForm, NewsForm, ReservationForm, PartnersForm
 from .serializers import *
-from .models import PartnersModel
+from .models import *
 from .variables import variables
 from .helper.helper import Helper
 
@@ -189,59 +189,6 @@ class CollectClubView(generics.ListCreateAPIView, generics.DestroyAPIView):
 
     return Response({"message": f"Клуб {club_name} обновлен"})
 
-class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
-  queryset = NewsModel.objects.all()
-  serializer_class = NewsSerializer
-
-  def post(self, request, *args, **kwargs):
-    form = NewsForm(request.data, request.FILES)
-    if form.is_valid():
-      serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      id = serializer.save().pk
-      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}"
-      recipient_list = list(CustomUser.objects.values_list('email', flat=True))
-      try:
-        email = EmailMessage(
-          subject=variables.text_mail_object,
-          body=text_mail,
-          from_email=variables.email_from,
-          to=[variables.admin_email,],
-          bcc=recipient_list,
-        )
-        email.send()
-        # send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
-      except:
-        return Response({"error": "Новость была записана, но не разослана на имейлы"})
-      return Response({'message': 'Новость была записана и разослана на имейлы'})
-    else:
-      return Response({'error': 'Не корректно заполнена форма'})
-
-  def get(self, request, *args, **kwargs):
-    ex = None
-    id = kwargs['pk'] if 'pk' in kwargs else None
-    if id:
-      try:
-        queryset = NewsModel.objects.filter(id=id).get()
-        return Response(self.get_serializer(queryset).data)
-      except Exception as ex:
-        return Response({"error": f"Записи с номером {id} не существует"} if not ex else {"error": str(ex)})
-
-    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
-    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
-    to = self.offset+self.limit if self.limit else None
-
-    queryset = NewsModel.objects.order_by('id').all().reverse()[self.offset:to]
-    return Response(self.get_serializer(queryset, many=True).data)
-
-class AllNewsView(generics.ListAPIView):
-  queryset = NewsModel.objects.count()
-  serializer_class = NewsSerializer
-
-  def get(self, request, *args, **kwargs):
-    queryset = NewsModel.objects.count()
-    return Response({"quantityNews": queryset})
-
 class ReservationView(generics.ListCreateAPIView):
   queryset = ReservationModel
   serializer_class = ReservatonSerializer
@@ -333,28 +280,35 @@ class GalleryUpdatedView(generics.ListCreateAPIView, generics.UpdateAPIView, gen
       return Response({"message": "Не корректно заполнена форма"})
 
   def put(self, request, *args, **kwargs):
-    id_object = kwargs['pk']
-    instance = GalleryUpdatedModel.objects.get(id_object=id_object)
+    try:
+      id_object = kwargs['pk']
+      try:
+        instance = GalleryUpdatedModel.objects.get(id_object=id_object)
+      except:
+        return Response({"error": "Неверный id_object объекта"})
 
-    if 'id_object' not in request.data:
-      request.data['id_object'] = id_object
+      if 'id_object' not in request.data:
+        request.data['id_object'] = id_object
 
-    if 'date' not in request.data:
-      request.data['date'] = datetime.now()
+      if 'date' not in request.data:
+        request.data['date'] = datetime.now()
 
-    form = GalleryForm(request.data, request.FILES)
-    if form.is_valid():
-      partial = kwargs.pop('partial', False)
-      serializer = self.get_serializer(instance, data=request.data, partial=partial)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
-    else:
-      return Response({"message": "Не корректно заполнена форма"})
+      form = GalleryForm(request.data, request.FILES)
+      if form.is_valid():
+        partial = kwargs.pop('partial', False)
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+      else:
+        return Response({"message": "Не корректно заполнена форма"})
 
-    if getattr(instance, '_prefetched_objects_cache', None):
-      instance._prefetched_objects_cache = {}
+      if getattr(instance, '_prefetched_objects_cache', None):
+        instance._prefetched_objects_cache = {}
 
-    return Response(serializer.data)
+      return Response(serializer.data)
+    except:
+      return Response({"error": "Что-то пошло не так"})
+
 
   def delete(self, request, *args, **kwargs):
     return self.destroy(request, *args, **kwargs)
@@ -439,11 +393,65 @@ class ActivateView(generics.ListAPIView):
     redirect_url = f"{variables.domain}/activate/{kwargs['uid']}/{kwargs['token']}"
     return redirect(redirect_url)
 
+class NewsView(generics.ListCreateAPIView, generics.DestroyAPIView, generics.UpdateAPIView):
+  queryset = NewsModel.objects.all()
+  serializer_class = NewsSerializer
+
+  def post(self, request, *args, **kwargs):
+    form = NewsForm(request.data, request.FILES)
+    if form.is_valid():
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      id = serializer.save().pk
+      text_mail = variables.text_mail + request.data['title'] + f"\n{variables.text_mail_news_link}"
+      recipient_list = list(CustomUser.objects.values_list('email', flat=True))
+      try:
+        email = EmailMessage(
+          subject=variables.text_mail_object,
+          body=text_mail,
+          from_email=variables.email_from,
+          to=[variables.admin_email,],
+          bcc=recipient_list,
+        )
+        email.send()
+        # send_mail(subject=variables.text_mail_object, message=text_mail, from_email=variables.email_from, recipient_list=recipient_list)
+      except:
+        return Response({"error": "Новость была записана, но не разослана на имейлы"})
+      return Response({'message': 'Новость была записана и разослана на имейлы'})
+    else:
+      return Response({'error': 'Не корректно заполнена форма'})
+
+  def get(self, request, *args, **kwargs):
+    ex = None
+    id = kwargs['pk'] if 'pk' in kwargs else None
+    if id:
+      try:
+        queryset = NewsModel.objects.filter(id=id).get()
+        return Response(self.get_serializer(queryset).data)
+      except Exception as ex:
+        return Response({"error": f"Записи с номером {id} не существует"} if not ex else {"error": str(ex)})
+
+    self.limit = int(request.query_params['limit']) if 'limit' in request.query_params else 0
+    self.offset = int(request.query_params['offset']) if 'offset' in request.query_params else 0
+    to = self.offset+self.limit if self.limit else None
+
+    queryset = NewsModel.objects.order_by('id').all().reverse()[self.offset:to]
+    return Response(self.get_serializer(queryset, many=True).data)
+
+class AllNewsView(generics.ListAPIView):
+  queryset = NewsModel.objects.all()
+  serializer_class = NewsSerializer
+
+  def get(self, request, *args, **kwargs):
+    queryset = NewsModel.objects.count()
+    return Response({"quantityNews": queryset})
+
 class LastFiveNewsView(generics.ListAPIView):
-    queryset = NewsModel.objects.order_by('id').all().reverse()[0:5]
+    queryset = NewsModel.objects.all()
     serializer_class = NewsSerializer
 
     def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
+        # queryset = self.get_queryset()
+        queryset = NewsModel.objects.order_by('id').all().reverse()[0:5]
         return Response(self.get_serializer(queryset, many=True).data)
 

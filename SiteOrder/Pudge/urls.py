@@ -1,10 +1,7 @@
-from django.db import router
 from django.urls import path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
-from rest_framework_swagger.views import get_swagger_view
-
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
@@ -39,18 +36,17 @@ urlpatterns = [
     path('gallery-updated/', GalleryUpdatedView.as_view()),
     path('gallery-updated/<int:pk>/', GalleryUpdatedView.as_view()),
 
-    path('news/', NewsView.as_view()),
-    path('news/<int:pk>/', NewsView.as_view()),
-    path('news-count/', AllNewsView.as_view()),
-    path('last-news/', LastFiveNewsView.as_view()),
-
     path('reservation/', ReservationView.as_view()),
 
     path('get-clubs/', GetClubsNameView.as_view()),
 
     path('main-map/', MainMapView.as_view()),
 
-    path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
+    path('news/', NewsView.as_view()),
+    path('news/<int:pk>/', NewsView.as_view()),
+    path('news-count/', AllNewsView.as_view()),
+    path('last-news/', LastFiveNewsView.as_view()),
+    # path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
 
     path('swagger/', schema_view.with_ui('swagger'), name='swagger'),
 
