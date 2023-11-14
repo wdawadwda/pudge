@@ -15,6 +15,7 @@ import { HomePage } from "~/pages/Home/HomePage";
 import { News } from "~/pages/News/News";
 import { NewsDetail } from "~/pages/News/News/NewsDetail";
 import { NotFoundPage } from "~/pages/Placeholder/NotFoundPage";
+import { Placeholder } from "~/pages/Placeholder/Placeholder";
 import { Rules } from "~/pages/Rules/Rules";
 import { Account } from "~/pages/User/Account/Account";
 import { AddClub } from "~/pages/User/Account/AdminMenu/AdminClub/AddClub/AddClub";
@@ -89,12 +90,10 @@ export const routerSchema = createBrowserRouter([
         path: links.rules,
         element: <Rules />,
       },
-
       {
         path: links.contacts,
         element: <Contacts />,
       },
-
       {
         path: links.gallery,
         element: <Gallery />,
@@ -217,6 +216,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: "*",
         element: <NotFoundPage />,
+      },
+      {
+        path: links.technicalWorks,
+        element: <Placeholder />,
       },
     ],
   },

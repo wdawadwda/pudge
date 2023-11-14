@@ -192,11 +192,7 @@ export const bookingSchema = yup.object().shape({
     .min(2, "Имя должно содержать как минимум 2 символа"),
   phone_number: yup
     .string()
-    .required('Поле "Телефон" обязательно для заполнения')
-    .matches(
-      /^\+375 \(\d{2}\) \d{3}-\d{2}-\d{2}$/,
-      "Номер телефона должен соответствовать формату +375 (XX) XXX-XX-XX"
-    ),
+    .required('Поле "Телефон" обязательно для заполнения'),
   telegram: yup.string().notRequired(),
   time: yup
     .string()
@@ -207,7 +203,13 @@ export const bookingSchema = yup.object().shape({
         message: "Введите корректное время в формате ММ/ДД ЧЧ:ММ",
       }
     ),
-
+  tariff: yup
+    .string()
+    .required("Поле обязательно для заполнения")
+    .oneOf(
+      ["vip", "bootcamp", "comfort"],
+      `Поле может быть только "vip", "bootcamp" или "comfort"`
+    ),
   quantity_seats: yup
     .number()
     .required('Поле "Кол-во мест" обязательно для заполнения')

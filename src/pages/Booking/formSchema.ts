@@ -15,7 +15,7 @@ export const bookingFormSchema: FormField[] = [
   },
   {
     label: "Ваш телеграмм",
-    placeholder: "@username или https://t.me/username",
+    placeholder: "@username (опционально)",
     name: "telegram",
     type: "text",
   },
@@ -23,6 +23,12 @@ export const bookingFormSchema: FormField[] = [
     label: "Дата",
     placeholder: "ММ/ДД ЧЧ:ММ",
     name: "time",
+    type: "text",
+  },
+  {
+    label: "Тариф",
+    placeholder: "vip, comfort, bootcamp",
+    name: "tariff",
     type: "text",
   },
   {

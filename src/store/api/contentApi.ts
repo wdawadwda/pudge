@@ -149,7 +149,7 @@ export const fetchMainMap = createAsyncThunk(
       return response.data;
     } catch (error) {
       const errorObject = createErrorObject(error as AxiosError<ErrorDetail>);
-      thunkAPI.dispatch(contentActions.setErrorPartners(errorObject));
+      thunkAPI.dispatch(contentActions.setErrorMainMap(errorObject));
       throw errorObject;
     }
   }

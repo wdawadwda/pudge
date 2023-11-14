@@ -90,11 +90,7 @@ export const NewsDetail = () => {
               <p className={`${Style.text} ${Style.text3}`}>{newsItem.text3}</p>
             </div>
           </>
-        ) : (
-          <div className={StylesGallery.GalleryContent__404}>
-            Фото не найдено
-          </div>
-        )}
+        ) : null}
       </div>
       {isShowModal && modal.modalType !== null && (
         <Modal type={modal.modalType} />

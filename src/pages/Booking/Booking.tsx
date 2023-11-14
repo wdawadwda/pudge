@@ -100,7 +100,7 @@ export const Booking = () => {
             appearance="primary"
             isFullWidth={true}
           >
-            Добавить клуб
+            Забронировать
           </Button>
         </form>
       </div>

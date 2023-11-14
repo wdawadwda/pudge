@@ -87,9 +87,7 @@ export const GalleryDetail = () => {
               {image.img != null && <img src={image.img} alt={image.text} />}
             </div>
           </>
-        ) : (
-          <div className={Style.GalleryContent__404}>Фото не найдено</div>
-        )}
+        ) : null}
       </div>
       {isShowModal && modal.modalType !== null && (
         <Modal type={modal.modalType} />

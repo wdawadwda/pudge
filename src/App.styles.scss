@@ -80,6 +80,10 @@ a {
 
 // Свайпер
 
+.swiper-slide{
+  width: 100%!important;
+}
+
 .swiper-pagination {
   display: flex;
   justify-content: center;
