@@ -46,7 +46,7 @@ urlpatterns = [
     path('news/<int:pk>/', NewsView.as_view()),
     path('news-count/', AllNewsView.as_view()),
     path('last-news/', LastFiveNewsView.as_view()),
-    # path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
+    path('activate/<str:uid>/<str:token>', ActivateView.as_view()),
 
     path('swagger/', schema_view.with_ui('swagger'), name='swagger'),
 

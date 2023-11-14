@@ -106,26 +106,32 @@ WSGI_APPLICATION = 'SiteOrder.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'taxitutb_pudge_database',
+#         'USER': 'taxitutb_root',
+#         'PASSWORD': '123454321rOOt@',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'charset': 'utf8mb4',
+#             'sql_mode': 'traditional',
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#         'TEST': {
+#             'CHARSET': 'utf8mb4',
+#             'COLLATION': 'utf8mb4_unicode_ci',
+#         },
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pudge_database',
-        'USER': 'root',
-        'PASSWORD': '123454321rOOt@',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-            'sql_mode': 'traditional',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-        'TEST': {
-            'CHARSET': 'utf8mb4',
-            'COLLATION': 'utf8mb4_unicode_ci',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # # # ------ hoster.by -------
 # DATABASES = {
@@ -163,7 +169,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'Ru-ru'
+LANGUAGE_CODE = 'ru'
 # MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 
@@ -281,41 +287,43 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'Pudge.CustomUser'
 
-# # ------ local -------
-# ALLOWED_HOSTS = [
-#     '127.0.0.1',
-#     'localhost',
-#     'd2ce-93-171-161-29.ngrok-free.app',
-#     'localhost:5173'
-# ]
+# ------ local -------
+ALLOWED_HOSTS = [
+    'backend.pudge.by',
+    'backend.pudge.vh64.hosterby.com',
+    'pudge.by',
+    'pudge.vh64.hosterby.com',
+    'localhost:5173',
+]
 
-# # ------ hoster.by -------
+# ------ hoster.by -------
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://pudge.by",
-    "https://backend.pudge.by",
-    "https://pudge.vh64.hosterby.com",
+    'https://backend.pudge.by',
+    'https://backend.pudge.vh64.hosterby.com',
+    'https://pudge.by',
+    'https://pudge.vh64.hosterby.com',
 ]
 
 # CORS_ALLOW_ALL_ORIGINS: True
 
-# ------ local -------
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# # ------ hoster.by -------
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-SITE_URL = '/site/'
-SITE_ROOT = os.path.join(BASE_DIR, 'site')
+# # ------- localhost --------
+# STATIC_URL = 'static/'
+# SITE_URL = '/site/'
+# SITE_ROOT = os.path.join(BASE_DIR, 'site')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# STATIC_URL = '/backend.pudge.by/static/'
-# STATIC_ROOT = '/home/yourdoma/public_html/mysite/static/'
-# MEDIA_URL = '/backend.pudge.by/media/'
-# MEDIA_ROOT = '/home/yourdoma/public_html/mysite/media/'
+# ------ hoster.by -------
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/taxitutb/pudge/SiteOrder/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/taxitutb/pudge/SiteOrder/media/'
+SITE_URL = '/site/'
+SITE_ROOT = '/home/taxitutb/mysite/site/'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

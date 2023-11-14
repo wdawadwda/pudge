@@ -14,8 +14,8 @@ class CustomUser(AbstractUser):
 class PartnersModel(models.Model):
   name = models.CharField(max_length=254, blank=False, unique=True)
   img = models.FileField()
-  # url = models.CharField(max_length=200, blank=False, null=True)
-  text = models.CharField(max_length=2000, blank=True, null=True)
+  url = models.CharField(max_length=500, blank=False, null=True)
+  # text = models.CharField(max_length=2000, blank=True, null=True)
 
   def __str__(self):
     return self.name

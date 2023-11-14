@@ -39,19 +39,32 @@ class Helper:
         mail_text = "Запрос на бронь:\n\n"
 
         for key in request.data:
-            match key:
-                case 'name':
-                    mail_text += f"Имя: {request.data['name']}\n"
-                case 'phone_number':
-                    mail_text += f"Телефон: {request.data['phone_number']}\n"
-                case 'telegram':
-                    mail_text += f"Телеграм: {request.data['telegram']}\n"
-                case 'club':
-                    mail_text += f"Клуб: {request.data['club']}\n"
-                case 'reservation_time':
-                    mail_text += f"Время брони: {request.data['reservation_time']}\n"
-                case 'quantity_seats':
-                    mail_text += f"Количество мест: {request.data['quantity_seats']}\n"
+            if key == 'name':
+                mail_text += f"Имя: {request.data['name']}\n"
+            elif key == 'phone_number':
+                mail_text += f"Телефон: {request.data['phone_number']}\n"
+            elif key == 'telegram':
+                mail_text += f"Телеграм: {request.data['telegram']}\n"
+            elif key == 'club':
+                mail_text += f"Клуб: {request.data['club']}\n"
+            elif key == 'reservation_time':
+                mail_text += f"Время брони: {request.data['reservation_time']}\n"
+            elif key == 'quantity_seats':
+                mail_text += f"Количество мест: {request.data['quantity_seats']}\n"
+
+            # match key:
+            #     case 'name':
+            #         mail_text += f"Имя: {request.data['name']}\n"
+            #     case 'phone_number':
+            #         mail_text += f"Телефон: {request.data['phone_number']}\n"
+            #     case 'telegram':
+            #         mail_text += f"Телеграм: {request.data['telegram']}\n"
+            #     case 'club':
+            #         mail_text += f"Клуб: {request.data['club']}\n"
+            #     case 'reservation_time':
+            #         mail_text += f"Время брони: {request.data['reservation_time']}\n"
+            #     case 'quantity_seats':
+            #         mail_text += f"Количество мест: {request.data['quantity_seats']}\n"
 
         return mail_text
 
