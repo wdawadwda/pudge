@@ -14,26 +14,35 @@ import { selectTheme } from "../store/theme/theme.selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { themeActions } from "../store/theme/theme.slice";
 import { Theme } from "../navigation/Navigation";
-import { darkStyles } from "../entities/styles/global";
-import { lightStyles } from "../entities/styles/global";
+import {
+  darkStyles,
+  fontsStyles,
+  lightStyles,
+} from "../entities/styles/global";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../shared/ui/Button/Button";
+import { Feather } from "@expo/vector-icons";
+import { ToggleTheme } from "../features/ToggleTheme/ToggleTheme";
+import { Layout } from "../features/Layout/Layout";
+import { useEffect, useState } from "react";
 
 export default function Home({ theme }: { theme: Theme }) {
   const navigation = useNavigation();
-  // const theme = useSelector(selectTheme);
-  console.log(theme);
-  const dispatch = useDispatch();
-  const toggleThemeHandler = () => {
-    dispatch(themeActions.toggleTheme());
-  };
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://backend.pudge.by/main-map/')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Полученные данные:', data);
+        setData(data);
+      })
+      .catch((error) => {
+        console.error('Ошибка запроса:', error);
+      });
+  }, []);
   return (
-    <SafeAreaView
-      style={[
-        theme === "dark" ? darkStyles.container : lightStyles.container,
-        styles.container,
-      ]}
-    >
+    <Layout theme={theme}>
       <ScrollView
         style={[
           theme === "dark" ? darkStyles.container : lightStyles.container,
@@ -43,6 +52,17 @@ export default function Home({ theme }: { theme: Theme }) {
         <Button onPress={() => navigation.navigate("Shoes" as never)}>
           <Text>Shoes</Text>
         </Button>
+        {data && (
+          <Text
+            style={[
+              theme === 'dark' ? darkStyles.text : lightStyles,
+              styles.text,
+            ]}
+          >
+            {data.mainMap}
+          </Text>
+        )}
+
         <Text
           style={[
             theme === "dark" ? darkStyles.text : lightStyles,
@@ -51,21 +71,10 @@ export default function Home({ theme }: { theme: Theme }) {
         >
           HI
         </Text>
-        <Button onPress={toggleThemeHandler}>
-          <Text>Toggle Theme</Text>
-        </Button>
         <Text
           style={[
-            theme === "dark" ? darkStyles.text : lightStyles,
-            styles.text,
-          ]}
-        >
-          HI
-        </Text>
-        <Text
-          style={[
-            theme === "dark" ? darkStyles.text : lightStyles,
-            styles.text,
+            theme === "dark" ? darkStyles.text : lightStyles.text,
+            fontsStyles.title,
           ]}
         >
           HI
@@ -168,7 +177,7 @@ export default function Home({ theme }: { theme: Theme }) {
         <Text style={styles.text}>HI</Text>
         <Text style={styles.text}>HI</Text>
       </ScrollView>
-    </SafeAreaView>
+    </Layout>
   );
 }
 
