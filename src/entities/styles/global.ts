@@ -2,15 +2,19 @@ import { StyleSheet } from "react-native";
 import * as stylesConstDark from "../const/style/globalDark";
 import * as stylesConstLight from "../const/style/globalLight";
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+export const fontsStyles = StyleSheet.create({
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
   },
-  img: {
-    width: "100%",
-    aspectRatio: 1,
+  subtitle: {
+    fontSize: 25,
+    fontWeight: "normal",
   },
-  text: {},
+  text: {
+    fontSize: 15,
+    fontWeight: "normal",
+  },
 });
 
 export const darkStyles = StyleSheet.create({
@@ -18,7 +22,7 @@ export const darkStyles = StyleSheet.create({
     backgroundColor: stylesConstDark.backgroundColor,
   },
   text: {
-    color: stylesConstLight.textColor,
+    color: stylesConstDark.textColor,
   },
 });
 

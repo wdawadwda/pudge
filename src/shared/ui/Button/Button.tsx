@@ -17,6 +17,7 @@ interface ButtonProps {
   onPress?: (event: GestureResponderEvent) => void;
   style?: StyleProp<ViewStyle>;
 }
+
 export const Button = ({ children, onPress, style }: ButtonProps) => {
   return (
     <Pressable
