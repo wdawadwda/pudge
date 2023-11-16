@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { shoesActions } from "../store/shoes/shoes.slice";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Button } from "../shared/ui/Button/Button";
 
 // FlatList лучше не вкладывать в ScrollView
 
@@ -26,9 +27,9 @@ export default function Shoes() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable style={styles.header} onPress={() => navigation.goBack()}>
+      <Button onPress={() => navigation.goBack()}>
         <Text style={styles.headerText}>Назад</Text>
-      </Pressable>
+      </Button>
       <FlatList
         data={shoes}
         renderItem={({ item }) => (
