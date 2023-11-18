@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-type ThemeState = {
-  theme: "dark" | "light" | null;
-};
+import { ThemeState } from "./theme.type";
 
 const initialState: ThemeState = {
   theme: null,
@@ -19,7 +16,7 @@ export const themeSlice = createSlice({
       state.theme = state.theme === "dark" ? "light" : "dark";
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: () => {},
 });
 
 export const { actions: themeActions } = themeSlice;

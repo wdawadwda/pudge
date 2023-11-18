@@ -1,24 +1,11 @@
-import { ReactNode } from "react";
-import {
-  GestureResponderEvent,
-  Pressable,
-  StyleProp,
-  StyleSheet,
-  Text,
-  ViewStyle,
-} from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import {
   backgroundColorSecond3,
   textColor,
-} from "../../../entities/const/style/globalDark";
+} from "../../../entities/const/style/globalDark.style";
+import { ButtonProps } from "./button.type";
 
-interface ButtonProps {
-  children: ReactNode;
-  onPress?: (event: GestureResponderEvent) => void;
-  style?: StyleProp<ViewStyle>;
-}
-
-export const Button = ({ children, onPress, style }: ButtonProps) => {
+export const Button = ({ children, onPress, style, disabled }: ButtonProps) => {
   return (
     <Pressable
       style={({ pressed }) => [
@@ -27,8 +14,10 @@ export const Button = ({ children, onPress, style }: ButtonProps) => {
           opacity: pressed ? 0.6 : 1,
         },
         style,
+        disabled && styles.disabled,
       ]}
       onPress={onPress}
+      disabled={disabled}
     >
       <Text style={styles.text}>{children}</Text>
     </Pressable>
@@ -45,5 +34,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: textColor,
+  },
+  disabled: {
+    opacity: 0.5,
   },
 });

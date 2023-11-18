@@ -1,4 +1,4 @@
-import * as stylesConstDark from "../../../entities/const/style/globalDark";
+import * as stylesConstDark from "../../../entities/const/style/globalDark.style";
 import { StyleSheet } from "react-native";
 
 export const stylesHeader = StyleSheet.create({
