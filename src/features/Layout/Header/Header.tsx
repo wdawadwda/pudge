@@ -1,9 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { Theme } from "../../../navigation/Navigation";
 import { Button } from "../../../shared/ui/Button/Button";
 import { ToggleTheme } from "../../../features/ToggleTheme/ToggleTheme";
-import * as stylesConstDark from "../../../entities/const/style/globalDark";
+
 import { darkStyles, lightStyles } from "../../../entities/styles/global";
+import { stylesHeader } from "./header.style";
 
 interface HeaderProps {
   theme: Theme;
@@ -13,10 +14,10 @@ export const Header = ({ theme }: HeaderProps) => {
     <View
       style={[
         theme === "dark" ? darkStyles.container : lightStyles.container,
-        styles.container,
+        stylesHeader.container,
       ]}
     >
-      <Image source={require("../../../assets/logo.png")} style={styles.logo} />
+      <Image source={require("../../../assets/logo.png")} style={stylesHeader.logo} />
       <Button>
         <Text>Забронировать</Text>
       </Button>
@@ -25,21 +26,3 @@ export const Header = ({ theme }: HeaderProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: 100,
-    paddingRight: 10,
-    paddingLeft: 10,
-    paddingBottom: 10,
-    marginBottom: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: stylesConstDark.backgroundColorSecond3,
-  },
-  logo: {
-    width: 70,
-    height: 70,
-  },
-});

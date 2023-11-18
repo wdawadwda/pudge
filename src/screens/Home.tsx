@@ -30,17 +30,6 @@ export default function Home({ theme }: { theme: Theme }) {
   const navigation = useNavigation();
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch('https://backend.pudge.by/main-map/')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Полученные данные:', data);
-        setData(data);
-      })
-      .catch((error) => {
-        console.error('Ошибка запроса:', error);
-      });
-  }, []);
   return (
     <Layout theme={theme}>
       <ScrollView
@@ -52,17 +41,6 @@ export default function Home({ theme }: { theme: Theme }) {
         <Button onPress={() => navigation.navigate("Shoes" as never)}>
           <Text>Shoes</Text>
         </Button>
-        {data && (
-          <Text
-            style={[
-              theme === 'dark' ? darkStyles.text : lightStyles,
-              styles.text,
-            ]}
-          >
-            {data.mainMap}
-          </Text>
-        )}
-
         <Text
           style={[
             theme === "dark" ? darkStyles.text : lightStyles,
@@ -71,111 +49,6 @@ export default function Home({ theme }: { theme: Theme }) {
         >
           HI
         </Text>
-        <Text
-          style={[
-            theme === "dark" ? darkStyles.text : lightStyles.text,
-            fontsStyles.title,
-          ]}
-        >
-          HI
-        </Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
-        <Text style={styles.text}>HI</Text>
       </ScrollView>
     </Layout>
   );
