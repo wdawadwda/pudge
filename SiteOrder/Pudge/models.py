@@ -88,6 +88,7 @@ class ReservationModel(models.Model):
   phone_number = models.CharField(max_length=20)
   telegram = models.CharField(max_length=100, blank=True, null=True)
   club = models.CharField(max_length=100)
+  tariff = models.CharField(max_length=100)
   reservation_time = models.CharField(max_length=100)
   quantity_seats = models.CharField(max_length=400)
 

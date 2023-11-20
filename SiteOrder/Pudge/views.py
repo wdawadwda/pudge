@@ -207,9 +207,9 @@ class ReservationView(generics.ListCreateAPIView):
 
     form = ReservationForm(request.data)
     if form.is_valid():
-      serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      serializer.save()
+      # serializer = self.get_serializer(data=request.data)
+      # serializer.is_valid(raise_exception=True)
+      # serializer.save()
 
       helper = Helper()
       text_mail = helper.compose_mail_text(request)
