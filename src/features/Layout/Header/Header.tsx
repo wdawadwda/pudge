@@ -7,7 +7,10 @@ import { HeaderProps } from "./header.type";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { OpenMapsLink } from "../../../shared/ui/Button/OpenMapsLink/OpenMapsLink";
-import { selectMainMapData, selectMainMapStatus } from "../../../store/content/content.selectors";
+import {
+  selectMainMapData,
+  selectMainMapStatus,
+} from "../../../store/content/content.selectors";
 import Loader from "../../../shared/ui/Loader/Loader";
 
 export const Header = ({ theme }: HeaderProps) => {
@@ -31,7 +34,10 @@ export const Header = ({ theme }: HeaderProps) => {
       {status === "loading" ? (
         <Loader />
       ) : (
-        <OpenMapsLink mapUrl={map.mainMap}></OpenMapsLink>
+        <OpenMapsLink
+          title={"Карта клубов"}
+          mapUrl={map.mainMap}
+        ></OpenMapsLink>
       )}
       <ToggleTheme theme={theme} />
     </View>
