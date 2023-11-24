@@ -1,19 +1,10 @@
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-} from "react-native";
-import Home from "./src/screens/Home/Home";
-import Shoes from "./src/screens/Shoes";
+import { StyleSheet, View } from "react-native";
 import { Navigation } from "./src/navigation/Navigation";
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { store } from "./src/store/store";
-import { themeActions } from "./src/store/theme/theme.slice";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
+import { styles } from "./src/entities/styles/global.style";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,23 +28,11 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  view: { flex: 1 },
-  container: {
-    flex: 1,
-    // marginTop: StatusBar.currentHeight на случай если SafeAreaView не работает корректно
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: "500",
-  },
-});
-
 export const fontsStyles = StyleSheet.create({
   title: {
     fontSize: 50,
     textAlign: "center",
-    marginBottom: 25,
+    marginBottom: 50,
     textTransform: "uppercase",
     fontFamily: "Roboto-Bold",
   },

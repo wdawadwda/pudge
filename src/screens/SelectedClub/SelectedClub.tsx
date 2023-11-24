@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { ScrollView, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Layout } from "../../features/Layout/Layout";
 import { Theme } from "../../store/theme/theme.type";
@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { selectClub } from "../../store/content/content.selectors";
 import Loader from "../../shared/ui/Loader/Loader";
 import { ContactsClub } from "../../features/Clubs/ContactsClub";
+import * as globalStyles from "../../entities/styles/global.style";
+import { fontsStyles } from "../../../App";
 
 export default function SelectedClub({ theme }: { theme: Theme }) {
   const clubData = useSelector(selectClub);
@@ -22,6 +24,16 @@ export default function SelectedClub({ theme }: { theme: Theme }) {
     <Layout theme={theme}>
       <ScrollView>
         <BackButton onPress={() => navigation.goBack()} />
+        <Text
+          style={[
+            theme === "dark"
+              ? globalStyles.darkStyles.text1
+              : globalStyles.lightStyles.text1,
+            fontsStyles.title,
+          ]}
+        >
+          {clubData.name}
+        </Text>
         <ContactsClub clubData={clubData} theme={theme} />
         <Expand label={"Цены"} theme={theme}>
           <PriceTable clubData={clubData} theme={theme} />
