@@ -32,7 +32,7 @@ export const fontsStyles = StyleSheet.create({
   title: {
     fontSize: 50,
     textAlign: "center",
-    marginBottom: 50,
+    marginBottom: 25,
     textTransform: "uppercase",
     fontFamily: "Roboto-Bold",
   },

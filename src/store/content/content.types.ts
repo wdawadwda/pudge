@@ -8,6 +8,7 @@ export type ContentState = {
     bookingClub: TypeBookingData | null;
     clubError: ErrorObjectContent | null;
     status: Status;
+    mainMapData: MainMapData;
   };
 };
 
@@ -32,3 +33,12 @@ export interface TypeBookingData {
   email: string;
   name: string;
 }
+
+export type MainMapData = {
+  results: {
+    id: number | null;
+    mainMap: string;
+  };
+  partnersError: ErrorObjectContent | null;
+  status: Status;
+};

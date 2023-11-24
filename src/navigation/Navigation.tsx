@@ -15,7 +15,7 @@ import About from "../screens/About";
 import * as stylesConstDark from "../entities/const/style/globalDark.style";
 import * as stylesConstLight from "../entities/const/style/globalLight.style";
 import { Theme } from "../store/theme/theme.type";
-import { fetchClubContent } from "../store/api/contentApi";
+import { fetchClubContent, fetchMainMap } from "../store/api/contentApi";
 import { useAppDispatch } from "../store/store.types";
 import SelectedClub from "../screens/SelectedClub/SelectedClub";
 import { Booking } from "../screens/Modal/Booking/Booking";
@@ -130,8 +130,10 @@ export const Navigation = () => {
 
   useEffect(() => {
     const clubContentPromise = appDispatch(fetchClubContent());
+    const mainMapContentPromise = appDispatch(fetchMainMap());
     return () => {
       clubContentPromise.abort("cancelled");
+      mainMapContentPromise.abort("cancelled");
     };
   }, [appDispatch]);
 
