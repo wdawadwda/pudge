@@ -17,3 +17,9 @@ export const selectClub = (state: RootState) =>
 
 export const selectBookingData = (state: RootState) =>
   state.content.clubContent.bookingClub;
+
+export const selectMainMapData = (state: RootState) =>
+  state.content.clubContent.mainMapData.results;
+
+export const selectMainMapStatus = (state: RootState) =>
+  state.content.clubContent.mainMapData.status;
