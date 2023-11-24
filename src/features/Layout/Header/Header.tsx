@@ -1,15 +1,15 @@
-import { Image, Text, View } from "react-native";
-import { Theme } from "../../../navigation/Navigation";
-import { Button } from "../../../shared/ui/Button/Button";
+import { Image, View } from "react-native";
 import { ToggleTheme } from "../../../features/ToggleTheme/ToggleTheme";
 
-import { darkStyles, lightStyles } from "../../../entities/styles/global";
+import { darkStyles, lightStyles } from "../../../entities/styles/global.style";
 import { stylesHeader } from "./header.style";
+import { HeaderProps } from "./header.type";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-interface HeaderProps {
-  theme: Theme;
-}
 export const Header = ({ theme }: HeaderProps) => {
+  const navigation = useNavigation();
+
   return (
     <View
       style={[
@@ -17,12 +17,13 @@ export const Header = ({ theme }: HeaderProps) => {
         stylesHeader.container,
       ]}
     >
-      <Image source={require("../../../assets/logo.png")} style={stylesHeader.logo} />
-      <Button>
-        <Text>Забронировать</Text>
-      </Button>
+      <TouchableOpacity onPress={() => navigation.navigate("Home" as never)}>
+        <Image
+          source={require("../../../assets/logo.png")}
+          style={stylesHeader.logo}
+        />
+      </TouchableOpacity>
       <ToggleTheme theme={theme} />
     </View>
   );
 };
-

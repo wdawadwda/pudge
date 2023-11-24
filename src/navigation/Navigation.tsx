@@ -1,13 +1,8 @@
-import { NavigationContainer, ParamListBase } from "@react-navigation/native";
-import {
-  NativeStackScreenProps,
-  createNativeStackNavigator,
-} from "@react-navigation/native-stack";
-import Home from "../screens/Home";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "../screens/Home/Home";
 import Shoes from "../screens/Shoes";
-import { type RootStackParamList } from "./navigation.type";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { ShoesDetail } from "../screens/ShoesDetail";
 import { useColorScheme } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,16 +12,17 @@ import { selectTheme } from "../store/theme/theme.selectors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Contacts from "../screens/Contacts";
 import About from "../screens/About";
-import Burger from "../screens/Burger";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import User from "../screens/User";
-import * as stylesConstDark from "../entities/const/style/globalDark";
-import * as stylesConstLight from "../entities/const/style/globalLight";
+import * as stylesConstDark from "../entities/const/style/globalDark.style";
+import * as stylesConstLight from "../entities/const/style/globalLight.style";
+import { Theme } from "../store/theme/theme.type";
+import { fetchClubContent } from "../store/api/contentApi";
+import { useAppDispatch } from "../store/store.types";
+import SelectedClub from "../screens/SelectedClub/SelectedClub";
+import { Booking } from "../screens/Modal/Booking/Booking";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// Определите стек-навигатор с экранами Home, Shoes и ShoesDetail
 const StackNavigator = ({ theme }: { theme: Theme }) => (
   <Stack.Navigator
     screenOptions={{
@@ -39,22 +35,38 @@ const StackNavigator = ({ theme }: { theme: Theme }) => (
     <Stack.Screen
       name="Home"
       options={{
-        headerShown: false, // Убираем заголовок с экрана "User"
+        headerShown: false,
       }}
-      component={() => <Home theme={theme} />}
-    />
+    >
+      {() => <Home theme={theme} />}
+    </Stack.Screen>
+    <Stack.Screen
+      name="SelectedClub"
+      options={{
+        headerShown: false,
+      }}
+    >
+      {() => <SelectedClub theme={theme} />}
+    </Stack.Screen>
+    <Stack.Screen
+      name="Booking"
+      options={{
+        headerShown: false,
+      }}
+    >
+      {() => <Booking theme={theme} />}
+    </Stack.Screen>
     <Stack.Screen
       name="Shoes"
       component={Shoes}
       options={{
-        headerShown: false, // Убираем заголовок с экрана "User"
+        headerShown: false,
       }}
     />
     <Stack.Screen name="Shoes Detail" component={ShoesDetail} />
   </Stack.Navigator>
 );
 
-// Определите таб-навигатор с экранами Home, Contacts и About
 const TabNavigator = ({ theme }: { theme: Theme }) => (
   <Tab.Navigator
     screenOptions={{
@@ -70,8 +82,7 @@ const TabNavigator = ({ theme }: { theme: Theme }) => (
     }}
   >
     <Tab.Screen
-      name="Home"
-      component={() => <StackNavigator theme={theme} />}
+      name="HomeTab"
       initialParams={{ initialRoute: "Home" }}
       options={{
         tabBarLabel: "Главная",
@@ -80,7 +91,10 @@ const TabNavigator = ({ theme }: { theme: Theme }) => (
         ),
         headerShown: false,
       }}
-    />
+    >
+      {() => <StackNavigator theme={theme} />}
+    </Tab.Screen>
+
     <Tab.Screen
       name="Contacts"
       component={Contacts}
@@ -107,15 +121,23 @@ const TabNavigator = ({ theme }: { theme: Theme }) => (
 export const Navigation = () => {
   const isDark = useColorScheme();
   const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
   const theme: Theme = useSelector(selectTheme);
+
   useEffect(() => {
     dispatch(themeActions.setTheme(isDark ? "dark" : "light"));
   }, []);
+
+  useEffect(() => {
+    const clubContentPromise = appDispatch(fetchClubContent());
+    return () => {
+      clubContentPromise.abort("cancelled");
+    };
+  }, [appDispatch]);
+
   return (
     <NavigationContainer>
       <TabNavigator theme={theme} />
     </NavigationContainer>
   );
 };
-
-export type Theme = "dark" | "light" | null;

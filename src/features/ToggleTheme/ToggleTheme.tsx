@@ -4,8 +4,8 @@ import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { themeActions } from "../../store/theme/theme.slice";
 import { Theme } from "../../navigation/Navigation";
-import * as stylesConstDark from "../../entities/const/style/globalDark";
-import * as stylesConstLight from "../../entities/const/style/globalLight";
+import * as stylesConstDark from "../../entities/const/style/globalDark.style";
+import * as stylesConstLight from "../../entities/const/style/globalLight.style";
 
 interface ToggleThemeProps {
   theme: Theme;
