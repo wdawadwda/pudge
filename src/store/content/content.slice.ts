@@ -46,7 +46,7 @@ export const contentSlice = createSlice({
     },
     setErrorMainMap: (
       state,
-      action: PayloadAction<ErrorObjectContent | null>
+      action: PayloadAction<ErrorObjectContent | null>,
     ) => {
       state.clubContent.mainMapData.status = "error";
       state.clubContent.mainMapData.partnersError = action.payload;
