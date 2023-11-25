@@ -11,6 +11,7 @@ import Loader from "../../shared/ui/Loader/Loader";
 import { ContactsClub } from "../../features/Clubs/ContactsClub";
 import * as globalStyles from "../../entities/styles/global.style";
 import { fontsStyles } from "../../../App";
+import { ComputerSpec } from "../../features/Clubs/ComputerSpec/ComputerSpec";
 
 export default function SelectedClub({ theme }: { theme: Theme }) {
   const clubData = useSelector(selectClub);
@@ -37,6 +38,9 @@ export default function SelectedClub({ theme }: { theme: Theme }) {
         <ContactsClub clubData={clubData} theme={theme} />
         <Expand label={"Цены"} theme={theme}>
           <PriceTable clubData={clubData} theme={theme} />
+        </Expand>
+        <Expand label={"Железо"} theme={theme}>
+          <ComputerSpec clubData={clubData} theme={theme} />
         </Expand>
       </ScrollView>
     </Layout>

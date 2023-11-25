@@ -8,6 +8,7 @@ import { Theme } from "../store/theme/theme.type";
 import { fetchClubContent, fetchMainMap } from "../store/api/contentApi";
 import { useAppDispatch } from "../store/store.types";
 import { TabNavigator } from "./Tab";
+import { getQuantityNews } from "../store/api/newsApi";
 
 export const Navigation = () => {
   const isDark = useColorScheme();
@@ -22,9 +23,11 @@ export const Navigation = () => {
   useEffect(() => {
     const clubContentPromise = appDispatch(fetchClubContent());
     const mainMapContentPromise = appDispatch(fetchMainMap());
+    const newsPromise = appDispatch(getQuantityNews());
     return () => {
       clubContentPromise.abort("cancelled");
       mainMapContentPromise.abort("cancelled");
+      newsPromise.abort("cancelled");
     };
   }, [appDispatch]);
 

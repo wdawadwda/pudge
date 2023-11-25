@@ -1,4 +1,4 @@
-export const backgroundColor = "white";
+export const backgroundColor = "rgb(82, 82, 82)";
 // export const backgroundColorSecond = "#1a1a1a";
 // export const backgroundColorSecond2 = "#1d2c08";
 // export const backgroundColorSecond3 = "#82c91e";
@@ -8,7 +8,7 @@ export const backgroundColor2 = "black";
 export const backgroundAlert = "red";
 export const backgroundOther = "aqua";
 
-export const textColor = "black";
+export const textColor = "white";
 export const textSecondColor = "#82c91e";
 export const textSecond2Color = "#1d2c08";
 export const textSecond3Color = "#BEBE0B";
