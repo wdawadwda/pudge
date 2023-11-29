@@ -14,7 +14,7 @@ export const bookingFormSchema: FormField[] = [
     type: "text",
   },
   {
-    label: "Ваш телеграмм:",
+    label: "Телеграмм (опционально):",
     placeholder: "@username или https://t.me/username",
     name: "telegram",
     type: "text",

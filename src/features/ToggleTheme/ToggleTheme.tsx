@@ -3,9 +3,9 @@ import { Button } from "../../shared/ui/Button/Button";
 import { Feather } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { themeActions } from "../../store/theme/theme.slice";
-import { Theme } from "../../navigation/Navigation";
 import * as stylesConstDark from "../../entities/const/style/globalDark.style";
 import * as stylesConstLight from "../../entities/const/style/globalLight.style";
+import { Theme } from "../../store/theme/theme.type";
 
 interface ToggleThemeProps {
   theme: Theme;
@@ -36,7 +36,7 @@ export const ToggleTheme = ({ theme }: ToggleThemeProps) => {
         {theme === "dark" ? (
           <Feather name="sun" size={25} color="#fff" />
         ) : (
-          <Feather name="moon" size={25} color="black" />
+          <Feather name="moon" size={25} color="#fff" />
         )}
       </Button>
     </View>

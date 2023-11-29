@@ -1,4 +1,4 @@
-import { Linking, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import * as globalStyles from "../../entities/styles/global.style";
 import { Theme } from "../../store/theme/theme.type";
 import { TypeClubData } from "../../entities/const/clubsContent.type";
@@ -9,6 +9,7 @@ import { TypeBookingData } from "../../store/content/content.types";
 import { contentActions } from "../../store/content/content.slice";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import { handlePhonePress } from "../../entities/const/utils/utils";
 
 export const ContactsClub = ({
   clubData,
@@ -26,13 +27,6 @@ export const ContactsClub = ({
   const handleBooking = (data: TypeBookingData) => {
     dispatch(contentActions.setBookingData(data));
     navigation.navigate("Booking" as never);
-  };
-
-  const handlePhonePress = () => {
-    const phoneNumber = clubData.contacts.phone;
-    if (phoneNumber) {
-      Linking.openURL(`tel:${phoneNumber}`);
-    }
   };
 
   return (
@@ -55,7 +49,7 @@ export const ContactsClub = ({
             : globalStyles.lightStyles.text1,
           fontsStyles.text2,
         ]}
-        onPress={handlePhonePress}
+        onPress={() => handlePhonePress(clubData.contacts.phone)}
       >
         {clubData.contacts.phone}
       </Text>

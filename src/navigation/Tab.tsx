@@ -5,8 +5,7 @@ import * as stylesConstLight from "../entities/const/style/globalLight.style";
 import { Theme } from "../store/theme/theme.type";
 import Contacts from "../screens/Contacts/Contacts";
 import { Entypo } from "@expo/vector-icons";
-import News from "../screens/News/News";
-import { StackNavigator } from "./Stack";
+import { StackNavigator, StackNewsNavigator } from "./Stack";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +20,11 @@ export const TabNavigator = ({ theme }: { theme: Theme }) => (
             ? stylesConstDark.backgroundColor
             : stylesConstLight.backgroundColor,
         borderTopColor: stylesConstDark.backgroundColorSecond3,
+        height: 75,
+      },
+      tabBarLabelStyle: {
+        fontSize: 15,
+        marginBottom: 10,
       },
     }}
   >
@@ -29,8 +33,8 @@ export const TabNavigator = ({ theme }: { theme: Theme }) => (
       initialParams={{ initialRoute: "Home" }}
       options={{
         tabBarLabel: "Главная",
-        tabBarIcon: ({ color, size }) => (
-          <AntDesign name="home" size={size} color={color} />
+        tabBarIcon: ({ color }) => (
+          <AntDesign name="home" size={35} color={color} />
         ),
         headerShown: false,
       }}
@@ -39,12 +43,12 @@ export const TabNavigator = ({ theme }: { theme: Theme }) => (
     </Tab.Screen>
 
     <Tab.Screen
-      name="Contacts"
+      name="ContactsTab"
       initialParams={{ initialRoute: "Contacts" }}
       options={{
         tabBarLabel: "Контакты",
-        tabBarIcon: ({ color, size }) => (
-          <AntDesign name="contacts" size={size} color={color} />
+        tabBarIcon: ({ color }) => (
+          <AntDesign name="contacts" size={35} color={color} />
         ),
         headerShown: false,
       }}
@@ -53,17 +57,17 @@ export const TabNavigator = ({ theme }: { theme: Theme }) => (
     </Tab.Screen>
 
     <Tab.Screen
-      name="News"
+      name="NewsTab"
       initialParams={{ initialRoute: "News" }}
       options={{
         tabBarLabel: "Новости",
-        tabBarIcon: ({ color, size }) => (
-          <Entypo name="news" size={size} color={color} />
+        tabBarIcon: ({ color }) => (
+          <Entypo name="news" size={35} color={color} />
         ),
         headerShown: false,
       }}
     >
-      {() => <News theme={theme} />}
+      {() => <StackNewsNavigator theme={theme} />}
     </Tab.Screen>
   </Tab.Navigator>
 );

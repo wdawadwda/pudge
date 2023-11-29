@@ -1,4 +1,4 @@
-import { Theme } from "../../navigation/Navigation";
+import { Theme } from "../../store/theme/theme.type";
 import { ReactNode } from "react";
 
 export interface LayoutProps {
