@@ -13,7 +13,6 @@ import {
 } from "../../entities/const/clubsContent.type";
 import { tableStyles } from "./table.styles";
 
-
 export const PriceTable = ({
   theme,
   clubData,
@@ -24,7 +23,7 @@ export const PriceTable = ({
   if (!clubData || !clubData.price) {
     return <Loader />;
   }
-console.log(clubData)
+
   const [selectedTariff, setSelectedTariff] = useState<
     keyof TypeClubPriceDataMap
   >(Object.keys(clubData.price)[0] as keyof TypeClubPriceDataMap);
@@ -88,14 +87,19 @@ console.log(clubData)
             <View
               key={rowIndex}
               style={[
-                theme === "dark" ? tableStyles.bodyRowDark : tableStyles.bodyRowLight,
+                theme === "dark"
+                  ? tableStyles.bodyRowDark
+                  : tableStyles.bodyRowLight,
                 tableStyles.bodyRow,
               ]}
             >
               {row.map((cell, cellIndex) => (
                 <View
                   key={cellIndex}
-                  style={[tableStyles.bodyCell, cellIndex === 0 && tableStyles.firstCell]}
+                  style={[
+                    tableStyles.bodyCell,
+                    cellIndex === 0 && tableStyles.firstCell,
+                  ]}
                 >
                   <Text
                     style={[

@@ -82,43 +82,50 @@ export const ComputerSpec = ({
           </View>
         </View>
         <View style={tableStyles.body}>
-  {selectedTariffData.content ? (
-    selectedTariffData.content.map((row, rowIndex) => (
-      <View key={rowIndex}>
-        {Array.isArray(row) && row.map((cell, cellIndex) => (
-          <View
-          style={[tableStyles.bodyCell, cellIndex === 0 && tableStyles.firstCell]}
-          key={cellIndex}>
-            {cell && cell.main !== "" && (
-              <Text
-              style={[
-                theme === "dark"
-                  ? globalStyles.darkStyles.text1
-                  : globalStyles.lightStyles.text1,
-                fontsStyles.text2,
-              ]}
-              >{cell.main}</Text>
-            )}
-            {cell && cell.descr !== "" && (
-              <Text
-              style={[
-                theme === "dark"
-                  ? globalStyles.darkStyles.text2
-                  : globalStyles.lightStyles.text2,
-                fontsStyles.text2,
-              ]}
-              >{cell.descr}</Text>
-            )}
-          </View>
-        ))}
-      </View>
-    ))
-  ) : (
-    <Text>Данные не загружены</Text>
-  )}
-</View>
-
-
+          {selectedTariffData.content ? (
+            selectedTariffData.content.map((row, rowIndex) => (
+              <View key={rowIndex}>
+                {Array.isArray(row) &&
+                  row.map((cell, cellIndex) => (
+                    <View
+                      style={[
+                        tableStyles.bodyCell,
+                        cellIndex === 0 && tableStyles.firstCell,
+                      ]}
+                      key={cellIndex}
+                    >
+                      {cell && cell.main !== "" && (
+                        <Text
+                          style={[
+                            theme === "dark"
+                              ? globalStyles.darkStyles.text1
+                              : globalStyles.lightStyles.text1,
+                            fontsStyles.text2,
+                          ]}
+                        >
+                          {cell.main}
+                        </Text>
+                      )}
+                      {cell && cell.descr !== "" && (
+                        <Text
+                          style={[
+                            theme === "dark"
+                              ? globalStyles.darkStyles.text2
+                              : globalStyles.lightStyles.text2,
+                            fontsStyles.text2,
+                          ]}
+                        >
+                          {cell.descr}
+                        </Text>
+                      )}
+                    </View>
+                  ))}
+              </View>
+            ))
+          ) : (
+            <Text>Данные не загружены</Text>
+          )}
+        </View>
       </View>
     </View>
   );
