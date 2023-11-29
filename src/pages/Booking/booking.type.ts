@@ -8,5 +8,6 @@ export type FormField = {
     | "time"
     | "quantity_seats"
     | "tariff";
-  type: "file" | "text";
+  type: "file" | "text" | "datetime-local" | "select";
+  options?: string[];
 };

@@ -48,6 +48,14 @@
           border-radius: 10px;
           color: var(--pudge--text-second2-color);
         }
+        select{
+          width: 61%;
+          height: 35px;
+          background-color: var(--pudge--text-second3-color);
+          border: 1px solid var(--pudge--text-second3-color);
+          border-radius: 10px;
+          color: var(--pudge--text-second2-color);
+        }
         input:focus-visible {
           outline: none;
         }

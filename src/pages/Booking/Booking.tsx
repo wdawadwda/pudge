@@ -77,18 +77,44 @@ export const Booking = () => {
                 >
                   {field.label}
                 </label>
-                <input
-                  className={
-                    errors[field.name]
-                      ? StylesUser.errorBg
-                      : isValid
-                      ? StylesUser.validBG
-                      : ""
-                  }
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  {...register(field.name)}
-                />
+                {field.type === "select" ? (
+                  <select
+                    className={
+                      errors[field.name]
+                        ? StylesUser.errorBg
+                        : isValid
+                        ? StylesUser.validBG
+                        : ""
+                    }
+                    {...register(field.name)}
+                  >
+                    {field.type === "select" && field.options ? (
+                      <>
+                        <option value="" disabled>
+                          {field.placeholder}
+                        </option>
+                        {field.options.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </>
+                    ) : null}
+                  </select>
+                ) : (
+                  <input
+                    className={
+                      errors[field.name]
+                        ? StylesUser.errorBg
+                        : isValid
+                        ? StylesUser.validBG
+                        : ""
+                    }
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    {...register(field.name)}
+                  />
+                )}
               </div>
               <span>{errors[field.name]?.message || "\u00A0"}</span>
             </div>

@@ -194,15 +194,7 @@ export const bookingSchema = yup.object().shape({
     .string()
     .required('Поле "Телефон" обязательно для заполнения'),
   telegram: yup.string().notRequired(),
-  time: yup
-    .string()
-    .required('Поле "Время" обязательно для заполнения')
-    .matches(
-      /^(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01]) (0\d|1\d|2[0-3]):[0-5]\d$/,
-      {
-        message: "Введите корректное время в формате ММ/ДД ЧЧ:ММ",
-      }
-    ),
+  time: yup.string().required('Поле "Время" обязательно для заполнения'),
   tariff: yup
     .string()
     .required("Поле обязательно для заполнения")

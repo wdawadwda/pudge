@@ -49,7 +49,6 @@ export const useBookingForm = () => {
     formData.append("reservation_time", getValues("time"));
     formData.append("quantity_seats", getValues("quantity_seats").toString());
     formData.append("tariff", getValues("tariff").toString());
-
     booking(formData)
       .then((responseData) => {
         setServerResponse({ message: responseData.message, error: "" });

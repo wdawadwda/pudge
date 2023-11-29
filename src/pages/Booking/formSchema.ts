@@ -21,15 +21,16 @@ export const bookingFormSchema: FormField[] = [
   },
   {
     label: "Дата",
-    placeholder: "ММ/ДД ЧЧ:ММ",
+    placeholder: "Выберите дату и время",
     name: "time",
-    type: "text",
+    type: "datetime-local",
   },
   {
     label: "Тариф",
-    placeholder: "vip, comfort, bootcamp",
+    placeholder: "Выберите тариф",
     name: "tariff",
-    type: "text",
+    type: "select",
+    options: ["vip", "comfort", "bootcamp"],
   },
   {
     label: "Кол-во мест",
