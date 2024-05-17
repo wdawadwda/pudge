@@ -3,7 +3,7 @@ import { type FormField } from "./addNews.type";
 export const addNewsFormSchema: FormField[] = [
   {
     label: "Заголовок",
-    placeholder: "Введите название заголовок",
+    placeholder: "Введите заголовок новости",
     name: "title",
     type: "text",
   },

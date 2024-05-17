@@ -38,7 +38,7 @@ export const AddNews = () => {
     const photoFiles = getValues("img");
 
     if (photoFiles instanceof FileList) {
-      formData.append("title", getValues("title").toLowerCase());
+      formData.append("title", getValues("title"));
       formData.append("img", photoFiles[0]);
       formData.append("text1", getValues("text1"));
       formData.append("text2", getValues("text2") as string);
