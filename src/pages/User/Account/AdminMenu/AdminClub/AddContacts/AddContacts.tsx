@@ -39,7 +39,7 @@ export const AddContacts = () => {
     const formData: ContactsRequest = {
       contacts: {
         name: getValues("name").toLowerCase(),
-        address: getValues("address").toLowerCase(),
+        address: getValues("address"),
         phone: getValues("phone").toLowerCase(),
         instagram: getValues("instagram"),
         email: getValues("email"),

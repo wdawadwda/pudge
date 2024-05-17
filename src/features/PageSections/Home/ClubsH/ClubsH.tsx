@@ -63,7 +63,9 @@ export const ClubsH = () => {
                   className={Style.itemWrapper__item}
                 >
                   <img src={club.img} alt="" />
-                  <h3>{`${club.name}:`}</h3>
+                  <h3
+                    style={{ textTransform: "capitalize" }}
+                  >{`${club.name}:`}</h3>
                   <p>{club.contacts.address}</p>
                   <p>{club.contacts.phone}</p>
                   <ul>

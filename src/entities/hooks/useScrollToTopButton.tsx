@@ -9,7 +9,13 @@ export const useScrollToTopButton = () => {
       if (mainReference.current) {
         const mainTopPosition =
           mainReference.current.getBoundingClientRect().top;
-        setShowScrollButton(mainTopPosition < 0);
+        const mainHeight = mainReference.current.offsetHeight;
+        const windowInnerHeight = window.innerHeight;
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const isEndOfPage = mainHeight - windowInnerHeight <= scrollTop;
+
+        setShowScrollButton(mainTopPosition < 0 && !isEndOfPage);
       }
     };
 

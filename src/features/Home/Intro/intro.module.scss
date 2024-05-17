@@ -7,6 +7,7 @@
   height: 100vh;
   height: 100dvh;
   @include flexCenter;
+  background-color: var(--pudge--bg-color-second);
   .fixedImage {
     position: fixed;
     top: 0px;
@@ -16,7 +17,17 @@
     object-fit: cover;
     z-index: -1;
   }
+  .anim{
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .introContent{
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
     @include Container;
     h1{
       text-align: center;
