@@ -21,6 +21,7 @@ export const Price = ({
   const tabsName = tariffSortArray(sortOrder, Object.keys(data));
   const { activeTab, handleTabClick } = useTabs<FormState>(tabsName[0]);
   const activeForm: JSX.Element | null = getActiveForm(activeTab, data);
+
   return (
     <>
       <div

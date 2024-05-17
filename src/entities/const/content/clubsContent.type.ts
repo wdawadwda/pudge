@@ -9,6 +9,7 @@ export interface TypeClubPriceDataMap {
   comfort: TypeClubTariff;
   vip: TypeClubTariff;
   bootcamp?: TypeClubTariff;
+  "solo vip"?: TypeClubTariff;
 }
 
 export interface TypeClubPriceData {
@@ -35,6 +36,7 @@ export interface TypeClubComputerSpecs {
   comfort?: SpecData;
   vip?: SpecData;
   bootcamp?: SpecData;
+  "solo vip"?: SpecData;
 }
 
 export interface TypeClubQuantityComputers {

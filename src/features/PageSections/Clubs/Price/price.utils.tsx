@@ -7,9 +7,14 @@ export function getActiveForm(activeTab: string, data: TypeClubPriceDataMap) {
       return <Table priceData={data.comfort} type={"price"} />;
     }
 
+    case "solo vip": {
+      return <Table priceData={data["solo vip"]} type={"price"} />;
+    }
+
     case "vip": {
       return <Table priceData={data.vip} type={"price"} />;
     }
+
     case "bootcamp": {
       return data.bootcamp ? (
         <Table priceData={data.bootcamp} type={"price"} />

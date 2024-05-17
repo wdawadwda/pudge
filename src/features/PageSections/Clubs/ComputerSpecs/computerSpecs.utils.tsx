@@ -14,10 +14,16 @@ export function getActiveForm(
       return <Table specData={data} type={"computerSpecs"} />;
     }
 
+    case "solo vip": {
+      const data: SpecData | undefined = сomputerData["solo vip"];
+      return <Table specData={data} type={"computerSpecs"} />;
+    }
+
     case "vip": {
       const data: SpecData | undefined = сomputerData.vip;
       return <Table specData={data} type={"computerSpecs"} />;
     }
+
     case "bootcamp": {
       const data: SpecData | undefined = сomputerData.bootcamp;
       return сomputerData.bootcamp ? (

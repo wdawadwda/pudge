@@ -122,8 +122,8 @@ export const addSpecSchema = yup.object().shape({
     .string()
     .required("Поле обязательно для заполнения")
     .oneOf(
-      ["vip", "bootcamp", "comfort"],
-      `Поле может быть только "vip", "bootcamp" или "comfort"`
+      ["vip", "solo vip", "bootcamp", "comfort"],
+      `Поле может быть только "vip", "solo vip", "bootcamp" или "comfort"`
     ),
 });
 
@@ -133,8 +133,8 @@ export const addPriceschema = yup.object().shape({
     .string()
     .required("Поле обязательно для заполнения")
     .oneOf(
-      ["vip", "bootcamp", "comfort"],
-      `Поле может быть только "vip", "bootcamp" или "comfort"`
+      ["vip", "solo vip", "bootcamp", "comfort"],
+      `Поле может быть только "vip", "solo vip", "bootcamp" или "comfort"`
     ),
   oneRowOneСel: yup.string(),
   oneRowTwoСel: yup.string(),
@@ -199,8 +199,8 @@ export const bookingSchema = yup.object().shape({
     .string()
     .required("Поле обязательно для заполнения")
     .oneOf(
-      ["vip", "bootcamp", "comfort"],
-      `Поле может быть только "vip", "bootcamp" или "comfort"`
+      ["vip", "solo vip", "bootcamp", "comfort"],
+      `Поле может быть только "vip", "solo vip", "bootcamp" или "comfort"`
     ),
   quantity_seats: yup
     .number()

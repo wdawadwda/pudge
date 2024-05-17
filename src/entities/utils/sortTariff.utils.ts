@@ -9,4 +9,4 @@ export function tariffSortArray(array: string[], order: string[]) {
   });
 }
 
-export const sortOrder = ["comfort", "vip", "bootcamp"];
+export const sortOrder = ["comfort", "vip", "solo vip", "bootcamp"];
