@@ -41,11 +41,25 @@
 }
 
 // Текст
-@mixin Roboto {
-  font-family: 'Roboto', sans-serif;
+// @mixin Roboto {
+//   font-family: 'Roboto', sans-serif;
+// }
+
+// @mixin RobotoSlabBlack {
+//   font-family: 'Roboto Slab', serif;
+//   font-weight: 900;
+// }
+
+// Тайтл
+@mixin RobotoSlabBlack {
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@mixin RobotoSlabBlack {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 900;
+// Остальное
+@mixin Roboto {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

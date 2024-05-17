@@ -27,7 +27,8 @@
   flex-direction: column;
   height: 75px;
   @include flexCenter;
-  @include RobotoSlabBlack;
+  // @include RobotoSlabBlack;
+  font-family: "Russo One", sans-serif;
   line-height: 25px;
   font-size: 20px;
   color: var(--pudge--text-second-color);
