@@ -1,6 +1,6 @@
 @import '~/mixins.scss';
 
-.pagination{
+.pagination {
   margin-top: var(--pudge-margin-title-content);
   width: 100%;
   display: flex;
@@ -16,6 +16,20 @@
     display: flex;
     &__button{
     margin: 0 15px 0 15px;
+    }
+  }
+}
+
+
+@media (max-width: 450px) {
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+    .buttonWrapper{
+      gap: 15px;
+      &__button{
+      margin: 0;
+      }
     }
   }
 }
