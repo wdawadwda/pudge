@@ -32,6 +32,9 @@
   line-height: 25px;
   font-size: 20px;
   color: var(--pudge--text-second-color);
+  span {
+    cursor: pointer;
+  }
   span:last-child {
     color :var(--pudge--text-color);
   }
