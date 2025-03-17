@@ -66,6 +66,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .intro{
+    height: auto;
+    padding: 55px 0 55px 0;
+    .anim{
+      display: none;
+    }
+  }
+}
+
 @media (max-height: 550px) {
   .intro{
     .introContent{

@@ -2,7 +2,6 @@
 
 .newsContainer{
   display: flex;
-  display: flex;
   @include flexCenter;
   background-color: var(--pudge--bg-color);
   width: 100%;
@@ -22,6 +21,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    > div:first-child {
+      max-width: 100%;
+    }
+
     .slideContent{
       display: flex;
       align-items: center;
@@ -63,7 +67,6 @@
     }
   }
 }
-
 
 @media (max-width: 700px) {
   .newsContainer{
