@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import { Link } from "react-router-dom";
-
 import { Loader } from "~/pages/Loader/Loader";
 import { links } from "~/router/Links";
 import { Button } from "~/shared/ui/Button/Buttons";
+
+import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import { regFormSchema } from "./formSchema";
 import { useSignUpForm } from "./useSignUpForm";
